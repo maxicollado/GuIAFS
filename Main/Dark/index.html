@@ -418,14 +418,38 @@
             });
         </script>
         <script>
+            let ventanAgente = null;
+
             function abrirAgenteNotebook(url) {
                 const width = 600;
                 const height = 800;
                 const left = (window.screen.width / 2) - (width / 2);
                 const top = (window.screen.height / 2) - (height / 2);
                 const params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=${width},height=${height},left=${left},top=${top}`;
-                window.open(url, 'AgenteAFS', params);
+
+                // Si ya hay una ventana abierta, la cerramos antes de abrir otra
+                if (ventanAgente && !ventanAgente.closed) {
+                    ventanAgente.close();
+                }
+
+                ventanAgente = window.open(url, 'AgenteAFS', params);
             }
+
+            // Cuando el usuario "vuelve" a la pestaña principal (gana foco),
+            // cerramos la ventana emergente automáticamente.
+            window.addEventListener('focus', function () {
+                if (ventanAgente && !ventanAgente.closed) {
+                    ventanAgente.close();
+                    ventanAgente = null;
+                }
+            });
+
+            // Limpieza de seguridad al cerrar la pestaña principal
+            window.addEventListener('beforeunload', function () {
+                if (ventanAgente && !ventanAgente.closed) {
+                    ventanAgente.close();
+                }
+            });
         </script>
 </body>
 
