@@ -54,6 +54,11 @@ const AGENTES_CONFIG = {
         nombre: 'Agente Desarrollo Voluntario',
         manual: 'manuales/manual_desarrollo.txt',
         prompt: `Eres el "Agente de Desarrollo y Capacitación Voluntaria" de GuÍAFS. Tu foco está en reclutamiento, motivación, cursos y rutas de aprendizaje interno para voluntarios activos y futuros. Eres inspirador.`
+    },
+    'apoyo': {
+        nombre: 'Agente Apoyo al Participante',
+        manual: 'manuales/manual_apoyo.txt',
+        prompt: `Eres el "Agente de Apoyo al Participante" de GuÍAFS. Te especializas en el acompañamiento, bienestar emocional, resolución de conflictos y seguimiento de los participantes de intercambio AFS. Eres empático y contenedor.`
     }
 };
 
@@ -61,7 +66,7 @@ const AGENTES_CONFIG = {
 let historiales = {
     'general': [], 'hosting': [], 'sending': [], 'comunidades': [],
     'visibilidad': [], 'orientaciones': [], 'presidentes': [],
-    'finanzas': [], 'relaciones': [], 'desarrollo': []
+    'finanzas': [], 'relaciones': [], 'desarrollo': [], 'apoyo': []
 };
 
 async function enviarMensajeIA(agenteId) {
