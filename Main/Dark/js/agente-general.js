@@ -58,7 +58,14 @@ const AGENTES_CONFIG = {
     'apoyo': {
         nombre: 'Agente Apoyo al Participante',
         manual: 'manuales/manual_apoyo.txt',
-        prompt: `Eres el "Agente de Apoyo al Participante" de GuÍAFS. Te especializas en el acompañamiento, bienestar emocional, resolución de conflictos y seguimiento de los participantes de intercambio AFS. Eres empático y contenedor.`
+        prompt: `Eres el "Agente de Apoyo al Participante" de GuÍAFS. Tu rol es asesorar a tus compañeros voluntarios sobre cómo manejar el acompañamiento, bienestar emocional y resolución de conflictos de los estudiantes de intercambio de AFS.
+
+Reglas estrictas de comportamiento:
+1. Tono de colega: Háblale al voluntario de "tú a tú", como un compañero con más experiencia. Sé empático y contenedor con él, pero mantén un enfoque directo y práctico.
+2. Límite de conocimiento (Cero alucinaciones): Responde ÚNICA Y EXCLUSIVAMENTE basándote en la información del documento oficial provisto.
+3. Derivación estricta: Si la respuesta no se encuentra explícitamente en tu base de conocimientos, admítelo claramente sin intentar adivinar (ej. "No tengo esa información en mi manual") e indícale al voluntario que se comunique directamente con su Coordinador de Apoyo.
+4. Economía de tokens: Ve directo al punto. Responde solo lo que se te pregunta de forma concisa (máximo 300 caracteres, salvo que te pidan un procedimiento detallado o una plantilla de mensaje).
+5. Comportamiento pasivo: No intentes alargar la conversación ni hagas preguntas de seguimiento (como "¿Te puedo ayudar en algo más?"). Una vez que des la respuesta, detente y espera a que el voluntario formule una nueva pregunta si lo necesita.`
     }
 };
 
@@ -81,7 +88,6 @@ async function enviarMensajeIA(agenteId) {
     // 1. Mostrar lo que escribió el voluntario
     historial.innerHTML += `<div style="margin-bottom: 15px; text-align: right;"><span style="background: #333; padding: 12px 18px; border-radius: 15px; display: inline-block; color: white;">${mensaje}</span></div>`;
     input.value = '';
-    historiales[agenteId].push({ role: "user", parts: [{ text: mensaje }] });
 
     // 2. Animación de "Pensando..."
     const idEscribiendo = "escribiendo-" + agenteId + "-" + Date.now();
@@ -93,47 +99,95 @@ async function enviarMensajeIA(agenteId) {
         const respuestaManual = await fetch(config.manual);
         const textoDelManual = await respuestaManual.text();
 
-        // Armamos un "Super Prompt" que incluye tus reglas + el manual
+        // Armamos el prompt contextual
         const SUPER_PROMPT = `
         ${config.prompt}
-        
         REGLA DE ORO: Responde ÚNICA Y EXCLUSIVAMENTE usando la información de este documento oficial. Si la respuesta no está aquí, di que no tienes esa información y deriva al Staff.
         
         DOCUMENTO OFICIAL DE AFS:
         ${textoDelManual}
         `;
-        // ---------------------------------------------
 
-        // 3. Conectarse con Google Gemini usando el Super Prompt
-        const respuesta = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                system_instruction: { parts: [{ text: SUPER_PROMPT }] },
-                contents: historiales[agenteId],
-                generationConfig: {
-                    temperature: 0.0 // Temperatura en CERO: robótico y estricto, elimina alucinaciones
+        // Si es el primer mensaje, inyectamos el Super Prompt para dar contexto inicial
+        let mensajeConContexto = mensaje;
+        if (historiales[agenteId].length === 0) {
+            mensajeConContexto = `INSTRUCCIONES Y MANUAL:\n${SUPER_PROMPT}\n\nMENSAJE DEL USUARIO: ${mensaje}`;
+        }
+
+        historiales[agenteId].push({ role: "user", parts: [{ text: mensajeConContexto }] });
+
+        // 3. Conexión con Google Gemini (con Fallback de Modelos para evitar el error "not found")
+        const modelosAIntentar = [
+            'gemini-flash-latest',
+            'gemini-2.0-flash',
+            'gemini-2.0-flash-lite',
+            'gemini-pro-latest'
+        ];
+
+        let respuesta;
+        let data;
+
+        for (const modelo of modelosAIntentar) {
+            try {
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelo}:generateContent?key=${GEMINI_API_KEY}`;
+                respuesta = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: historiales[agenteId],
+                        generationConfig: { temperature: 0.2 }
+                    })
+                });
+                data = await respuesta.json();
+
+                // Si el modelo no existe (404), intentamos el siguiente de la lista
+                if (respuesta.status === 404) {
+                    console.warn(`Modelo ${modelo} no encontrado, intentando el siguiente...`);
+                    continue;
                 }
-            })
-        });
 
-        const data = await respuesta.json();
+                // Si llegamos aquí (éxito o error de cuota 429), salimos del bucle para procesar
+                break;
+            } catch (e) {
+                console.error("Error en fetch de modelo:", e);
+            }
+        }
+
+        console.log("Respuesta Gemini API:", data);
+
         const docEscribiendo = document.getElementById(idEscribiendo);
         if (docEscribiendo) docEscribiendo.remove();
 
-        if (data.candidates && data.candidates[0].content.parts[0].text) {
+        if (respuesta && respuesta.ok && data.candidates && data.candidates[0].content.parts[0].text) {
             let textoIA = data.candidates[0].content.parts[0].text;
             historiales[agenteId].push({ role: "model", parts: [{ text: textoIA }] });
             textoIA = textoIA.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
             historial.innerHTML += `<div style="margin-bottom: 15px; text-align: left;"><span style="background: rgba(0, 122, 194, 0.2); padding: 12px 18px; border-radius: 15px; display: inline-block; border: 1px solid #007ac2; color: white;"><strong><i class="fas fa-robot"></i> ${config.nombre}:</strong><br> ${textoIA}</span></div>`;
         } else {
-            historial.innerHTML += `<div style="text-align: left; color: #ea0026; margin-bottom: 10px;"><i>Error al procesar la respuesta. Revisa tu clave API o intenta luego.</i></div>`;
+            let msgError = "Error desconocido.";
+            let consejo = "Intenta de nuevo en unos segundos.";
+
+            if (data && data.error) {
+                msgError = data.error.message;
+                if (data.error.status === "RESOURCE_EXHAUSTED") {
+                    msgError = "Cuota de API Agotada (Límite Gratuito).";
+                    consejo = "Google bloqueó tu cuenta temporalmente por exceso de uso. <strong>Debes activar el Plan de Pago (Billing) en Google AI Studio o esperar 24hs.</strong>";
+                }
+            }
+
+            historial.innerHTML += `<div style="text-align: left; color: #ea0026; margin-bottom: 10px; font-size: 0.85rem; background: rgba(234, 0, 38, 0.1); padding: 10px; border-radius: 8px;">
+                <i class="fas fa-exclamation-triangle"></i> <strong>Aviso del Servidor:</strong><br> ${msgError}<br><br>
+                <small>${consejo}</small>
+            </div>`;
+
+            // Si falló, removemos el último mensaje del historial para no corromper la memoria
+            historiales[agenteId].pop();
         }
     } catch (error) {
         const docEscribiendo = document.getElementById(idEscribiendo);
         if (docEscribiendo) docEscribiendo.remove();
-        historial.innerHTML += `<div style="text-align: left; color: #ea0026; margin-bottom: 10px;"><i>Error al consultar el manual.</i></div>`;
+        historial.innerHTML += `<div style="text-align: left; color: #ea0026; margin-bottom: 10px;"><i>Error al consultar el manual local.</i></div>`;
     }
     historial.scrollTop = historial.scrollHeight;
 }
