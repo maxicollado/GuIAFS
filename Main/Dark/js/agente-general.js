@@ -1,8 +1,8 @@
 /* ==============================================================
-   CEREBRO DE IA: TODOS LOS AGENTES (GEMINI API + MANUALES)
+   BASE DE CONOCIMIENTO (GEMINI API + MANUALES)
    ============================================================== */
 
-const GEMINI_API_KEY = 'AIzaSyCvhAU2mwNKTS_FvKLibmY5c789RylWteU';
+const GEMINI_API_KEY = 'AIzaSyAuDUrpgH7Vp6fgdnWKL2pP5vjpWMN87Qo';
 
 const AGENTES_CONFIG = {
     'general': {
@@ -61,7 +61,7 @@ const AGENTES_CONFIG = {
         prompt: `Eres el "Agente de Apoyo al Participante" de GuÍAFS. Tu rol es asesorar a tus compañeros voluntarios sobre cómo manejar el acompañamiento, bienestar emocional y resolución de conflictos de los estudiantes de intercambio de AFS.
 
 Reglas estrictas de comportamiento:
-1. Tono de colega: Háblale al voluntario de "tú a tú", como un compañero con más experiencia. Sé empático y contenedor con él, pero mantén un enfoque directo y práctico.
+1. Tono de colega: Háblale al voluntario de "tú a tú", como un compañero con más experiencia. Sé empático y contenedor con él, pero mantén un enfoque práctico.
 2. Límite de conocimiento (Cero alucinaciones): Responde ÚNICA Y EXCLUSIVAMENTE basándote en la información del documento oficial provisto.
 3. Derivación estricta: Si la respuesta no se encuentra explícitamente en tu base de conocimientos, admítelo claramente sin intentar adivinar (ej. "No tengo esa información en mi manual") e indícale al voluntario que se comunique directamente con su Coordinador de Apoyo.
 4. Economía de tokens: Ve directo al punto. Responde solo lo que se te pregunta de forma concisa (máximo 300 caracteres, salvo que te pidan un procedimiento detallado o una plantilla de mensaje).
@@ -85,17 +85,17 @@ async function enviarMensajeIA(agenteId) {
     const historial = document.getElementById(`chat-historial-${agenteId}`);
     const config = AGENTES_CONFIG[agenteId];
 
-    // 1. Mostrar lo que escribió el voluntario
+    // 1. Mostrar respuesta del voluntario
     historial.innerHTML += `<div style="margin-bottom: 15px; text-align: right;"><span style="background: #333; padding: 12px 18px; border-radius: 15px; display: inline-block; color: white;">${mensaje}</span></div>`;
     input.value = '';
 
-    // 2. Animación de "Pensando..."
+    // 2. Animación "Pensando..."
     const idEscribiendo = "escribiendo-" + agenteId + "-" + Date.now();
     historial.innerHTML += `<div id="${idEscribiendo}" style="margin-bottom: 15px; text-align: left;"><span style="background: rgba(0, 122, 194, 0.1); padding: 12px 18px; border-radius: 15px; display: inline-block; color: #888;"><i class="fas fa-circle-notch fa-spin"></i> Leyendo manual oficial de AFS...</span></div>`;
     historial.scrollTop = historial.scrollHeight;
 
     try {
-        // --- LA MAGIA: LEER EL MANUAL EN SILENCIO ---
+        // --- LEER EL MANUAL EN SILENCIO ---
         const respuestaManual = await fetch(config.manual);
         const textoDelManual = await respuestaManual.text();
 
