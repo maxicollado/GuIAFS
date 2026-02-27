@@ -1,0 +1,3 @@
+Este es el manual oficial del Agente General y de Primeros Pasos de AFS.
+Aquí debes pegar el contenido del manual correspondiente a esta área.
+Mientras tanto, el agente funcionará con su conocimiento base hasta que completes este archivo.

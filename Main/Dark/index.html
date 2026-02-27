@@ -216,8 +216,7 @@
                     </div>
 
                     <div class="cbp-item digital">
-                        <a href="#"
-                            onclick="abrirAgenteNotebook('https://notebooklm.google.com/notebook/1e59b2c8-ad21-4e40-aafc-ed00a2010214'); return false;">
+                        <a href="#" onclick="$('#modalApoyo').fadeIn(); return false;">
                             <figure class="fig">
                                 <img src="images/work-1.jpg" alt="">
                                 <figcaption>
@@ -262,7 +261,6 @@
                         <div style="margin-bottom: 15px; text-align: left;">
                             <span
                                 style="background: rgba(0, 122, 194, 0.2); padding: 12px 18px; border-radius: 15px; display: inline-block; border: 1px solid #007ac2; color: white;">
-                                <strong><i class="fas fa-robot"></i> Agente General:</strong><br>
                                 ¡Hola! Soy tu asistente para tus primeros pasos en AFS. ¿En qué te puedo ayudar hoy?
                             </span>
                         </div>
@@ -271,7 +269,7 @@
                     <div style="display: flex; padding: 15px; background: #1a1a1a; border-top: 1px solid #333;">
                         <input type="text" id="chat-input-general" placeholder="Escribe tu consulta aquí..."
                             style="flex-grow: 1; padding: 12px 20px; border-radius: 25px; border: 1px solid #444; background: #222; color: white; outline: none;">
-                        <button onclick="enviarMensajeGeneral()"
+                        <button onclick="enviarMensajeIA('general')"
                             style="margin-left: 10px; padding: 10px 25px; background: #007ac2; color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; transition: all 0.3s;">
                             <i class="fas fa-paper-plane"></i>
                         </button>
@@ -285,10 +283,28 @@
             <div class="mi-modal-contenido">
                 <span class="mi-modal-cerrar" onclick="$('#modalHosting').fadeOut();">&times;</span>
                 <h3 style="color: white; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 15px;"><i
-                        class="fas fa-robot" style="color:#007ac2;"></i> Chat - Hosting</h3>
+                        class="fas fa-robot" style="color:#007ac2;"></i> Agente Hosting</h3>
                 <div
-                    style="height: 60vh; background: #111; border-radius: 8px; display: flex; align-items: center; justify-content: center; color:#666;">
-                    [ Interfaz Agente Hosting ]</div>
+                    style="height: 60vh; background: #111; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden;">
+                    <div id="chat-historial-hosting"
+                        style="flex-grow: 1; overflow-y: auto; padding: 20px; font-size: 0.95rem; line-height: 1.6;">
+                        <div style="margin-bottom: 15px; text-align: left;">
+                            <span
+                                style="background: rgba(0, 122, 194, 0.2); padding: 12px 18px; border-radius: 15px; display: inline-block; border: 1px solid #007ac2; color: white;">
+                                ¡Hola! Soy el asistente especializado en Familias Anfitrionas de AFS. ¿En qué duda
+                                respecto al hosting puedo apoyarte?
+                            </span>
+                        </div>
+                    </div>
+                    <div style="display: flex; padding: 15px; background: #1a1a1a; border-top: 1px solid #333;">
+                        <input type="text" id="chat-input-hosting" placeholder="Escribe tu consulta de Hosting..."
+                            style="flex-grow: 1; padding: 12px 20px; border-radius: 25px; border: 1px solid #444; background: #222; color: white; outline: none;">
+                        <button onclick="enviarMensajeIA('hosting')"
+                            style="margin-left: 10px; padding: 10px 25px; background: #007ac2; color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; transition: all 0.3s;">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -296,10 +312,28 @@
             <div class="mi-modal-contenido">
                 <span class="mi-modal-cerrar" onclick="$('#modalSending').fadeOut();">&times;</span>
                 <h3 style="color: white; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 15px;"><i
-                        class="fas fa-robot" style="color:#007ac2;"></i> Chat - Sending</h3>
+                        class="fas fa-robot" style="color:#007ac2;"></i> Agente Sending</h3>
                 <div
-                    style="height: 60vh; background: #111; border-radius: 8px; display: flex; align-items: center; justify-content: center; color:#666;">
-                    [ Interfaz Agente Sending ]</div>
+                    style="height: 60vh; background: #111; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden;">
+                    <div id="chat-historial-sending"
+                        style="flex-grow: 1; overflow-y: auto; padding: 20px; font-size: 0.95rem; line-height: 1.6;">
+                        <div style="margin-bottom: 15px; text-align: left;">
+                            <span
+                                style="background: rgba(0, 122, 194, 0.2); padding: 12px 18px; border-radius: 15px; display: inline-block; border: 1px solid #007ac2; color: white;">
+                                ¡Hola! Estoy aquí para responder sobre el envío de participantes AFS al extranjero. ¿Qué
+                                necesitas del manual Sending?
+                            </span>
+                        </div>
+                    </div>
+                    <div style="display: flex; padding: 15px; background: #1a1a1a; border-top: 1px solid #333;">
+                        <input type="text" id="chat-input-sending" placeholder="Escribe tu consulta de Sending..."
+                            style="flex-grow: 1; padding: 12px 20px; border-radius: 25px; border: 1px solid #444; background: #222; color: white; outline: none;">
+                        <button onclick="enviarMensajeIA('sending')"
+                            style="margin-left: 10px; padding: 10px 25px; background: #007ac2; color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; transition: all 0.3s;">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -307,10 +341,28 @@
             <div class="mi-modal-contenido">
                 <span class="mi-modal-cerrar" onclick="$('#modalComunidades').fadeOut();">&times;</span>
                 <h3 style="color: white; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 15px;"><i
-                        class="fas fa-robot" style="color:#007ac2;"></i> Chat - Comunidades Educativas</h3>
+                        class="fas fa-robot" style="color:#007ac2;"></i> Agente Comunidades Educativas</h3>
                 <div
-                    style="height: 60vh; background: #111; border-radius: 8px; display: flex; align-items: center; justify-content: center; color:#666;">
-                    [ Interfaz Agente Comunidades ]</div>
+                    style="height: 60vh; background: #111; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden;">
+                    <div id="chat-historial-comunidades"
+                        style="flex-grow: 1; overflow-y: auto; padding: 20px; font-size: 0.95rem; line-height: 1.6;">
+                        <div style="margin-bottom: 15px; text-align: left;">
+                            <span
+                                style="background: rgba(0, 122, 194, 0.2); padding: 12px 18px; border-radius: 15px; display: inline-block; border: 1px solid #007ac2; color: white;">
+                                ¡Buen día! Conecto AFS con las escuelas y talleres locales. ¿Sobre qué tema te oriento
+                                hoy?
+                            </span>
+                        </div>
+                    </div>
+                    <div style="display: flex; padding: 15px; background: #1a1a1a; border-top: 1px solid #333;">
+                        <input type="text" id="chat-input-comunidades" placeholder="Dudas sobre colegios, charlas..."
+                            style="flex-grow: 1; padding: 12px 20px; border-radius: 25px; border: 1px solid #444; background: #222; color: white; outline: none;">
+                        <button onclick="enviarMensajeIA('comunidades')"
+                            style="margin-left: 10px; padding: 10px 25px; background: #007ac2; color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; transition: all 0.3s;">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -318,10 +370,27 @@
             <div class="mi-modal-contenido">
                 <span class="mi-modal-cerrar" onclick="$('#modalVisibilidad').fadeOut();">&times;</span>
                 <h3 style="color: white; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 15px;"><i
-                        class="fas fa-robot" style="color:#007ac2;"></i> Chat - Visibilidad</h3>
+                        class="fas fa-robot" style="color:#007ac2;"></i> Agente Visibilidad</h3>
                 <div
-                    style="height: 60vh; background: #111; border-radius: 8px; display: flex; align-items: center; justify-content: center; color:#666;">
-                    [ Interfaz Agente Visibilidad ]</div>
+                    style="height: 60vh; background: #111; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden;">
+                    <div id="chat-historial-visibilidad"
+                        style="flex-grow: 1; overflow-y: auto; padding: 20px; font-size: 0.95rem; line-height: 1.6;">
+                        <div style="margin-bottom: 15px; text-align: left;">
+                            <span
+                                style="background: rgba(0, 122, 194, 0.2); padding: 12px 18px; border-radius: 15px; display: inline-block; border: 1px solid #007ac2; color: white;">
+                                ¡Hola! Redes sociales y diseño son lo mío. ¿Cómo quieres mostrar AFS al mundo local hoy?
+                            </span>
+                        </div>
+                    </div>
+                    <div style="display: flex; padding: 15px; background: #1a1a1a; border-top: 1px solid #333;">
+                        <input type="text" id="chat-input-visibilidad" placeholder="Ideas para redes, flyers..."
+                            style="flex-grow: 1; padding: 12px 20px; border-radius: 25px; border: 1px solid #444; background: #222; color: white; outline: none;">
+                        <button onclick="enviarMensajeIA('visibilidad')"
+                            style="margin-left: 10px; padding: 10px 25px; background: #007ac2; color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; transition: all 0.3s;">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -329,10 +398,29 @@
             <div class="mi-modal-contenido">
                 <span class="mi-modal-cerrar" onclick="$('#modalOrientaciones').fadeOut();">&times;</span>
                 <h3 style="color: white; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 15px;"><i
-                        class="fas fa-robot" style="color:#007ac2;"></i> Chat - Orientaciones Locales</h3>
+                        class="fas fa-robot" style="color:#007ac2;"></i> Agente Orientaciones</h3>
                 <div
-                    style="height: 60vh; background: #111; border-radius: 8px; display: flex; align-items: center; justify-content: center; color:#666;">
-                    [ Interfaz Agente Orientaciones ]</div>
+                    style="height: 60vh; background: #111; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden;">
+                    <div id="chat-historial-orientaciones"
+                        style="flex-grow: 1; overflow-y: auto; padding: 20px; font-size: 0.95rem; line-height: 1.6;">
+                        <div style="margin-bottom: 15px; text-align: left;">
+                            <span
+                                style="background: rgba(0, 122, 194, 0.2); padding: 12px 18px; border-radius: 15px; display: inline-block; border: 1px solid #007ac2; color: white;">
+                                Dispuesto a guiarte sobre asambleas, campamentos y aprendizajes extracurriculares en
+                                AFS.
+                            </span>
+                        </div>
+                    </div>
+                    <div style="display: flex; padding: 15px; background: #1a1a1a; border-top: 1px solid #333;">
+                        <input type="text" id="chat-input-orientaciones"
+                            placeholder="Ej: logística campamento de llegada..."
+                            style="flex-grow: 1; padding: 12px 20px; border-radius: 25px; border: 1px solid #444; background: #222; color: white; outline: none;">
+                        <button onclick="enviarMensajeIA('orientaciones')"
+                            style="margin-left: 10px; padding: 10px 25px; background: #007ac2; color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; transition: all 0.3s;">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -340,10 +428,28 @@
             <div class="mi-modal-contenido">
                 <span class="mi-modal-cerrar" onclick="$('#modalPresidentes').fadeOut();">&times;</span>
                 <h3 style="color: white; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 15px;"><i
-                        class="fas fa-robot" style="color:#007ac2;"></i> Chat - Presidentes</h3>
+                        class="fas fa-robot" style="color:#007ac2;"></i> Agente Presidentes</h3>
                 <div
-                    style="height: 60vh; background: #111; border-radius: 8px; display: flex; align-items: center; justify-content: center; color:#666;">
-                    [ Interfaz Agente Presidentes ]</div>
+                    style="height: 60vh; background: #111; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden;">
+                    <div id="chat-historial-presidentes"
+                        style="flex-grow: 1; overflow-y: auto; padding: 20px; font-size: 0.95rem; line-height: 1.6;">
+                        <div style="margin-bottom: 15px; text-align: left;">
+                            <span
+                                style="background: rgba(0, 122, 194, 0.2); padding: 12px 18px; border-radius: 15px; display: inline-block; border: 1px solid #007ac2; color: white;">
+                                Solucionando desafíos de gobernanza y liderazgo de Estructura Local. ¿En qué comité te
+                                ayudo?
+                            </span>
+                        </div>
+                    </div>
+                    <div style="display: flex; padding: 15px; background: #1a1a1a; border-top: 1px solid #333;">
+                        <input type="text" id="chat-input-presidentes" placeholder="Dudas sobre rol de PO, estatutos..."
+                            style="flex-grow: 1; padding: 12px 20px; border-radius: 25px; border: 1px solid #444; background: #222; color: white; outline: none;">
+                        <button onclick="enviarMensajeIA('presidentes')"
+                            style="margin-left: 10px; padding: 10px 25px; background: #007ac2; color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; transition: all 0.3s;">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -351,10 +457,28 @@
             <div class="mi-modal-contenido">
                 <span class="mi-modal-cerrar" onclick="$('#modalFinanzas').fadeOut();">&times;</span>
                 <h3 style="color: white; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 15px;"><i
-                        class="fas fa-robot" style="color:#007ac2;"></i> Chat - Finanzas</h3>
+                        class="fas fa-robot" style="color:#007ac2;"></i> Agente Finanzas</h3>
                 <div
-                    style="height: 60vh; background: #111; border-radius: 8px; display: flex; align-items: center; justify-content: center; color:#666;">
-                    [ Interfaz Agente Finanzas ]</div>
+                    style="height: 60vh; background: #111; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden;">
+                    <div id="chat-historial-finanzas"
+                        style="flex-grow: 1; overflow-y: auto; padding: 20px; font-size: 0.95rem; line-height: 1.6;">
+                        <div style="margin-bottom: 15px; text-align: left;">
+                            <span
+                                style="background: rgba(0, 122, 194, 0.2); padding: 12px 18px; border-radius: 15px; display: inline-block; border: 1px solid #007ac2; color: white;">
+                                Experto en cuentas, facturas, y dinero. ¿Tienes dudas financieras sobre fondos AFS?
+                            </span>
+                        </div>
+                    </div>
+                    <div style="display: flex; padding: 15px; background: #1a1a1a; border-top: 1px solid #333;">
+                        <input type="text" id="chat-input-finanzas"
+                            placeholder="Dudas sobre presupuestos y rendiciones..."
+                            style="flex-grow: 1; padding: 12px 20px; border-radius: 25px; border: 1px solid #444; background: #222; color: white; outline: none;">
+                        <button onclick="enviarMensajeIA('finanzas')"
+                            style="margin-left: 10px; padding: 10px 25px; background: #007ac2; color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; transition: all 0.3s;">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -362,10 +486,27 @@
             <div class="mi-modal-contenido">
                 <span class="mi-modal-cerrar" onclick="$('#modalRelaciones').fadeOut();">&times;</span>
                 <h3 style="color: white; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 15px;"><i
-                        class="fas fa-robot" style="color:#007ac2;"></i> Chat - Relaciones Institucionales</h3>
+                        class="fas fa-robot" style="color:#007ac2;"></i> Agente Relaciones Institucionales</h3>
                 <div
-                    style="height: 60vh; background: #111; border-radius: 8px; display: flex; align-items: center; justify-content: center; color:#666;">
-                    [ Interfaz Agente Relaciones ]</div>
+                    style="height: 60vh; background: #111; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden;">
+                    <div id="chat-historial-relaciones"
+                        style="flex-grow: 1; overflow-y: auto; padding: 20px; font-size: 0.95rem; line-height: 1.6;">
+                        <div style="margin-bottom: 15px; text-align: left;">
+                            <span
+                                style="background: rgba(0, 122, 194, 0.2); padding: 12px 18px; border-radius: 15px; display: inline-block; border: 1px solid #007ac2; color: white;">
+                                ¡Hola! Te guío sobre becas, patrocinios y vínculos políticos de las estructuras de AFS.
+                            </span>
+                        </div>
+                    </div>
+                    <div style="display: flex; padding: 15px; background: #1a1a1a; border-top: 1px solid #333;">
+                        <input type="text" id="chat-input-relaciones" placeholder="Dudas sobre becas, donaciones..."
+                            style="flex-grow: 1; padding: 12px 20px; border-radius: 25px; border: 1px solid #444; background: #222; color: white; outline: none;">
+                        <button onclick="enviarMensajeIA('relaciones')"
+                            style="margin-left: 10px; padding: 10px 25px; background: #007ac2; color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; transition: all 0.3s;">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -373,20 +514,27 @@
             <div class="mi-modal-contenido">
                 <span class="mi-modal-cerrar" onclick="$('#modalApoyo').fadeOut();">&times;</span>
                 <h3 style="color: white; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 15px;"><i
-                        class="fas fa-robot" style="color:#007ac2;"></i> Chat - Apoyo al Participante</h3>
+                        class="fas fa-robot" style="color:#007ac2;"></i> Agente Apoyo al Participante</h3>
                 <div
-                    style="height: 60vh; background: #111; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; padding: 30px; text-align: center;">
-                    <i class="fas fa-robot" style="font-size: 3rem; color: #007ac2;"></i>
-                    <p style="color: #ccc; font-size: 1rem; margin: 0; max-width: 480px;">El agente de <strong
-                            style="color: #fff;">Apoyo al Participante</strong> de NotebookLM está listo para ayudarte
-                        sin límites.</p>
-                    <button
-                        onclick="abrirAgenteNotebook('https://notebooklm.google.com/notebook/1e59b2c8-ad21-4e40-aafc-ed00a2010214')"
-                        style="cursor: pointer; border: none; display: inline-block; background: #007ac2; color: white; text-decoration: none; padding: 14px 40px; border-radius: 50px; font-weight: 700; font-size: 1rem; letter-spacing: 0.5px; transition: background 0.3s;"
-                        onmouseover="this.style.background='#005f99'" onmouseout="this.style.background='#007ac2'">
-                        <i class="fas fa-external-link-alt" style="margin-right: 8px;"></i> Iniciar Agente (Popup)
-                    </button>
-                    <small style="color: #555;">Se abrirá en una ventana emergente dedicada · Ilimitado</small>
+                    style="height: 60vh; background: #111; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden;">
+                    <div id="chat-historial-apoyo"
+                        style="flex-grow: 1; overflow-y: auto; padding: 20px; font-size: 0.95rem; line-height: 1.6;">
+                        <div style="margin-bottom: 15px; text-align: left;">
+                            <span
+                                style="background: rgba(0, 122, 194, 0.2); padding: 12px 18px; border-radius: 15px; display: inline-block; border: 1px solid #007ac2; color: white;">
+                                ¡Hola! Estoy aquí para guiarte en todo lo relacionado con el acompañamiento y bienestar
+                                de los participantes AFS.
+                            </span>
+                        </div>
+                    </div>
+                    <div style="display: flex; padding: 15px; background: #1a1a1a; border-top: 1px solid #333;">
+                        <input type="text" id="chat-input-apoyo" placeholder="Dudas sobre acompañamiento, bienestar..."
+                            style="flex-grow: 1; padding: 12px 20px; border-radius: 25px; border: 1px solid #444; background: #222; color: white; outline: none;">
+                        <button onclick="enviarMensajeIA('apoyo')"
+                            style="margin-left: 10px; padding: 10px 25px; background: #007ac2; color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; transition: all 0.3s;">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -395,10 +543,28 @@
             <div class="mi-modal-contenido">
                 <span class="mi-modal-cerrar" onclick="$('#modalDesarrollo').fadeOut();">&times;</span>
                 <h3 style="color: white; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 15px;"><i
-                        class="fas fa-robot" style="color:#007ac2;"></i> Chat - Desarrollo Voluntario</h3>
+                        class="fas fa-robot" style="color:#007ac2;"></i> Agente Desarrollo Voluntario</h3>
                 <div
-                    style="height: 60vh; background: #111; border-radius: 8px; display: flex; align-items: center; justify-content: center; color:#666;">
-                    [ Interfaz Agente Desarrollo ]</div>
+                    style="height: 60vh; background: #111; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden;">
+                    <div id="chat-historial-desarrollo"
+                        style="flex-grow: 1; overflow-y: auto; padding: 20px; font-size: 0.95rem; line-height: 1.6;">
+                        <div style="margin-bottom: 15px; text-align: left;">
+                            <span
+                                style="background: rgba(0, 122, 194, 0.2); padding: 12px 18px; border-radius: 15px; display: inline-block; border: 1px solid #007ac2; color: white;">
+                                ¡Inspirando a voluntarios! Consúltame sobre cursos GCL, motivación y estrategias de
+                                retención AFS.
+                            </span>
+                        </div>
+                    </div>
+                    <div style="display: flex; padding: 15px; background: #1a1a1a; border-top: 1px solid #333;">
+                        <input type="text" id="chat-input-desarrollo" placeholder="Capacitaciones, reclutamiento..."
+                            style="flex-grow: 1; padding: 12px 20px; border-radius: 25px; border: 1px solid #444; background: #222; color: white; outline: none;">
+                        <button onclick="enviarMensajeIA('desarrollo')"
+                            style="margin-left: 10px; padding: 10px 25px; background: #007ac2; color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; transition: all 0.3s;">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
