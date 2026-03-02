@@ -97,6 +97,65 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(0, 122, 194, 0.5) !important;
         }
+
+        /* Greeting bubbles animation (Bebot-style) */
+        @keyframes bubbleEnter {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .greeting-bubble {
+            animation: bubbleEnter 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        }
+
+        /* Typing indicator (3 bouncing dots) */
+        .typing-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 12px 18px;
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .typing-indicator span {
+            width: 7px;
+            height: 7px;
+            background: #a0a0a0;
+            border-radius: 50%;
+            animation: typingDot 1.2s infinite ease-in-out;
+        }
+
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typingDot {
+
+            0%,
+            60%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.4;
+            }
+
+            30% {
+                transform: translateY(-6px);
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 
@@ -155,7 +214,7 @@
                 <div id="grid-container">
 
                     <div class="cbp-item main-item branding">
-                        <a href="#" onclick="$('#modalGeneral').fadeIn(); return false;">
+                        <a href="#" onclick="$('#modalGeneral').fadeIn(); playGreeting('General'.toLowerCase()); return false;">
                             <figure class="fig">
                                 <img src="images/work-1.jpg" alt="">
                                 <figcaption>
@@ -167,7 +226,7 @@
                     </div>
 
                     <div class="cbp-item main-item digital">
-                        <a href="#" onclick="$('#modalHosting').fadeIn(); return false;">
+                        <a href="#" onclick="$('#modalHosting').fadeIn(); playGreeting('Hosting'.toLowerCase()); return false;">
                             <figure class="fig">
                                 <img src="images/work-2.jpg" alt="">
                                 <figcaption>
@@ -179,7 +238,7 @@
                     </div>
 
                     <div class="cbp-item main-item digital">
-                        <a href="#" onclick="$('#modalSending').fadeIn(); return false;">
+                        <a href="#" onclick="$('#modalSending').fadeIn(); playGreeting('Sending'.toLowerCase()); return false;">
                             <figure class="fig">
                                 <img src="images/work-3.jpg" alt="">
                                 <figcaption>
@@ -191,7 +250,7 @@
                     </div>
 
                     <div class="cbp-item main-item digital">
-                        <a href="#" onclick="$('#modalComunidades').fadeIn(); return false;">
+                        <a href="#" onclick="$('#modalComunidades').fadeIn(); playGreeting('Comunidades'.toLowerCase()); return false;">
                             <figure class="fig">
                                 <img src="images/work-4.jpg" alt="">
                                 <figcaption>
@@ -203,7 +262,7 @@
                     </div>
 
                     <div class="cbp-item main-item digital">
-                        <a href="#" onclick="$('#modalVisibilidad').fadeIn(); return false;">
+                        <a href="#" onclick="$('#modalVisibilidad').fadeIn(); playGreeting('Visibilidad'.toLowerCase()); return false;">
                             <figure class="fig">
                                 <img src="images/work-5.jpg" alt="">
                                 <figcaption>
@@ -215,7 +274,7 @@
                     </div>
 
                     <div class="cbp-item digital">
-                        <a href="#" onclick="$('#modalOrientaciones').fadeIn(); return false;">
+                        <a href="#" onclick="$('#modalOrientaciones').fadeIn(); playGreeting('Orientaciones'.toLowerCase()); return false;">
                             <figure class="fig">
                                 <img src="images/work-6.jpg" alt="">
                                 <figcaption>
@@ -227,7 +286,7 @@
                     </div>
 
                     <div class="cbp-item digital">
-                        <a href="#" onclick="$('#modalPresidentes').fadeIn(); return false;">
+                        <a href="#" onclick="$('#modalPresidentes').fadeIn(); playGreeting('Presidentes'.toLowerCase()); return false;">
                             <figure class="fig">
                                 <img src="images/work-7.jpg" alt="">
                                 <figcaption>
@@ -239,7 +298,7 @@
                     </div>
 
                     <div class="cbp-item digital">
-                        <a href="#" onclick="$('#modalFinanzas').fadeIn(); return false;">
+                        <a href="#" onclick="$('#modalFinanzas').fadeIn(); playGreeting('Finanzas'.toLowerCase()); return false;">
                             <figure class="fig">
                                 <img src="images/work-8.jpg" alt="">
                                 <figcaption>
@@ -251,7 +310,7 @@
                     </div>
 
                     <div class="cbp-item digital">
-                        <a href="#" onclick="$('#modalRelaciones').fadeIn(); return false;">
+                        <a href="#" onclick="$('#modalRelaciones').fadeIn(); playGreeting('Relaciones'.toLowerCase()); return false;">
                             <figure class="fig">
                                 <img src="images/work-9.jpg" alt="">
                                 <figcaption>
@@ -263,7 +322,7 @@
                     </div>
 
                     <div class="cbp-item digital">
-                        <a href="#" onclick="$('#modalApoyo').fadeIn(); return false;">
+                        <a href="#" onclick="$('#modalApoyo').fadeIn(); playGreeting('Apoyo'.toLowerCase()); return false;">
                             <figure class="fig">
                                 <img src="images/work-1.jpg" alt="">
                                 <figcaption>
@@ -275,7 +334,7 @@
                     </div>
 
                     <div class="cbp-item digital">
-                        <a href="#" onclick="$('#modalDesarrollo').fadeIn(); return false;">
+                        <a href="#" onclick="$('#modalDesarrollo').fadeIn(); playGreeting('Desarrollo'.toLowerCase()); return false;">
                             <figure class="fig">
                                 <img src="images/work-2.jpg" alt="">
                                 <figcaption>
@@ -635,19 +694,128 @@
         <script src="js/jquery.cookie-1.4.1.min.js"></script>
         <script src="js/agente-general.js"></script>
         <script>
+            // ============================================
+            // GREETING ANIMATION (Bebot-style)
+            // Sequential bubbles: typing indicator -> message
+            // ============================================
+            var greetingMessages = {
+                'general': [
+                    '👋 ¡Hola! Soy tu asistente GuÍAFS, especializado en vocabulario y procesos generales de AFS.',
+                    '📖 Puedo ayudarte con:\n🔹 Términos y glosario AFS\n🔹 Dudas generales sobre la organización',
+                    '¿Con qué puedo ayudarte hoy?'
+                ],
+                'hosting': [
+                    '👋 ¡Hola! Soy el Agente de Hosting de GuÍAFS.',
+                    '🏠 Puedo ayudarte con:\n🔹 Entrevistas a familias\n🔹 Estrategias de colocación',
+                    '¿Qué necesitas saber sobre el proceso de Hosting?'
+                ],
+                'sending': [
+                    '👋 ¡Hola! Soy el Agente de Sending de GuÍAFS.',
+                    '✈️ Puedo ayudarte con:\n🔹 Portfolios de postulantes\n🔹 Respuestas a consultas frecuentes',
+                    '¿En qué aspecto del Sending puedo ayudarte?'
+                ],
+                'comunidades': [
+                    '👋 ¡Hola! Soy el Agente de Comunidades Educativas.',
+                    '🎓 Puedo ayudarte con:\n🔹 Relación con escuelas\n🔹 Coordinación de comunidades educativas',
+                    '¿Cómo puedo ayudarte hoy?'
+                ],
+                'visibilidad': [
+                    '👋 ¡Hola! Soy el Agente de Visibilidad y Comunicación.',
+                    '📢 Puedo ayudarte con:\n🔹 Estrategias de comunicación\n🔹 Materiales de difusión AFS',
+                    '¿Qué necesitas saber sobre visibilidad?'
+                ],
+                'orientaciones': [
+                    '👋 ¡Hola! Soy el Agente de Orientaciones Locales.',
+                    '🗺️ Puedo ayudarte con:\n🔹 Organización de orientaciones\n🔹 Actividades para participantes',
+                    '¿Con qué orientación puedo ayudarte?'
+                ],
+                'presidentes': [
+                    '👋 ¡Hola! Soy el Agente de Presidentes y Estructura.',
+                    '🏛️ Puedo ayudarte con:\n🔹 Estructura de La Red\n🔹 Roles y Responsabilidades (RL)',
+                    '¿Qué necesitas saber sobre la estructura AFS?'
+                ],
+                'finanzas': [
+                    '👋 ¡Hola! Soy el Agente de Finanzas de GuÍAFS.',
+                    '💰 Puedo ayudarte con:\n🔹 Protocolos de rendición\n🔹 Procedimientos financieros',
+                    '¿Con qué tema de finanzas puedo ayudarte?'
+                ],
+                'relaciones': [
+                    '👋 ¡Hola! Soy el Agente de Relaciones Institucionales.',
+                    '🤝 Puedo ayudarte con:\n🔹 Alianzas estratégicas\n🔹 Relaciones con instituciones',
+                    '¿Con qué puedo ayudarte sobre relaciones institucionales?'
+                ],
+                'apoyo': [
+                    '👋 ¡Hola! Soy el Agente de Apoyo al Participante.',
+                    '💙 Puedo ayudarte con:\n🔹 Acompañamiento y bienestar\n🔹 Situaciones de los participantes AFS',
+                    '¿Cómo puedo ayudarte hoy?'
+                ],
+                'desarrollo': [
+                    '👋 ¡Hola! Soy el Agente de Desarrollo Voluntario.',
+                    '🌟 Puedo ayudarte con:\n🔹 Cursos GCL y certificaciones\n🔹 Motivación y retención de voluntarios',
+                    '¿Con qué aspecto del desarrollo voluntario puedo ayudarte?'
+                ]
+            };
+
+            // Tracks which modals have already shown greeting to avoid repeating on re-open
+            var greetingShown = {};
+
+            function playGreeting(agentId) {
+                if (greetingShown[agentId]) return;
+                greetingShown[agentId] = true;
+
+                var historial = document.getElementById('chat-historial-' + agentId);
+                if (!historial) return;
+
+                // Clear static greeting (replaced by animated ones)
+                historial.innerHTML = '';
+
+                var messages = greetingMessages[agentId] || ['¡Hola! ¿En qué puedo ayudarte?'];
+                var delays = [1200, 2400, 3800]; // ms when each bubble appears
+
+                messages.forEach(function (text, i) {
+                    var typingDelay = delays[i] - 400;
+                    var msgDelay = delays[i];
+
+                    // Show typing indicator first
+                    setTimeout(function () {
+                        var typingRow = document.createElement('div');
+                        typingRow.id = 'typing-' + agentId + '-' + i;
+                        typingRow.style.cssText = 'margin-bottom: 10px; text-align: left;';
+                        typingRow.innerHTML = '<div class="typing-indicator"><span></span><span></span><span></span></div>';
+                        historial.appendChild(typingRow);
+                        historial.scrollTop = historial.scrollHeight;
+                    }, typingDelay < 0 ? 0 : typingDelay);
+
+                    // Replace typing indicator with bubble
+                    setTimeout(function () {
+                        var typingEl = document.getElementById('typing-' + agentId + '-' + i);
+                        if (typingEl) typingEl.remove();
+
+                        var row = document.createElement('div');
+                        row.style.cssText = 'margin-bottom: 12px; text-align: left;';
+
+                        // Format newlines as <br>
+                        var formattedText = text.replace(/\n/g, '<br>');
+
+                        row.innerHTML = '<span class="greeting-bubble" style="background: rgba(0,122,194,0.18); padding: 12px 18px; border-radius: 15px 15px 15px 4px; display: inline-block; border: 1px solid rgba(0,122,194,0.4); color: white; line-height: 1.7;">' + formattedText + '</span>';
+                        historial.appendChild(row);
+                        historial.scrollTop = historial.scrollHeight;
+                    }, msgDelay);
+                });
+            }
+
             $(document).ready(function () {
-                // 1. Cerrar al hacer clic en el fondo oscuro (fuera del cuadro)
+                // Close on dark background click
                 $('.mi-modal-afs').click(function (event) {
-                    // Si el clic fue exactamente en el fondo oscuro y no adentro del contenido...
                     if ($(event.target).hasClass('mi-modal-afs')) {
                         $(this).fadeOut();
                     }
                 });
 
-                // 2. Cerrar al presionar la tecla Escape (Esc)
+                // Close on Escape
                 $(document).keydown(function (event) {
                     if (event.key === "Escape") {
-                        $('.mi-modal-afs').fadeOut(); // Oculta cualquier ventana que esté abierta
+                        $('.mi-modal-afs').fadeOut();
                     }
                 });
             });
