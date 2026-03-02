@@ -133,6 +133,8 @@ async function enviarMensajeIA(agenteId) {
             try {
                 respuesta = await fetch(PROXY_URL, {
                     method: 'POST',
+                    mode: 'cors', // Aseguramos que siga siendo CORS pero sin preflight si es posible
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                     body: JSON.stringify({
                         model: modelo,
                         contents: historiales[agenteId]
