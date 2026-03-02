@@ -90,9 +90,9 @@ async function enviarMensajeIA(agenteId) {
     historial.innerHTML += `<div style="margin-bottom: 15px; text-align: right;"><span style="background: #333; padding: 12px 18px; border-radius: 15px; display: inline-block; color: white;">${mensaje}</span></div>`;
     input.value = '';
 
-    // 2. Animación "Pensando..."
+    // 2. Animación "Pensando..." (mismos puntitos que el saludo)
     const idEscribiendo = "escribiendo-" + agenteId + "-" + Date.now();
-    historial.innerHTML += `<div id="${idEscribiendo}" style="margin-bottom: 15px; text-align: left;"><span style="background: rgba(0, 122, 194, 0.1); padding: 12px 18px; border-radius: 15px; display: inline-block; color: #888;"><i class="fas fa-circle-notch fa-spin"></i> Leyendo manual oficial de AFS...</span></div>`;
+    historial.innerHTML += `<div id="${idEscribiendo}" style="margin-bottom: 10px; text-align: left;"><div class="typing-indicator"><span></span><span></span><span></span></div></div>`;
     historial.scrollTop = historial.scrollHeight;
 
     try {
