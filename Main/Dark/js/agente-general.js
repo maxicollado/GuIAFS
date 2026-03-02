@@ -97,8 +97,16 @@ async function enviarMensajeIA(agenteId) {
 
     try {
         // --- LEER EL MANUAL EN SILENCIO ---
-        const respuestaManual = await fetch(config.manual);
-        const textoDelManual = await respuestaManual.text();
+        let textoDelManual = "";
+        try {
+            const respuestaManual = await fetch(config.manual);
+            if (!respuestaManual.ok) throw new Error(`No se pudo cargar el manual: ${respuestaManual.status}`);
+            textoDelManual = await respuestaManual.text();
+            if (!textoDelManual || textoDelManual.trim().length < 10) throw new Error("El manual está vacío o es demasiado corto.");
+        } catch (errManual) {
+            console.error("Error cargando manual:", errManual);
+            throw new Error("No pudimos leer el manual oficial de AFS en este momento.");
+        }
 
         // Armamos el prompt contextual
         const SUPER_PROMPT = `
@@ -117,6 +125,13 @@ async function enviarMensajeIA(agenteId) {
         }
 
         historiales[agenteId].push({ role: "user", parts: [{ text: mensajeConContexto }] });
+
+        // --- SLIDING WINDOW (MEMORIA DINÁMICA) ---
+        // Mantenemos solo los últimos 15 mensajes para evitar lentitud o errores de contexto
+        // El primer mensaje con el manual siempre se mantiene si es necesario, o se deja que fluya
+        if (historiales[agenteId].length > 15) {
+            historiales[agenteId] = historiales[agenteId].slice(-15);
+        }
 
         // 3. Conexión con Google Gemini (con Fallback de Modelos para evitar el error "not found")
         const modelosAIntentar = [
@@ -149,7 +164,12 @@ async function enviarMensajeIA(agenteId) {
                 }
 
                 // Si llegamos aquí (éxito o error de cuota 429), salimos del bucle para procesar
-                break;
+                if (data && data.candidates) {
+                    break;
+                } else if (data && data.error) {
+                    // Si hay un error explícito de la API de Google, paramos de intentar
+                    break;
+                }
             } catch (e) {
                 console.error("Error en fetch de modelo:", e);
             }
@@ -190,7 +210,11 @@ async function enviarMensajeIA(agenteId) {
     } catch (error) {
         const docEscribiendo = document.getElementById(idEscribiendo);
         if (docEscribiendo) docEscribiendo.remove();
-        historial.innerHTML += `<div style="text-align: left; color: #ea0026; margin-bottom: 10px;"><i>Error al consultar el manual local.</i></div>`;
+
+        historial.innerHTML += `<div style="text-align: left; color: #ea0026; margin-bottom: 10px; font-size: 0.85rem; background: rgba(234, 0, 38, 0.1); padding: 10px; border-radius: 8px;">
+            <i class="fas fa-exclamation-triangle"></i> <strong>Error de Sistema:</strong><br> ${error.message}<br><br>
+            <small>Por favor, intenta refrescar la página (F5).</small>
+        </div>`;
     }
     historial.scrollTop = historial.scrollHeight;
 }
