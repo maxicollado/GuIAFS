@@ -28,27 +28,74 @@
             background-color: rgba(0, 0, 0, 0.9);
         }
 
+        /* Bebot-inspired Modal Designs Only */
         .mi-modal-contenido {
-            background-color: #1a1a1a;
+            background-color: #111111;
             margin: 5% auto;
             width: 85%;
             max-width: 900px;
-            border: 2px solid #007ac2;
-            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
             padding: 20px;
-            box-shadow: 0 5px 30px rgba(0, 122, 194, 0.3);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+            color: #ffffff;
+        }
+
+        .mi-modal-contenido h3 {
+            color: #ffffff !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+            font-weight: 700;
         }
 
         .mi-modal-cerrar {
-            color: #fff;
+            color: #a0a0a0;
             float: right;
             font-size: 28px;
             font-weight: bold;
             cursor: pointer;
+            transition: color 0.3s ease;
         }
 
         .mi-modal-cerrar:hover {
-            color: #007ac2;
+            color: #ffffff;
+        }
+
+        /* Chat History Background */
+        div[id^="chat-historial"] {
+            background: #0a0a0a !important;
+        }
+
+        /* Chat Input Area */
+        .mi-modal-contenido div[style*="background: #1a1a1a"] {
+            background: #0a0a0a !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .mi-modal-contenido input[type="text"] {
+            background: #1a1a1a !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            color: #ffffff !important;
+        }
+
+        .mi-modal-contenido input[type="text"]:focus {
+            border-color: #007ac2 !important;
+            box-shadow: 0 0 0 2px rgba(0, 122, 194, 0.2) !important;
+        }
+
+        /* Send Button */
+        .mi-modal-contenido button {
+            background: #007ac2 !important;
+            color: white !important;
+            border-radius: 50% !important;
+            /* Circular send button */
+            padding: 12px 15px !important;
+            box-shadow: 0 5px 15px rgba(0, 122, 194, 0.3) !important;
+            transition: all 0.3s ease;
+        }
+
+        .mi-modal-contenido button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 122, 194, 0.5) !important;
         }
     </style>
 </head>
