@@ -1,8 +1,8 @@
 /* ==============================================================
-   BASE DE CONOCIMIENTO (GEMINI API + MANUALES)
+   AGENTES DE INTELIGENCIA ARTIFICIAL (API GEMINI + MANUALES)
    ============================================================== */
 
-// El Proxy oculta la API Key para que GitHub no la bloquee
+// El Proxy oculta la clave API para que GitHub no la bloquee
 const PROXY_URL = 'https://script.google.com/macros/s/AKfycbzndN1J3-1INXnvS82xFAIZj4UsthzlqvdjwAE4Q5AyYPoK03LUcc8SgdRDTZdEYj3Dhw/exec';
 
 const AGENTES_CONFIG = {
@@ -70,7 +70,7 @@ Reglas estrictas de comportamiento:
     }
 };
 
-// Memorias independientes para cada bot
+// Historial de conversación independiente por agente
 let historiales = {
     'general': [], 'hosting': [], 'sending': [], 'comunidades': [],
     'visibilidad': [], 'orientaciones': [], 'presidentes': [],
@@ -86,26 +86,26 @@ async function enviarMensajeIA(agenteId) {
     const historial = document.getElementById(`chat-historial-${agenteId}`);
     const config = AGENTES_CONFIG[agenteId];
 
-    // 1. Mostrar respuesta del voluntario
+    // 1. Mostrar el mensaje escrito por el usuario
     historial.innerHTML += `<div style="margin-bottom: 15px; text-align: right;"><span style="background: #333; padding: 12px 18px; border-radius: 15px; display: inline-block; color: white;">${mensaje}</span></div>`;
     input.value = '';
 
-    // 2. Animación "Pensando..." (mismos puntitos que el saludo)
+    // 2. Animación de escritura (puntitos mientras el agente procesa)
     const idEscribiendo = "escribiendo-" + agenteId + "-" + Date.now();
     historial.innerHTML += `<div id="${idEscribiendo}" style="margin-bottom: 10px; text-align: left;"><div class="typing-indicator"><span></span><span></span><span></span></div></div>`;
     historial.scrollTop = historial.scrollHeight;
 
     try {
-        // --- LEER EL MANUAL EN SILENCIO ---
+        // --- CARGA SILENCIOSA DEL MANUAL OFICIAL ---
         let textoDelManual = "";
         try {
             const respuestaManual = await fetch(config.manual);
             if (!respuestaManual.ok) throw new Error(`No se pudo cargar el manual: ${respuestaManual.status}`);
             textoDelManual = await respuestaManual.text();
-            if (!textoDelManual || textoDelManual.trim().length < 10) throw new Error("El manual está vacío o es demasiado corto.");
+            if (!textoDelManual || textoDelManual.trim().length < 10) throw new Error("El manual está vacío o tiene muy poco contenido.");
         } catch (errManual) {
-            console.error("Error cargando manual:", errManual);
-            throw new Error("No pudimos leer el manual oficial de AFS en este momento.");
+            console.error("Error al cargar el manual:", errManual);
+            throw new Error("No fue posible leer el manual oficial de AFS en este momento.");
         }
 
         // Armamos el prompt contextual
@@ -118,7 +118,7 @@ async function enviarMensajeIA(agenteId) {
         ${textoDelManual}
         `;
 
-        // Si es el primer mensaje, inyectamos el Super Prompt para dar contexto inicial
+        // En el primer mensaje se inyecta el super-prompt con el manual para dar contexto inicial
         let mensajeConContexto = mensaje;
         if (historiales[agenteId].length === 0) {
             mensajeConContexto = `INSTRUCCIONES Y MANUAL:\n${SUPER_PROMPT}\n\nMENSAJE DEL USUARIO: ${mensaje}`;
@@ -126,14 +126,13 @@ async function enviarMensajeIA(agenteId) {
 
         historiales[agenteId].push({ role: "user", parts: [{ text: mensajeConContexto }] });
 
-        // --- SLIDING WINDOW (MEMORIA DINÁMICA) ---
-        // Mantenemos solo los últimos 15 mensajes para evitar lentitud o errores de contexto
-        // El primer mensaje con el manual siempre se mantiene si es necesario, o se deja que fluya
+        // --- VENTANA DESLIZANTE (MEMORIA DINÁMICA) ---
+        // Se conservan solo los últimos 15 mensajes para evitar errores de contexto y lentitud
         if (historiales[agenteId].length > 15) {
             historiales[agenteId] = historiales[agenteId].slice(-15);
         }
 
-        // 3. Conexión con Google Gemini (con Fallback de Modelos para evitar el error "not found")
+        // 3. Conexión con la API de Gemini (con fallback de modelos si el principal no responde)
         const modelosAIntentar = [
             'gemini-flash-latest',
             'gemini-2.0-flash',
@@ -157,17 +156,17 @@ async function enviarMensajeIA(agenteId) {
                 });
                 data = await respuesta.json();
 
-                // Si el modelo no existe (404), intentamos el siguiente de la lista
+                // Si el modelo no existe (error 404), se prueba el siguiente de la lista
                 if (respuesta.status === 404) {
                     console.warn(`Modelo ${modelo} no encontrado, intentando el siguiente...`);
                     continue;
                 }
 
-                // Si llegamos aquí (éxito o error de cuota 429), salimos del bucle para procesar
+                // Si hay respuesta exitosa o error de cuota (429), salimos del bucle
                 if (data && data.candidates) {
                     break;
                 } else if (data && data.error) {
-                    // Si hay un error explícito de la API de Google, paramos de intentar
+                    // Error explícito de la API de Gemini, no tiene sentido reintentar
                     break;
                 }
             } catch (e) {
@@ -204,7 +203,7 @@ async function enviarMensajeIA(agenteId) {
                 <small>${consejo}</small>
             </div>`;
 
-            // Si falló, removemos el último mensaje del historial para no corromper la memoria
+            // En caso de error se elimina el últmo mensaje para no corromper el historial
             historiales[agenteId].pop();
         }
     } catch (error) {
@@ -219,7 +218,7 @@ async function enviarMensajeIA(agenteId) {
     historial.scrollTop = historial.scrollHeight;
 }
 
-// 4. Vincular tecla Enter en todos los inputs de chats
+// 4. Vincular la tecla Enter para enviar mensajes en cada chat
 $(document).ready(function () {
     const agentesKeys = Object.keys(AGENTES_CONFIG);
     agentesKeys.forEach(id => {

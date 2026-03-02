@@ -1,6 +1,6 @@
 /* =========================================
- * Agent Cards - Activity Card Style
- * Image fills card, title always visible at bottom, zoom on hover
+ * Tarjetas de agentes - Estilo Actividad
+ * Imagen a pantalla completa, título siempre visible, zoom al hoverear
  * ========================================= */
 
 /* Make the figure a positioned container for the overlay */
@@ -13,7 +13,7 @@
     /* Clip the zoom animation inside the card */
 }
 
-/* Image fills the card, transition for zoom */
+/* La imagen ocupa toda la tarjeta con transición de zoom */
 .cbp-item .fig img {
     display: block !important;
     width: 100% !important;
@@ -23,12 +23,12 @@
     transform: scale(1) !important;
 }
 
-/* Zoom the image on hover WITHOUT resizing the card */
+/* Zoom de imagen al hoverear SIN cambiar el tamaño de la tarjeta */
 .cbp-item:hover .fig img {
     transform: scale(1.1) !important;
 }
 
-/* Gradient overlay so title is always readable */
+/* Degradado para que el título siempre sea legible */
 .cbp-item .fig::after {
     content: '';
     position: absolute;
@@ -45,7 +45,7 @@
     z-index: 1;
 }
 
-/* Figcaption: always visible, pinned at the bottom */
+/* Figcaption: siempre visible, anclado al fondo de la tarjeta */
 .cbp-item .fig figcaption {
     position: absolute !important;
     bottom: 0 !important;
@@ -58,7 +58,7 @@
     z-index: 2;
 }
 
-/* Title - bold, white, always visible */
+/* Título: negrita y blanco, siempre visible */
 .cbp-item .fig figcaption h3 {
     color: #ffffff !important;
     font-size: 1rem !important;
@@ -70,7 +70,7 @@
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6) !important;
 }
 
-/* Subtitle - slightly smaller, muted white */
+/* Subtítulo: un poco más pequeño, blanco semitransparente */
 .cbp-item .fig figcaption p {
     color: rgba(255, 255, 255, 0.8) !important;
     font-size: 0.78rem !important;
@@ -78,7 +78,7 @@
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
 }
 
-/* Light brightening overlay on hover for extra polish */
+/* Brillo sutil al hoverear para mayor dinamismo */
 .cbp-item .fig::before {
     content: '';
     position: absolute;
@@ -96,7 +96,7 @@
 
 
 /* =========================================
- * Bebot-inspired Modal Designs
+ * Modales de Agentes - Estilo Premium Oscuro
  * ========================================= */
 
 .mi-modal-contenido {

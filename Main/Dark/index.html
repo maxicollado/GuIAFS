@@ -214,7 +214,8 @@
                 <div id="grid-container">
 
                     <div class="cbp-item main-item branding">
-                        <a href="#" onclick="$('#modalGeneral').fadeIn(); playGreeting('General'.toLowerCase()); return false;">
+                        <a href="#"
+                            onclick="$('#modalGeneral').fadeIn(); playGreeting('General'.toLowerCase()); return false;">
                             <figure class="fig">
                                 <img src="images/work-1.jpg" alt="">
                                 <figcaption>
@@ -226,7 +227,8 @@
                     </div>
 
                     <div class="cbp-item main-item digital">
-                        <a href="#" onclick="$('#modalHosting').fadeIn(); playGreeting('Hosting'.toLowerCase()); return false;">
+                        <a href="#"
+                            onclick="$('#modalHosting').fadeIn(); playGreeting('Hosting'.toLowerCase()); return false;">
                             <figure class="fig">
                                 <img src="images/work-2.jpg" alt="">
                                 <figcaption>
@@ -238,7 +240,8 @@
                     </div>
 
                     <div class="cbp-item main-item digital">
-                        <a href="#" onclick="$('#modalSending').fadeIn(); playGreeting('Sending'.toLowerCase()); return false;">
+                        <a href="#"
+                            onclick="$('#modalSending').fadeIn(); playGreeting('Sending'.toLowerCase()); return false;">
                             <figure class="fig">
                                 <img src="images/work-3.jpg" alt="">
                                 <figcaption>
@@ -250,7 +253,8 @@
                     </div>
 
                     <div class="cbp-item main-item digital">
-                        <a href="#" onclick="$('#modalComunidades').fadeIn(); playGreeting('Comunidades'.toLowerCase()); return false;">
+                        <a href="#"
+                            onclick="$('#modalComunidades').fadeIn(); playGreeting('Comunidades'.toLowerCase()); return false;">
                             <figure class="fig">
                                 <img src="images/work-4.jpg" alt="">
                                 <figcaption>
@@ -262,7 +266,8 @@
                     </div>
 
                     <div class="cbp-item main-item digital">
-                        <a href="#" onclick="$('#modalVisibilidad').fadeIn(); playGreeting('Visibilidad'.toLowerCase()); return false;">
+                        <a href="#"
+                            onclick="$('#modalVisibilidad').fadeIn(); playGreeting('Visibilidad'.toLowerCase()); return false;">
                             <figure class="fig">
                                 <img src="images/work-5.jpg" alt="">
                                 <figcaption>
@@ -274,7 +279,8 @@
                     </div>
 
                     <div class="cbp-item digital">
-                        <a href="#" onclick="$('#modalOrientaciones').fadeIn(); playGreeting('Orientaciones'.toLowerCase()); return false;">
+                        <a href="#"
+                            onclick="$('#modalOrientaciones').fadeIn(); playGreeting('Orientaciones'.toLowerCase()); return false;">
                             <figure class="fig">
                                 <img src="images/work-6.jpg" alt="">
                                 <figcaption>
@@ -286,7 +292,8 @@
                     </div>
 
                     <div class="cbp-item digital">
-                        <a href="#" onclick="$('#modalPresidentes').fadeIn(); playGreeting('Presidentes'.toLowerCase()); return false;">
+                        <a href="#"
+                            onclick="$('#modalPresidentes').fadeIn(); playGreeting('Presidentes'.toLowerCase()); return false;">
                             <figure class="fig">
                                 <img src="images/work-7.jpg" alt="">
                                 <figcaption>
@@ -298,7 +305,8 @@
                     </div>
 
                     <div class="cbp-item digital">
-                        <a href="#" onclick="$('#modalFinanzas').fadeIn(); playGreeting('Finanzas'.toLowerCase()); return false;">
+                        <a href="#"
+                            onclick="$('#modalFinanzas').fadeIn(); playGreeting('Finanzas'.toLowerCase()); return false;">
                             <figure class="fig">
                                 <img src="images/work-8.jpg" alt="">
                                 <figcaption>
@@ -310,7 +318,8 @@
                     </div>
 
                     <div class="cbp-item digital">
-                        <a href="#" onclick="$('#modalRelaciones').fadeIn(); playGreeting('Relaciones'.toLowerCase()); return false;">
+                        <a href="#"
+                            onclick="$('#modalRelaciones').fadeIn(); playGreeting('Relaciones'.toLowerCase()); return false;">
                             <figure class="fig">
                                 <img src="images/work-9.jpg" alt="">
                                 <figcaption>
@@ -322,7 +331,8 @@
                     </div>
 
                     <div class="cbp-item digital">
-                        <a href="#" onclick="$('#modalApoyo').fadeIn(); playGreeting('Apoyo'.toLowerCase()); return false;">
+                        <a href="#"
+                            onclick="$('#modalApoyo').fadeIn(); playGreeting('Apoyo'.toLowerCase()); return false;">
                             <figure class="fig">
                                 <img src="images/work-1.jpg" alt="">
                                 <figcaption>
@@ -334,7 +344,8 @@
                     </div>
 
                     <div class="cbp-item digital">
-                        <a href="#" onclick="$('#modalDesarrollo').fadeIn(); playGreeting('Desarrollo'.toLowerCase()); return false;">
+                        <a href="#"
+                            onclick="$('#modalDesarrollo').fadeIn(); playGreeting('Desarrollo'.toLowerCase()); return false;">
                             <figure class="fig">
                                 <img src="images/work-2.jpg" alt="">
                                 <figcaption>
@@ -695,8 +706,8 @@
         <script src="js/agente-general.js"></script>
         <script>
             // ============================================
-            // GREETING ANIMATION (Bebot-style)
-            // Sequential bubbles: typing indicator -> message
+            // ANIMACIÓN DE SALUDO (Estilo Conversación)
+            // Burbujas secuenciales: indicador de escritura -> mensaje
             // ============================================
             var greetingMessages = {
                 'general': [
@@ -756,7 +767,7 @@
                 ]
             };
 
-            // Tracks which modals have already shown greeting to avoid repeating on re-open
+            // Registro de modales que ya mostraron el saludo (para no repetirlo)
             var greetingShown = {};
 
             function playGreeting(agentId) {
@@ -766,17 +777,17 @@
                 var historial = document.getElementById('chat-historial-' + agentId);
                 if (!historial) return;
 
-                // Clear static greeting (replaced by animated ones)
+                // Se limpia el historial estático y se reemplaza por las burbujas animadas
                 historial.innerHTML = '';
 
                 var messages = greetingMessages[agentId] || ['¡Hola! ¿En qué puedo ayudarte?'];
-                var delays = [1200, 2400, 3800]; // ms when each bubble appears
+                var delays = [1200, 2400, 3800]; // tiempo en ms para que aparezca cada burbuja
 
                 messages.forEach(function (text, i) {
                     var typingDelay = delays[i] - 400;
                     var msgDelay = delays[i];
 
-                    // Show typing indicator first
+                    // Primero se muestra el indicador de escritura (puntitos)
                     setTimeout(function () {
                         var typingRow = document.createElement('div');
                         typingRow.id = 'typing-' + agentId + '-' + i;
@@ -786,7 +797,7 @@
                         historial.scrollTop = historial.scrollHeight;
                     }, typingDelay < 0 ? 0 : typingDelay);
 
-                    // Replace typing indicator with bubble
+                    // Luego se reemplaza el indicador por la burbuja con el mensaje
                     setTimeout(function () {
                         var typingEl = document.getElementById('typing-' + agentId + '-' + i);
                         if (typingEl) typingEl.remove();
@@ -794,7 +805,7 @@
                         var row = document.createElement('div');
                         row.style.cssText = 'margin-bottom: 12px; text-align: left;';
 
-                        // Format newlines as <br>
+                        // Se convierten los saltos de línea en etiquetas <br>
                         var formattedText = text.replace(/\n/g, '<br>');
 
                         row.innerHTML = '<span class="greeting-bubble" style="background: rgba(0,122,194,0.18); padding: 12px 18px; border-radius: 15px 15px 15px 4px; display: inline-block; border: 1px solid rgba(0,122,194,0.4); color: white; line-height: 1.7;">' + formattedText + '</span>';
@@ -805,14 +816,14 @@
             }
 
             $(document).ready(function () {
-                // Close on dark background click
+                // Cerrar al hacer clic en el fondo oscuro (fuera del contenido)
                 $('.mi-modal-afs').click(function (event) {
                     if ($(event.target).hasClass('mi-modal-afs')) {
                         $(this).fadeOut();
                     }
                 });
 
-                // Close on Escape
+                // Cerrar al presionar la tecla Escape
                 $(document).keydown(function (event) {
                     if (event.key === "Escape") {
                         $('.mi-modal-afs').fadeOut();
