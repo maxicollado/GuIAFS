@@ -2,7 +2,8 @@
    BASE DE CONOCIMIENTO (GEMINI API + MANUALES)
    ============================================================== */
 
-const GEMINI_API_KEY = 'AIzaSyAuDUrpgH7Vp6fgdnWKL2pP5vjpWMN87Qo';
+// El Proxy oculta la API Key para que GitHub no la bloquee
+const PROXY_URL = 'https://script.google.com/macros/s/AKfycbxvxQiPcoHJu1UyzIyBin-0tei42CW_5dMMko_-dvf1q8FAMpzkAX4BcNCfxiY_j0pZbA/exec';
 
 const AGENTES_CONFIG = {
     'general': {
@@ -130,13 +131,11 @@ async function enviarMensajeIA(agenteId) {
 
         for (const modelo of modelosAIntentar) {
             try {
-                const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelo}:generateContent?key=${GEMINI_API_KEY}`;
-                respuesta = await fetch(url, {
+                respuesta = await fetch(PROXY_URL, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        contents: historiales[agenteId],
-                        generationConfig: { temperature: 0.2 }
+                        model: modelo,
+                        contents: historiales[agenteId]
                     })
                 });
                 data = await respuesta.json();
