@@ -3,24 +3,19 @@
  * Texto inferior izquierdo, aura contenida y zoom
  * ========================================= */
 
-/* Contenedor de la figura - Corrección de desborde de animación */
+/* Contenedor de la figura */
 .cbp-item .fig {
     position: relative !important;
     overflow: hidden !important;
-    /* Mantiene el zoom y el aura dentro */
     border-radius: 18px !important;
     cursor: pointer;
     margin: 0 !important;
     transition: box-shadow 0.4s ease, border-color 0.4s ease !important;
     border: 2px solid transparent !important;
     z-index: 1 !important;
-    /* Asegura recorte perfecto en navegadores Webkit y estándar */
     -webkit-mask-image: -webkit-radial-gradient(white, black);
     mask-image: radial-gradient(white, black);
-    /* CRÍTICO: Altura mínima para que no colapse con imágenes en position:absolute */
-    min-height: 140px !important;
-    aspect-ratio: 4/3 !important;
-    display: block !important;
+    /* SIN aspect-ratio fijo: cada img define su propia altura (formas variadas) */
 }
 
 /* Aura azul al hoverear la tarjeta - Confinada para no tapar modales */
@@ -28,25 +23,35 @@
     box-shadow: 0 0 20px rgba(0, 122, 194, 0.6) !important;
 }
 
-/* Imagen base (primera foto, siempre visible por defecto) */
-.cbp-item .fig img {
+/* ---- SLIDESHOW: img 1 en flujo (da alto al card), imgs 2-3 en absolute encima ---- */
+
+/* Img 1: establece la altura del recuadro (en flujo normal, formas variadas por imagen) */
+.cbp-item .fig img:nth-child(1) {
     display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover !important;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    transform: scale(1) !important;
+    opacity: 0 !important;
+    animation: cardSlide 9s infinite !important;
+    animation-delay: 0s !important;
+}
+
+/* Imgs 2 y 3: apiladas encima, llenan el espacio definido por img 1 */
+.cbp-item .fig img:nth-child(2),
+.cbp-item .fig img:nth-child(3) {
+    display: block !important;
+    position: absolute !important;
+    inset: 0 !important;
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
     transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
     transform: scale(1) !important;
-    /* Apilado para el slideshow */
-    position: absolute !important;
-    inset: 0 !important;
     opacity: 0 !important;
     animation: cardSlide 9s infinite !important;
-}
-
-/* Primera imagen visible al instante */
-.cbp-item .fig img:nth-child(1) {
-    animation-delay: 0s !important;
-    opacity: 1;
 }
 
 .cbp-item .fig img:nth-child(2) {
