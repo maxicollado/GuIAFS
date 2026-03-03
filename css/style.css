@@ -449,11 +449,6 @@ header {
     transform: scale(1.1);
 }
 
-.cbp-item figure figcaption {
-    z-index: 10;
-    padding-left: 20px;
-    padding-top: 47%;
-}
 
 .cbp-item figure figcaption,
 .cbp-item figure:after {
@@ -568,6 +563,7 @@ footer .copyright p {
 }
 
 
+
 input.inp {
     width: 100%;
     margin-bottom: 30px;
@@ -599,450 +595,75 @@ textarea.form-message {
     text-decoration: none;
 }
 
-input.inp {
-    width: 100%;
-    margin-bottom: 30px;
-    border: solid 3px #212121;
-    border-radius: 50px;
-    -webkit-border-radius: 50px;
-    height: 54px;
-    font-size: 13px;
-    padding-left: 15px;
-    outline: 0;
-}
-
-textarea.form-message {
-    width: 100%;
-    margin-bottom: 30px;
-    border: solid 3px #212121;
-    border-radius: 23px;
-    -webkit-border-radius: 23px;
-    font-size: 13px;
-    padding: 15px;
-    outline: 0;
-}
 
 
 
 
 /*------------------------ Responsive ------------------------*/
 
-
 @media (min-width: 768px) and (max-width: 1024px) {
-
     header {
         padding: 22px;
     }
 
     .home .home-content .hero-title {
-        font-size: 110px;
-        font-weight: 900;
-        letter-spacing: -4px;
-        line-height: 88px;
-    }
-
-    .home .home-content p {
-        font-size: 20px;
-        color: #b7b7b7;
-        font-weight: 500;
-    }
-
-    .portfolio .portfolio-filter {
-        margin-top: 0;
-        margin-bottom: 15px;
-        float: left;
-        transform: rotate(0);
-        margin-bottom: 32px;
-        margin-left: 5px;
-        position: relative;
-        left: 0;
-        top: 0;
-        z-index: 10;
-    }
-
-    .titlebar .page-title,
-    .titlebar .page-title span {
-        font-size: 70px;
-    }
-
-    .titlebar {
-        padding: 74px 0;
-        height: 210px;
-        text-align: center;
-    }
-
-    .titlebar #particles-js {
-        height: 210px;
-    }
-
-    .about .about-text .subtitle {
-        font-size: 24px;
-        line-height: 30px;
-    }
-
-    .about .about-text p {
-        font-size: 21px;
-    }
-
-    .owl-carousel.work-areas .area i:before {
-        font-size: 70px;
-    }
-
-    .about .clients .client figure img {
-        max-width: 70%;
-    }
-
-    .contact-form input.inp {
-        height: 44px;
-    }
-
-    .contact-form .site-btn2 {
-        padding-top: 10px;
-        padding-bottom: 10px;
+        font-size: 80px !important;
+        line-height: 1.1;
     }
 
     .cont {
         width: 90%;
         margin-left: 5%;
-    }
-
-    .full-menu .full-inner nav ul li a {
-        font-size: 32px;
-    }
-
-    .full-menu .full-inner .full-contact ul li.title {
-        font-size: 26px;
-    }
-
-    .full-menu .full-inner .full-contact ul li {
-        font-size: 16px;
-    }
-
-    .portfolio-nav .port-next .nav-title {
-        font-size: 45px;
     }
 
     .hero-inner .cont {
         width: 100%;
         margin-left: 0;
     }
-
-    .portfolio-single .information li {
-        float: none;
-        text-align: center;
-        margin: 0 auto;
-        line-height: 38px;
-    }
-
-    .portfolio-video iframe {
-        min-height: 460px;
-    }
-
-    .portfolio-single.type-3.top_90 {
-        margin-top: 30px;
-    }
-
-    .article-video iframe {
-        width: 100%;
-        height: 380px;
-    }
-
-    .news-article .title {
-        font-size: 32px;
-    }
-
-    .portfolio-single.type-3 .title {
-        font-size: 50px;
-    }
-
 }
-
-
-@media (max-width: 767px) {
-
-    .news-article {
-        margin-bottom: 90px;
-    }
-
-    .comment figure img {
-        display: none;
-    }
-
-    .comment.reply.top_45 {
-        margin-top: 0;
-    }
-
-    .comment.reply {
-        padding-left: 0 !important;
-    }
-
-}
-
-
 
 @media (min-width: 481px) and (max-width: 767px) {
-
     header {
         padding: 18px;
     }
 
     .home .home-content .hero-title {
-        font-size: 70px;
-        line-height: 64px;
-    }
-
-    .home .home-content p {
-        font-size: 20px;
-        margin-top: 24px;
+        font-size: 60px !important;
+        line-height: 1.1;
     }
 
     .cont {
         width: 90%;
         margin-left: 5%;
     }
-
-    .portfolio .portfolio-filter {
-        margin-top: 0;
-        margin-bottom: 15px;
-        float: left;
-        transform: rotate(0);
-        margin-bottom: 32px;
-        margin-left: 5px;
-        position: relative;
-        left: 0;
-        top: 0;
-        z-index: 10;
-    }
-
-    .titlebar .page-title,
-    .titlebar .page-title span {
-        font-size: 50px;
-    }
-
-    .titlebar {
-        padding: 74px 0;
-        height: 180px;
-        text-align: center;
-    }
-
-    .titlebar #particles-js {
-        height: 180px;
-    }
-
-    .about .about-text .subtitle {
-        font-size: 24px;
-        line-height: 30px;
-    }
-
-    .about .about-text p {
-        font-size: 21px;
-    }
-
-    .owl-carousel.work-areas .area i:before {
-        font-size: 55px;
-    }
-
-    .about .clients .client figure img {
-        max-width: 70%;
-    }
-
-    .contact-form input.inp {
-        height: 44px;
-    }
-
-    .contact .contact-info {
-        font-size: 18px;
-        color: #5f5e5f;
-        font-weight: 500;
-    }
-
-    .contact-form {
-        margin-top: 45px;
-    }
-
-    .contact-form .site-btn2 {
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-
-    body {
-        padding-bottom: 176px;
-    }
-
-    footer .social {
-        padding-bottom: 10px;
-    }
-
-    .full-menu .full-inner nav ul li a {
-        font-size: 32px;
-    }
-
-    .portfolio-nav .port-next .nav-title {
-        font-size: 45px;
-    }
-
-    .portfolio-single .information li {
-        float: none;
-        text-align: center;
-        margin: 0 auto;
-        line-height: 38px;
-    }
-
-    .portfolio-video iframe {
-        min-height: 367px;
-    }
-
-    .news-article .title {
-        font-size: 30px;
-        line-height: 38px;
-    }
-
-    .article-video iframe {
-        width: 100%;
-        height: 370px;
-    }
-
 }
 
-
 @media (max-width: 480px) {
-
     header {
         padding: 16px;
     }
 
-    .portfolio .portfolio-filter {
-        margin-top: 0;
-        margin-bottom: 15px;
-        float: left;
-        transform: rotate(0);
-        margin-bottom: 32px;
-        margin-left: 5px;
-        position: relative;
-        left: 0;
-        top: 0;
-        z-index: 10;
-    }
-
-
-
-    .titlebar .page-title,
-    .titlebar .page-title span {
-        font-size: 30px;
-    }
-
-    .titlebar {
-        padding: 74px 0;
-        height: 130px;
-        text-align: center;
-    }
-
-    .titlebar #particles-js {
-        height: 130px;
-    }
-
-    .about .about-text .subtitle {
-        font-size: 20px;
-        line-height: 30px;
-    }
-
-    .about .about-text p {
-        font-size: 18px;
-    }
-
-    .owl-carousel.work-areas .area .title {
-        font-size: 16px;
-    }
-
-    .owl-carousel.work-areas .area i:before {
-        font-size: 55px;
-    }
-
-    .about .clients .client figure img {
-        max-width: 70%;
-    }
-
-    .contact-form input.inp {
-        height: 44px;
-    }
-
-    .contact .contact-info {
-        font-size: 18px;
-        color: #5f5e5f;
-        font-weight: 500;
-    }
-
-    .contact-form {
-        margin-top: 45px;
-    }
-
-
-    .full-menu .full-inner nav ul li a {
-        font-size: 27px;
-    }
-
-    footer .copyright {
-        text-align: center;
-    }
-
-    body {
-        font-family: 'Montserrat', sans-serif;
-        padding-bottom: 218px;
-    }
-
-    footer .social {
-        padding-bottom: 10px;
-    }
-
-    .widget-twitter,
-    .tweet ul li {
-        width: 200px;
-    }
-
-    .classic-title {
-        font-size: 20px;
-    }
-
     .home .home-content .hero-title {
-        font-size: 40px;
-        letter-spacing: -1px;
-        line-height: 39px;
-    }
-
-    .home .home-content p {
-        font-size: 15px;
-        margin-top: 11px;
+        font-size: 40px !important;
+        line-height: 1.1;
     }
 
     .cont {
-        width: 90%;
-        margin-left: 5%;
+        width: 95%;
+        margin-left: 2.5%;
+        margin-top: 40px !important;
     }
 
-    .wrapper {
-        padding-bottom: 0px !important;
-    }
-
-    .home-content {
-        padding-bottom: 0px !important;
-    }
-
-    .portfolio {
-        padding-top: 0px !important;
-    }
-
-    .cont {
-        margin-top: 20px !important;
+    .cbp-item figure figcaption h3 {
+        font-size: 0.9rem !important;
     }
 }
 
-/* <--- Cierra el @media (max-width: 480px) */
-
 /* ==========================================================================
-MODIFICACIONES GUÍAFS (Pegar al final del archivo)
-========================================================================== */
+   AJUSTES FINALES GUÍAFS
+   ========================================================================== */
 
-/* 1. Ajuste de distancias (Acercar los cuadros al texto) */
+/* 1. Ajuste de distancias */
 .home-content {
     padding-bottom: 0px !important;
 }
@@ -1051,8 +672,6 @@ MODIFICACIONES GUÍAFS (Pegar al final del archivo)
     padding-top: 0px !important;
 }
 
-/* Usamos margen negativo para "subir" los cuadros de los agentes en desktop.
-   En mobile lo restauramos a 0 para no tapar el título. */
 @media (min-width: 481px) {
     .cont {
         margin-top: -20px !important;
@@ -1061,39 +680,20 @@ MODIFICACIONES GUÍAFS (Pegar al final del archivo)
     }
 }
 
-@media (max-width: 480px) {
-    .cont {
-        margin-top: 50px !important;
-        position: relative;
-        z-index: 10;
-    }
-
-    .cbp-item figure figcaption h3 {
-        font-size: 0.9rem !important;
-        line-height: 1.2;
-    }
-
-    .cbp-item figure p {
-        font-size: 11px;
-        line-height: 1.2;
-        margin-top: 5px;
-    }
-}
-
-/* 2. Color Azul AFS para el efecto de los cuadros al pasar el mouse */
+/* 2. Color Azul AFS effect */
 .cbp-item figure:after {
     background-color: rgba(0, 122, 194, 0.9) !important;
 }
 
-/* 3. Estilo de los nombres de los Agentes (Para que sean legibles) */
+/* 3. Estilo de los nombres de los Agentes */
 .cbp-item figure figcaption h3 {
-    font-size: 1.2rem !important;
+    font-size: 1.1rem !important;
     text-transform: uppercase !important;
     letter-spacing: 1px !important;
     color: #ffffff !important;
 }
 
-/* 4. Estilos de la Ventana Flotante (Modal de los Chats) */
+/* 4. Estilos del Modal */
 .mi-modal-afs {
     display: none;
     position: fixed;
@@ -1128,20 +728,16 @@ MODIFICACIONES GUÍAFS (Pegar al final del archivo)
     color: #007ac2;
 }
 
-/* 5. Corrección Footer (Para que no sea fijo y no tape información) */
+/* 5. Consolidación Footer */
 footer {
     position: relative !important;
     z-index: 10 !important;
-    padding: 20px 0 !important;
+    padding: 15px 0 5px 0 !important;
     margin-bottom: 0 !important;
+    background: #111;
+    border-top: 1px solid #333;
 }
 
 body {
     padding-bottom: 0 !important;
-}
-
-@media (max-width: 480px) {
-    body {
-        padding-bottom: 0 !important;
-    }
 }
