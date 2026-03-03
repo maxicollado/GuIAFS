@@ -28,64 +28,64 @@
     transform: scale(1.1) !important;
 }
 
-/* Degradado para que el título siempre sea legible (ahora en la parte superior) */
+/* Degradado inferior intenso para legibilidad (Estilo GoPro) */
 .cbp-item .fig::after {
     content: '';
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
-    height: 50%;
-    background: linear-gradient(to bottom,
-            rgba(0, 0, 0, 0.85) 0%,
-            rgba(0, 0, 0, 0.4) 60%,
+    height: 65%;
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.95) 0%,
+            rgba(0, 0, 0, 0.6) 30%,
             rgba(0, 0, 0, 0) 100%);
-    border-radius: 18px 18px 0 0;
+    border-radius: 0 0 18px 18px;
     pointer-events: none;
     z-index: 1;
 }
 
-/* Figcaption: siempre visible, anclado a la parte SUPERIOR de la tarjeta */
+/* Figcaption: Estilo GoPro - Esquina inferior izquierda */
 .cbp-item .fig figcaption {
     position: absolute !important;
-    top: 0 !important;
+    bottom: 0 !important;
+    top: auto !important;
     left: 0 !important;
-    right: 0 !important;
-    padding: 16px 16px 14px !important;
+    right: auto !important;
+    width: 100% !important;
+    padding: 24px 28px !important;
     background: transparent !important;
     opacity: 1 !important;
     z-index: 2;
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    text-align: left !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
 
-/* Animación del texto al pasar el mouse */
+/* Animación del texto al pasar el mouse (desplazamiento sutil a la derecha) */
 .cbp-item:hover .fig figcaption {
-    transform: translateY(4px) !important;
+    transform: translateX(6px) !important;
 }
 
-/* Título: negrita y blanco, siempre visible */
+/* Título Estilo GoPro: Montserrat Extra Bold, Blanco Puro, Nítido */
 .cbp-item .fig figcaption h3 {
     color: #ffffff !important;
-    font-size: 1rem !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1.25rem !important;
     font-weight: 800 !important;
     text-transform: uppercase !important;
-    letter-spacing: 0.03em !important;
-    line-height: 1.25 !important;
-    margin: 0 0 2px 0 !important;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6) !important;
+    letter-spacing: -0.01em !important;
+    line-height: 1.0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-shadow: none !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     transition: transform 0.3s ease !important;
 }
 
-.cbp-item:hover .fig figcaption h3 {
-    transform: scale(1.03);
-}
-
-/* Subtítulo: un poco más pequeño, blanco semitransparente */
+/* Ocultar descripción secundaria para estilo minimalista GoPro */
 .cbp-item .fig figcaption p {
-    color: rgba(255, 255, 255, 0.8) !important;
-    font-size: 0.78rem !important;
-    margin: 0 !important;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+    display: none !important;
 }
 
 /* Brillo sutil al hoverear para mayor dinamismo */
