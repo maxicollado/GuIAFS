@@ -84,7 +84,7 @@ $(document).ready(function () {
     // CANTIDAD DE TARJETAS EN MOBILE
     if ($(window).width() <= 480) {
         $('.cbp-item').removeClass('main-item');
-        $('.cbp-item').slice(0, 3).addClass('main-item');
+        $('.cbp-item').slice(0, 5).addClass('main-item'); // Cambiado a 5 agentes
     }
 
     $('#grid-container').cubeportfolio({
@@ -93,8 +93,8 @@ $(document).ready(function () {
         gridAdjustment: 'responsive',
         animationType: 'skew',
         defaultFilter: '.main-item',
-        gapVertical: 30,
-        gapHorizontal: 30,
+        gapVertical: 20, // Reducido para mayor compacidad
+        gapHorizontal: 20,
         // Sin singlePageCallback para evitar apertura de páginas secundarias
         mediaQueries: [{
             width: 1000,
@@ -103,11 +103,11 @@ $(document).ready(function () {
             width: 768,
             cols: 3,
         }, {
-            width: 500,
-            cols: 3, // Restaurado a 3 columnas para mobile
+            width: 480,
+            cols: 3, // 3 COLUMNAS EN MOBILE
         }, {
             width: 0,
-            cols: 3, // 3 columnas incluso en pantallas mínimas
+            cols: 3, // 3 COLUMNAS SIEMPRE
             options: {
                 gapHorizontal: 10,
                 gapVertical: 10,

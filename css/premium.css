@@ -79,7 +79,8 @@
     left: 0 !important;
     right: auto !important;
     width: 100% !important;
-    padding: 24px 28px !important;
+    padding: 12px 14px !important;
+    /* Reducido para 3 columnas en mobile */
     background: transparent !important;
     opacity: 1 !important;
     z-index: 4 !important;
@@ -90,23 +91,23 @@
 
 /* Animación de desplazamiento lateral sutil del texto al hover */
 .cbp-item:hover .fig figcaption {
-    transform: translateX(8px) !important;
+    transform: translateX(5px) !important;
+    /* Reducido para evitar salirse */
 }
 
 /* Título - Montserrat Extra Bold con Responsividad Dinámica */
 .cbp-item .fig figcaption h3 {
     color: #ffffff !important;
     font-family: 'Montserrat', sans-serif !important;
-    /* Fuente fluida: reducido el mínimo a 0.75rem para 320px */
-    font-size: clamp(0.75rem, 2vw + 0.35rem, 1.25rem) !important;
+    /* Fuente fluida reducida para 3 columnas */
+    font-size: clamp(0.55rem, 1.5vw + 0.35rem, 1.15rem) !important;
     font-weight: 800 !important;
     text-transform: uppercase !important;
     letter-spacing: -0.01em !important;
-    line-height: 1.1 !important;
+    line-height: 1.05 !important;
     margin: 0 !important;
-    padding: 0 5px 0 0 !important;
-    /* Padding de seguridad ajustado */
-    text-shadow: none !important;
+    padding: 0 !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8) !important;
     opacity: 1 !important;
     transform: none !important;
     -webkit-font-smoothing: antialiased;
