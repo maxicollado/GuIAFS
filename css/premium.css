@@ -3,25 +3,25 @@
  * Texto inferior izquierdo, aura contenida y zoom
  * ========================================= */
 
-/* Contenedor de la figura */
+/* Contenedor de la figura - Corrección de desborde de animación */
 .cbp-item .fig {
     position: relative !important;
     overflow: hidden !important;
+    /* Mantiene el zoom y el aura dentro */
     border-radius: 18px !important;
     cursor: pointer;
     margin: 0 !important;
     transition: box-shadow 0.4s ease, border-color 0.4s ease !important;
     border: 2px solid transparent !important;
     z-index: 1 !important;
-    /* Base z-index */
+    /* Asegura recorte perfecto en navegadores Webkit y estándar */
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
 }
 
 /* Aura azul al hoverear la tarjeta - Confinada para no tapar modales */
 .cbp-item:hover .fig {
     box-shadow: 0 0 20px rgba(0, 122, 194, 0.6) !important;
-    /*border-color: rgba(0, 122, 194, 0.4) !important;
-    z-index: 5 !important;
-    /* Por encima de otras tarjetas pero por debajo de modales */
 }
 
 /* Imagen con zoom */
@@ -93,22 +93,27 @@
     transform: translateX(8px) !important;
 }
 
-/* Título - Montserrat Extra Bold */
+/* Título - Montserrat Extra Bold con Responsividad Dinámica */
 .cbp-item .fig figcaption h3 {
     color: #ffffff !important;
     font-family: 'Montserrat', sans-serif !important;
-    font-size: 1.2rem !important;
+    /* Fuente fluida que se adapta al ancho */
+    font-size: clamp(0.9rem, 2vw + 0.3rem, 1.3rem) !important;
     font-weight: 800 !important;
     text-transform: uppercase !important;
     letter-spacing: -0.01em !important;
     line-height: 1.1 !important;
     margin: 0 !important;
-    padding: 0 !important;
+    padding: 0 10px 0 0 !important;
+    /* Padding de seguridad derecho */
     text-shadow: none !important;
     opacity: 1 !important;
     transform: none !important;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Evitar cortes de texto */
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
 }
 
 /* Ocultar cualquier texto secundario */
