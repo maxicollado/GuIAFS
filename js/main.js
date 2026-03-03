@@ -103,11 +103,11 @@ $(document).ready(function () {
             width: 768,
             cols: 3,
         }, {
-            width: 480,
-            cols: 2,
+            width: 500,
+            cols: 3, // Restaurado a 3 columnas para mobile
         }, {
             width: 0,
-            cols: 1,
+            cols: 3, // 3 columnas incluso en pantallas mínimas
             options: {
                 gapHorizontal: 10,
                 gapVertical: 10,

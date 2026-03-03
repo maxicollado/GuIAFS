@@ -1,75 +1,88 @@
 BASE DE CONOCIMIENTO TECNICA: AGENTE DE APOYO AFS
 
-CONTACTOS DE EMERGENCIA
-TELEFONO GRATUITO ARGENTINA: 0800 288 2237
-TELEFONO GRATUITO URUGUAY: 000 405 210 068
-CELULAR EMERGENCIAS ARGENTINA: (011) 15 68755730
-CELULAR EMERGENCIAS URUGUAY: +54 9 11 68755730
-ASISTENCIA MEDICA EEUU (CIGNA): +1 866 428 3935 / Healixauthorization@cigna.com
-ASISTENCIA MEDICA RESTO DEL MUNDO (WTW): +1 888 545 4518 / +49 69 8088 4221 / afs@wtwco.com
-
-REGLAS DE ORO INVIOLABLES
-CONSECUENCIA: EARLY RETURN INMEDIATO
-- Prohibido poseer, consumir o involucrarse con drogas ilegales.
-- Prohibido conducir vehiculos motorizados (autos, motos) o volar aviones privados.
-- Prohibido hacer dedo (hitch-hike).
-- Prohibido emborracharse. Edad legal alcohol: 18 anos.
-- Prohibido realizar viajes independientes sin autorizacion formal de AFS.
-
-CLASIFICACION DE INCIDENTES
-- CRISIS: Desafios esperables de adaptacion cultural, barrera idiomatica, integracion familiar o escolar.
-- URGENCIA: Atencion inmediata requerida sin peligro inminente. Malentendidos severos, evasiones de dialogo, conductas inapropiadas recurrentes, perdida de familia anfitriona.
-- EMERGENCIA: Accion inmediata requerida. Accidentes, hospitalizacion, muerte, abuso, arresto, violencia, desastre natural, uso grave de drogas/alcohol, riesgo de Early Return.
-
-HERRAMIENTAS DE ABORDAJE (ESCALA PROGRESIVA)
-- ENSAYO DE AUTOREFLEXION (REFLECTIVE ESSAY): Intervencion temprana (mes 1-2). Redactado exclusivamente por el estudiante.
-- PLAN PARA EL EXITO (PLAN FOR SUCCESS): Intervencion media (mes 3-4). Metas redactadas por el estudiante con guia del consejero.
-- ACUERDO DE APOYO (SUPPORT AGREEMENT): Intervencion avanzada. Documento escrito con acciones correctivas pactadas. Revisado por padres naturales. No es contrato legal.
-- CARTA DE ADVERTENCIA (WARNING LETTER): Advertencia formal ante conductas de riesgo. Ultima oportunidad antes de la rescision.
-- LLAMADO DEL STAFF: Intervencion directa de Oficina Central (OC) tras agotar recursos locales.
-
-PROTOCOLOS CRITICOS
-CAMBIO DE FAMILIA:
-- Paso 1: Reunion presencial consejero-estudiante (min. 60 min).
-- Paso 2: Reunion presencial consejero-familia (min. 60 min).
-- Paso 3: Reunion conjunta de mediacion (min. 120 min) para fijar Acuerdos de Convivencia.
-- Paso 4: Reunion de seguimiento a los 10 dias.
-- Paso 5: Si fracasa, realizar reuniones individuales de cierre para capitalizar aprendizajes y encuentro de despedida. Informar a OC.
-
-CAMBIO DE COMUNIDAD:
-- Uso exclusivo por acoso/abuso comprobado o agotamiento total de recursos en la comunidad actual.
-- Requiere aprobacion de OC y emision simultanea de Warning Letter.
-
-REGRESO ANTICIPADO (EARLY RETURN - ER):
-- Demora del proceso logistico: 10 a 15 dias.
-- Requiere reporte documentado a OC. Discrecion local obligatoria.
-- Rescision contractual: Pago de USD 500 administrativos + costo de cambio de pasaje. No hay reembolso de contribucion.
-- Seguro Medico: Cobertura caduca exactamente al aterrizar el vuelo internacional en el pais de origen.
-
-POLITICAS DE VIAJE INDEPENDIENTE (TRAVEL WAIVER - TW)
-REQUISITO TEMPORAL: Habilitado unicamente tras superar la mitad del programa.
-- Anuales: Desde Julio (SH) / Enero (NH).
-- Semestrales: Desde Mayo (SH) / Octubre (NH).
-VIAJES SIN TW: Con familia anfitriona (requiere aviso de itinerario), actividades obligatorias de escuela, visitas de padres naturales (requiere autorizacion OC).
-VIAJES CON TW (LIMITE 10 DIAS): Tour organizado local (scouts, iglesia), viaje escolar opcional (graduacion), visitas a familiares independientes, visitas a otros estudiantes AFS.
-TIEMPO DE TRAMITE TW: Presentar solicitud 15 a 21 dias previos al viaje.
-DOCUMENTACION TW: Aprobacion de AFS, firma de padres naturales, permiso escolar (si hay clases), permiso familia anfitriona.
-
-SEGURO MEDICO (CIGNA / WTW)
-CONDICION ESTRUCTURAL: Seguro secundario. Opera mediante sistema de reintegro fuera de EEUU.
-LIMITES MAXIMOS DE GASTOS: USD 500.000 estandar (USA: USD 1.500.000 / ITA-ALE: USD 1.000.000).
-EVACUACION MEDICA: USD 1.000.000 (Requiere determinacion "Apto para volar").
-REPATRIACION: USD 100.000.
-EMERGENCIA DENTAL: Tope USD 600. Exclusivo para alivio inmediato de dolor, trauma o infeccion. Validez de 30 dias post-incidente.
-EXCLUSIONES TOTALES: Enfermedades preexistentes tratadas en los ultimos 18 meses (salvo urgencias si la medicacion no vario en 45 dias previos), examenes de rutina, ortodoncia, anteojos, cirugia estetica, vacunas.
-PROCEDIMIENTO DE RECLAMO: Limite maximo de 90 dias desde el incidente.
-INTERNACIONES: Obligatorio notificar a Healix/WTW si el paciente supera 72 horas internado.
-
-PERFILES VOLUNTARIOS 
-CONSEJERO: Responsable directo. Obligacion: Contacto presencial minimo 1 vez al mes con estudiante, familia y escuela. Registro mensual en sistema. Requisitos: +18 anos, 6 meses de antiguedad.
-COORDINADOR DE APOYO (SUPPORT): Lidera consejeros. Tareas: Asignacion inteligente de casos, monitoreo de contactos mensuales, manejo de Debriefing/Feedback. Requisitos: +21 anos, 2 anos de antiguedad, curso 104 aprobado.
-
-POLITICA DE INTELIGENCIA ARTIFICIAL (GEN AI)
-HERRAMIENTA AUTORIZADA: Google Gemini.
-REGLA DE PRIVACIDAD: Estrictamente prohibido ingresar Datos Personales, Informacion Confidencial o Propiedad Intelectual de AFS en chatbots publicos (ej. ChatGPT).
-REGLA DE USO: Validar output para evitar sesgos, imprecisiones y violaciones de derechos de autor. Requiere capacitacion previa de los usuarios..
+CONTACTOS DE EMERGENCIA TELEFONO GRATUITO ARGENTINA: 0800 288 2237 TELEFONO GRATUITO URUGUAY: 000 405 210 068 CELULAR EMERGENCIAS ARGENTINA: 011 15 68755730 CELULAR EMERGENCIAS URUGUAY: +54 9 11 68755730 ASISTENCIA MEDICA EEUU CIGNA: +1 866 428 3935 / Healixauthorization@cigna.com / Cigna PAYOR 62308 ASISTENCIA MEDICA RESTO DEL MUNDO WTW: +1 888 545 4518 / +49 69 8088 4221 / afs@wtwco.com
+REGLAS DE ORO INVIOLABLES CONSECUENCIA: Early Return inmediato
+• Drogas: Prohibido poseer, consumir o involucrarse (incluye marihuana legal en URU).
+• Vehiculos: Prohibido conducir motorizados o volar aviones privados.
+• Hacer dedo: Prohibido (hitch-hike).
+• Alcohol: Prohibido emborracharse. Edad legal: 18.
+• Viajes: Prohibido viajar sin Travel Waiver y autorizacion formal.
+POLITICA DE INTELIGENCIA ARTIFICIAL (IA) 14/02/2025 HERRAMIENTA: Google Gemini Premium via AFS Workspace. REGLA DE PRIVACIDAD: Estrictamente prohibido ingresar Datos Personales, Informacion Confidencial o Propiedad AFS en IA publica sin opt-out o autorizacion (privacy@afs.org). REQUISITO: Solo personal capacitado puede usar IA para fines de AFS. Validar sesgos e inexactitudes.
+CLASIFICACION DE INCIDENTES CRISIS: Desafios culturales normales (idioma, integracion, choque de personalidad). URGENCIA: Requiere atencion inmediata sin peligro inminente (malentendidos severos, evasiones, cambio familia por contingencia). EMERGENCIA: Accion inmediata. Peligro de vida, accidente, abuso, arresto, fuga, violacion de regla de oro, psiquiatria.
+HERRAMIENTAS DE ABORDAJE (INTERVENCION LOCAL Y STAFF)
+1. ENSAYO DE AUTOREFLEXION (Reflective Essay) USO: Intervencion temprana (mes 1-2). Escrito exclusivamente por el estudiante. PREGUNTAS EXACTAS A COMPLETAR POR EL ESTUDIANTE:
+• Que te motivo a participar de un programa de intercambio? Cuales eran tus metas?
+• En que medida se cumplieron tus expectativas?
+• Describe tu relacion con los miembros de la familia anfitriona.
+• Cuales son los desafios a los que te enfrentas en la familia?
+• Si alguien le preguntara a tu familia que los motivo a recibirte, cual crees que seria su respuesta?
+• Que es lo que mas te gusta de tu colegio y comunidad?
+• Cuales son los desafios a los que te enfrentas en colegio/comunidad?
+• Cuales son las cosas que mas te preocupan ahora y por que?
+• Cuando te vayas, como te gustaria que la gente te recuerde?
+• Que responsabilidad pensas que tenes vos para integrarte a la familia?
+• Que pensas que podes hacer vos para mejorar la relacion con la familia?
+2. PLAN PARA EL EXITO (Plan for Success) USO: Intervencion media (mes 3-4). Falta de adaptacion. Metas redactadas por el estudiante con guia del consejero. No tiene validez si lo escribe un adulto.
+3. ACUERDO DE APOYO (Support Agreement) USO: Problemas de conducta/incumplimiento. Documento escrito. Revisado por padres naturales. No es contrato legal. ESTRUCTURA EXACTA:
+• Issues and challenges (Problemas identificados).
+• What do the parties want changed (Que se espera que cambie).
+• Participant action (Acciones a tomar por el estudiante).
+• AFS actions (Acciones de voluntarios/staff).
+• Consequences (Advertencia de posible Early Return).
+4. ENCUESTA DE BIENESTAR (Wellness Self-Assessment Survey) USO: Monitoreo de salud mental/fisica. PREGUNTAS EXACTAS A COMPLETAR POR EL ESTUDIANTE:
+• Estres (1 a 5): Fuentes principales de estres? Que hacias en tu pais para sentirte mejor?
+• Ansiedad: Frecuencia de ansiedad? Es nueva o aumento? Que situaciones la detonan? Como afecta tu vida diaria?
+• Sueno: Horas promedio? Horario consistente? Dificultad para dormir? Factores que afectan (pantallas, cafeina)?
+• Alimentacion: Descripcion de habitos? Saltas comidas? Variedad/balance? Detonantes emocionales? Adaptacion a comida local (1 a 5)?
+5. CARTA DE ADVERTENCIA (Warning Letter) USO: Intervencion grave. Ultima oportunidad tras fallar el Support Agreement o realizar accion riesgosa (no regla de oro).
+6. LLAMADO DEL STAFF USO: Ultimo recurso local. Intervencion directa de Oficina Central.
+PROTOCOLOS DE APOYO
+CAMBIO DE FAMILIA PASOS PREVIOS: Reunion estudiante a solas (60 min) -> Reunion familia a solas (60 min) -> Reunion conjunta mediadora (120 min) -> Seguimiento en 10 dias. EJECUCION: Si falla, reunion de cierre individual para capitalizar aprendizajes y encuentro grupal de despedida sana. Informar a OC.
+CAMBIO DE COMUNIDAD USO: Solo por acoso/abuso o agotamiento total de recursos en la comunidad actual (multiples cambios previos). Requiere aprobacion OC y emision de Warning Letter.
+REGRESO ANTICIPADO (Early Return - ER) TIEMPO: 10 a 15 dias de demora logistica. PASOS: Abordar al estudiante y explicar reglas -> Avisar a familia anfitriona -> Elevar a OC con evidencia -> OC notifica a pais enviador. CONSECUENCIA FINANCIERA: Rescision contractual de 500 USD + costo de cambio de pasaje. No hay reembolso. Seguro medico caduca al aterrizar en origen. TEMPLATE LEGAL EXACTO: "Por la presente confirmamos que (Nombre) estara volviendo anticipadamente... debido a dificultades de integracion (homesickness)... liberamos de toda responsabilidad a AFS... entendemos que el seguro medico cubre hasta que el vuelo aterrice en (Origen)... AFS no reembolsara contribucion."
+POLITICAS DE VIAJE (TRAVEL WAIVER)
+TIEMPOS HABILITADOS PARA VIAJE INDEPENDIENTE:
+• Programas Anuales: Despues de mitad de experiencia (Julio SH / Enero NH).
+• Programas Semestrales: Despues de 2.5 meses (Mayo SH / Octubre NH).
+• Requisito tramite: 15 a 21 dias de anticipacion.
+SITUACIONES DE VIAJE EXACTAS Y LIMITES:
+1. Dormir casa amigo en comunidad: No Waiver. Max 4 dias. No faltar escuela.
+2. Viaje con familia anfitriona (+21 años): No Waiver (informar ruta). Ilimitado. Faltas escolares permitidas.
+3. Viaje con voluntario AFS (+21 años): No Waiver. Faltas escolares permitidas.
+4. Viaje oficial/obligatorio escuela: No Waiver. Faltas escolares permitidas.
+5. Viaje opcional escuela: Si Waiver. Faltas escolares permitidas.
+6. Tour organizado (scout/iglesia): Si Waiver. Max 10 dias. Faltas escolares permitidas.
+7. Visita independiente a pariente anfitrion (ej. abuelo): Si Waiver. Max 10 dias. Faltas escolares permitidas.
+8. Visita de familia natural a Argentina/Uruguay: No Waiver (Requiere autorizacion AFS). Max 10 dias. Faltas escolares permitidas.
+9. Viajar con familia natural en el pais anfitrion: Si Waiver. Max 10 dias. Faltas escolares permitidas.
+10. Visitar amigos/parientes residentes locales: Si Waiver. Max 10 dias. Fines de semana/feriados unicamente.
+11. Visitar otro estudiante AFS fuera de EV: Si Waiver. Max 10 dias. Fines de semana/feriados unicamente.
+12. Visitar otro estudiante AFS misma EV: Reglas internas de EV local.
+13. Otros viajes independientes: Si Waiver. Max 10 dias. Fines de semana/feriados unicamente. RESTRICCION URUGUAY: Estudiantes menores de 18 en programa anual requieren el documento estatal "Permiso del menor" para salir del pais (tarda 4 meses en tramitarse).
+TEMPLATE LEGAL VIAJE CON FAMILIA ANFITRIONA (PARENTAL CONSENT): "Nosotros, padres naturales de (Nombre) autorizamos el viaje con su familia anfitriona a (Lugar) del (Fecha) al (Fecha). Asumimos total responsabilidad y liberamos a AFS por cuidado, arreglos, servicios medicos (excepto seguro AFS)... Eximimos a AFS de queja por omisiones de nuestro hijo... AFS puede revocar permiso por seguridad."
+SEGURO MEDICO (CIGNA / WTW / HEALIX) CONDICION: Seguro Secundario. Funciona por reintegro fuera de EEUU. LIMITES MAXIMOS: 500.000 USD estandar. (EEUU: 1.500.000 USD. ITA/ALE: 1.000.000 USD). EVACUACION MEDICA: 1.000.000 USD (Requiere certificado Apto para volar). REPATRIACION RESTOS: 100.000 USD. EMERGENCIA DENTAL: Max 600 USD. Valido 30 dias. Exclusivo para dolor agudo, trauma o infeccion (cubre extraccion de muela de juicio infectada). TERAPIAS: Fisica/Quiropractica (12 sesiones, 5000 USD extra si deriva de cirugia). Mental/Nerviosa (12 sesiones). Rehabilitacion (12 sesiones combinadas). BENEFICIOS ADICIONALES (BERKELEY): AD&D Muerte Accidental (10.000 USD). Reunion familiar por internacion +24h (5.000 USD). Interrupcion de viaje (5.000 USD). Gastos de extension en pais de origen por enfermedad endemica/accidente (100.000 USD). Discapacidad total (100.000 USD). Consejeria psicologica por duelo/trauma (1.500 USD maximo, 150/sesion). EXCLUSIONES TOTALES: Enfermedades preexistentes (tratadas 18 meses previos. Si la medicacion estuvo estable 45 dias antes cubre emergencias derivadas, pero no medicacion de mantenimiento). Examenes preventivos, vacunas, ortodoncia, lentes, cirugia estetica, deportes profesionales. PROCEDIMIENTO: Internacion +72hs avisar a Healix. Plazo limite para presentar reclamo: 90 dias post-incidente.
+PERFILES VOLUNTARIOS, HABILIDADES Y ESTADISTICAS (PROYECTO SUPPORT)
+CONSEJERO: +18 años, 6 meses en AFS. Obligacion: 4hs semanales, 1 contacto presencial mensual con todos los actores, carga en World Cafe.
+• Puntuacion requerida: Interculturalidad 5/5, Integridad 5/5, Flexibilidad 4/5, Comunicacion 4/5, Aprendizaje 4/5. Puntos debiles estadisticos: Iniciativa (3/5), Negociacion en conflictos (3/5). COORDINADOR DE APOYO (SUPPORT): +21 años, 2 años en AFS, curso 104 Liderazgo. Obligacion: Asignacion inteligente de consejerias, monitoreo de carga, debriefing al equipo.
+• Puntuacion requerida: Liderazgo 5/5, Trabajo en equipo 5/5, Integridad 5/5. ESTADISTICAS CLAVE:
+• Edad Consejeros: 43% tiene 18-25 años (familias perciben esto como barrera para resolver conflictos graves).
+• Antiguedad Coord: 63% tiene +4 años en AFS y 57% realizo +5 consejerias.
+• Estres Consejero: Picos en Diciembre y Febrero. Zona de disfrute: Marzo, Abril, Mayo.
+• Estres Coord: Picos en Junio, Julio, Diciembre, Enero.
+• Motivacion: Se ingresa para facilitar el aprendizaje o mejorar a nivel local. Se sostiene en el tiempo por el crecimiento/aprendizaje personal y por ver el impacto tangible en la mision de paz. Desgaste principal: Falta de agradecimiento y diferencias de criterio con la OC en Regresos Anticipados.
+TEORIA EDUCATIVA AFS (KOLB Y DEBRIEFING) CICLO DE KOLB: 1. Experiencia Concreta (sentir/vivir el choque). 2. Observacion Reflexiva (evaluar imparcialmente). 3. Conceptualizacion Abstracta (otorgar significado logico). 4. Experimentacion Activa (modificar la conducta). TECNICA DEBRIEFING (CHEF): Herramienta del Coordinador para reflexionar con consejeros post-crisis.
+• C: Compartir (Emociones. Como se sintieron).
+• H: Hechos (Que paso cronologicamente).
+• E: Entendimiento (Por que paso. Principios abstraidos).
+• F: Futuro (Como aplicar lo aprendido). FEEDBACK: A diferencia del Debriefing, es basado en observables especificos para pedir cambio de conducta inmediata.
+TARJETAS DE REFLEXION MENSUAL (WORLD CAFE TOOLKIT) Mes 1: Observacion comunitaria (Modelo DIVE). Mes 1 (sem 4): Mapeo de hogares (Privacidad, uso de espacios comunes). Mes 2: Descubre vida en familia. Mapeo del colegio (Jerarquias, dinamica). Mes 3: Manejo de conflictos (Estilos de discusion vs acomodativo). Mes 4: Concepto de amistad (Superficial vs profunda). Mes 5: Estilos de comunicacion (Directa vs Indirecta). Mes 6: Expresando emociones (Verbal vs Lenguaje no verbal/regalos). Mes 7: Servicio comunitario local. Mes 8: Mostrar aprecio. Mes 9: Reporte de experiencia (Preparando el regreso). Mes 10: Reflexionando sobre el nuevo yo.
+PROCEDIMIENTO DE PLATAFORMAS (INSTRUCTIVOS EXACTOS)
+• REFLEXIONES (World Cafe): Entrar a Global Link -> AFS World Cafe -> Toolkit -> Monthly Reflections -> Elegir mes -> Agregar -> Llenar (Fecha, Hablo con, Tipo contacto, Bienestar, Comentarios) -> Enviar.
+• CURSOS E-LEARNING (elearning.afs.org.ar): 101 Induccion (8 modulos, aprobar con 70%). Certificacion Consejeros (Obligatorio). 104 Liderazgo.
+FAMILIAS ENVIADORAS (SENDING)
+• Pagos: Dolares por Banco Galicia. Cancelado 45 dias antes de partir. Sin comisiones de AFS pero asume costos de banco.
+• Pasajes e Irregularidades: No se elige fecha. Si no viaja primera fecha pasa a 2da/3ra. Equipaje: 23kg baul, 8kg carry on.
+• Visa: Responsabilidad familiar. AFS asesora. Tramites presenciales en consulados (Bs As / Montevideo).
+• Tramite Escolar Retorno: Se exige boletin original, firmado, sellado, en hoja membretada, con Apostilla de la Haya obligatoria para validar el año en origen.
+• Paquetes postales: Prohibido usar Couriers Privados (DHL/Fedex). Retienen paquetes en aduana y cobran multas altas. Solo usar correo estatal, paquetes pequeños sin electronicos, medicina ni comida fresca.
+CULTURAS Y MANUALES (RESUMEN ALTO IMPACTO) TAILANDIA: Colectivistas, alto contexto, indirectos. Filosofia MAI PEN RAI (no te preocupes, evitar confrontacion). Saludo WAI (manos juntas, cabeza baja). Religion Budista: Cabeza sagrada, pies sucios (se lavan prendas separadas). Monarquia intocable (delito criticar al rey). Estricta jerarquia (edad/estatus). No se muestra enojo publico (siempre sonrien). Escuela es el centro social absoluto. Comida: Base Arroz, sin cuchillos. Roles de genero muy diferenciados. ALEMANIA: Individualistas, bajo contexto, monocronicos. Comunicacion hiper directa (honestidad sobre cortesia, no leen entre lineas). Espacio privado vital (puertas cerradas, pertenencias no se comparten). Puntualidad y planificacion extremas. Escuela (Gymnasium) altamente exigente, sin uniforme, debate critico oral (Abitur). Poco orgullo nacional historico, mayor pertenencia regional. Cuidado extremo de reglas publicas (semáforos). ITALIA: Diferencias Norte (orientado a tareas, puntual, directo) vs Sur (orientado a relaciones, emocional, impuntual, comunicacion indirecta con fuerte apoyo en gestos). Importancia extrema de "la bella figura" (apariencia y ropa indican estatus). Fuerte pertenencia a dialectos regionales. Privacidad interna: madres limpian cuartos y entran sin golpear. Escuela formal, profesores distantes, notas del 1 al 10 (aprueban con 6). ARGENTINA / URUGUAY: Sociedad policronica (flexibilidad de tiempos, puntualidad negociable). Estilo indirecto pero sumamente expresivo/emocional (tono de voz alto = pasion, no enojo). Contacto fisico constante. Familia ampliada muy influyente. Cenas tardias (20:30 a 22:30). Vida nocturna hasta 6 AM. Tolerancia a romper pequeñas reglas (transito). Peligros para extranjeros: arrebatos en la calle, hacer dedo, transporte no oficial de noche.
