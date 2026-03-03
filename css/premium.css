@@ -1,168 +1,121 @@
 /* =========================================
- * Tarjetas de agentes - Estilo Actividad
- * Imagen a pantalla completa, título siempre visible, zoom al hoverear
+ * Tarjetas de agentes - Estilo BeBot/Azul
+ * Texto arriba, animación azul intenso y zoom
  * ========================================= */
 
-/* Make the figure a positioned container for the overlay */
+/* Contenedor de la figura */
 .cbp-item .fig {
     position: relative !important;
     overflow: hidden !important;
     border-radius: 18px !important;
     cursor: pointer;
     margin: 0 !important;
-    /* Clip the zoom animation inside the card */
+    transition: box-shadow 0.4s ease, border-color 0.4s ease !important;
+    border: 2px solid transparent !important;
 }
 
-/* La imagen ocupa toda la tarjeta con transición de zoom */
+/* Aura azul al hoverear la tarjeta */
+.cbp-item:hover .fig {
+    box-shadow: 0 0 25px rgba(0, 122, 194, 0.8) !important;
+    border-color: rgba(0, 122, 194, 0.6) !important;
+}
+
+/* Imagen con zoom */
 .cbp-item .fig img {
     display: block !important;
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
-    transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
     transform: scale(1) !important;
 }
 
-/* Zoom de imagen al hoverear SIN cambiar el tamaño de la tarjeta */
 .cbp-item:hover .fig img {
-    transform: scale(1.1) !important;
+    transform: scale(1.15) !important;
 }
 
-/* Degradado inferior intenso para legibilidad (Estilo GoPro) */
+/* Degradado superior para legibilidad del texto arriba */
 .cbp-item .fig::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     right: 0;
-    height: 65%;
-    background: linear-gradient(to top,
-            rgba(0, 0, 0, 0.95) 0%,
-            rgba(0, 0, 0, 0.6) 30%,
+    height: 50%;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.9) 0%,
+            rgba(0, 0, 0, 0.4) 60%,
             rgba(0, 0, 0, 0) 100%);
-    border-radius: 0 0 18px 18px;
+    border-radius: 18px 18px 0 0;
     pointer-events: none;
     z-index: 1;
+    transition: opacity 0.4s ease !important;
 }
 
-/* Figcaption: Estilo GoPro - Esquina inferior izquierda */
-.cbp-item .fig figcaption {
-    position: absolute !important;
-    bottom: 0 !important;
-    top: auto !important;
-    left: 0 !important;
-    right: auto !important;
-    width: 100% !important;
-    padding: 24px 28px !important;
-    background: transparent !important;
-    opacity: 1 !important;
-    z-index: 2;
-    text-align: left !important;
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-}
-
-/* Animación del texto al pasar el mouse (desplazamiento sutil a la derecha) */
-.cbp-item:hover .fig figcaption {
-    transform: translateX(6px) !important;
-}
-
-/* Título Estilo GoPro: Montserrat Extra Bold, Blanco Puro, Nítido */
-.cbp-item .fig figcaption h3 {
-    color: #ffffff !important;
-    font-family: 'Montserrat', sans-serif !important;
-    font-size: 1.25rem !important;
-    font-weight: 800 !important;
-    text-transform: uppercase !important;
-    letter-spacing: -0.01em !important;
-    line-height: 1.0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    text-shadow: none !important;
-    opacity: 1 !important;
-    /* Forzar visibilidad */
-    transform: none !important;
-    /* Resetear transform de style.css */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-content-smoothing: grayscale;
-    transition: transform 0.3s ease !important;
-}
-
-/* Ocultar descripción secundaria para estilo minimalista GoPro */
-.cbp-item .fig figcaption p {
-    display: none !important;
-}
-
-/* Brillo sutil al hoverear para mayor dinamismo */
+/* Overlay azul suave al hover */
 .cbp-item .fig::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(255, 255, 255, 0);
-    border-radius: 18px;
-    z-index: 1;
+    background: rgba(0, 122, 194, 0);
+    z-index: 2;
     pointer-events: none;
-    transition: background 0.3s ease;
+    transition: background 0.4s ease !important;
 }
 
 .cbp-item:hover .fig::before {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(0, 122, 194, 0.15);
 }
 
+/* Figcaption: Texto anclado arriba */
+.cbp-item .fig figcaption {
+    position: absolute !important;
+    top: 0 !important;
+    bottom: auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    padding: 24px 24px !important;
+    background: transparent !important;
+    opacity: 1 !important;
+    /* Siempre visible */
+    z-index: 3;
+    text-align: left !important;
+    transform: none !important;
+    transition: transform 0.4s ease !important;
+}
+
+/* Animación de desplazamiento del texto al hover */
+.cbp-item:hover .fig figcaption {
+    transform: translateY(5px) !important;
+}
+
+/* Título estilo premium */
+.cbp-item .fig figcaption h3 {
+    color: #ffffff !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1.1rem !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8) !important;
+    opacity: 1 !important;
+    transform: none !important;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Ocultar párrafos residuales si los hay */
+.cbp-item .fig figcaption p {
+    display: none !important;
+}
 
 /* =========================================
- * Modales de Agentes - Estilo Premium Oscuro
+ * Ajustes de Modales (Estilo BeBot)
  * ========================================= */
-
 .mi-modal-contenido {
-    background-color: #111111;
-    margin: 5% auto;
-    width: 85%;
-    max-width: 900px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
-    color: #ffffff;
-}
-
-.mi-modal-contenido h3 {
-    color: #ffffff !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-    font-weight: 700;
-}
-
-.mi-modal-cerrar {
-    color: #a0a0a0;
-    transition: color 0.3s ease;
-}
-
-.mi-modal-cerrar:hover {
-    color: #ffffff;
-}
-
-/* Chat History Background */
-div[id^="chat-historial"] {
-    background: #0a0a0a !important;
-}
-
-/* Chat Input Focus */
-.mi-modal-contenido input[type="text"]:focus {
-    border-color: #007ac2 !important;
-    box-shadow: 0 0 0 2px rgba(0, 122, 194, 0.2) !important;
-    outline: none !important;
-}
-
-/* Send Button */
-.mi-modal-contenido button {
-    background: #007ac2 !important;
-    color: white !important;
-    border-radius: 50% !important;
-    padding: 12px 15px !important;
-    box-shadow: 0 5px 15px rgba(0, 122, 194, 0.3) !important;
-    transition: all 0.3s ease !important;
-}
-
-.mi-modal-contenido button:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 8px 20px rgba(0, 122, 194, 0.5) !important;
+    background-color: #0c0c0c !important;
+    border: 1px solid rgba(0, 122, 194, 0.3) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 122, 194, 0.1) !important;
 }
