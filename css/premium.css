@@ -99,12 +99,13 @@
 .cbp-item .fig figcaption h3 {
     color: #ffffff !important;
     font-family: 'Montserrat', sans-serif !important;
-    /* Fuente fluida reducida para 3 columnas */
-    font-size: clamp(0.55rem, 1.5vw + 0.35rem, 1.15rem) !important;
+    /* Fuente optimizada: reducido el mínimo para que quepan palabras largas sin romperse */
+    font-size: clamp(0.48rem, 2vw + 0.2rem, 1.1rem) !important;
     font-weight: 800 !important;
     text-transform: uppercase !important;
-    letter-spacing: -0.01em !important;
-    line-height: 1.05 !important;
+    letter-spacing: -0.03em !important;
+    /* Espaciado más apretado para ganar espacio */
+    line-height: 1.0 !important;
     margin: 0 !important;
     padding: 0 !important;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8) !important;
@@ -112,10 +113,10 @@
     transform: none !important;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* Evitar cortes de texto - Ruptura de palabra si es necesario */
+    /* Permitir saltos de línea solo entre palabras, no por la mitad */
     white-space: normal !important;
-    overflow-wrap: break-word !important;
-    word-break: break-word !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
 }
 
 /* Ocultar cualquier texto secundario */
