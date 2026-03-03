@@ -98,13 +98,13 @@ $(document).ready(function () {
         // Sin singlePageCallback para evitar apertura de páginas secundarias
         mediaQueries: [{
             width: 1100,
-            cols: 5, // 5 columnas en escritorio
+            cols: 4, // Ajustado a 4 para mejor espaciado
         }, {
             width: 800,
-            cols: 4,
+            cols: 3,
         }, {
             width: 480,
-            cols: 3, // 3 columnas en mobile
+            cols: 2, // 2 columnas en móviles medianos
             options: {
                 caption: '',
                 gapHorizontal: 15,
@@ -112,7 +112,7 @@ $(document).ready(function () {
             }
         }, {
             width: 320,
-            cols: 3, // 3 columnas en pantallas pequeñas
+            cols: 1, // 1 SOLA COLUMNA en móviles pequeños (320px)
             options: {
                 caption: '',
                 gapHorizontal: 10,
