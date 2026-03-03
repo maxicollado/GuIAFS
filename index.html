@@ -169,9 +169,32 @@
             }
 
             .mi-modal-contenido {
-                width: 95% !important;
+                width: 100% !important;
+                height: 95dvh !important;
+                /* ocupa casi toda la pantalla */
+                max-width: 100% !important;
+                margin: 0 !important;
+                border-radius: 0 !important;
                 padding: 15px !important;
-                margin: 10% auto !important;
+                display: flex !important;
+                flex-direction: column !important;
+                /* Posiciona el panel al fondo como una bottom-sheet */
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+            }
+
+            .mi-modal-afs {
+                display: flex !important;
+                align-items: flex-end !important;
+                /* ancla el panel abajo */
+            }
+
+            /* El área de chat crece para llenar el espacio restante */
+            .mi-modal-contenido>div[style*="height: 60vh"] {
+                flex: 1 !important;
+                height: auto !important;
             }
 
             .mi-modal-contenido h3 {
@@ -189,7 +212,7 @@
     </div>
 
     <header>
-        <a href="index.html" style="position: absolute; top: 10px; left: 10px; z-index: 999; display: inline-block;">
+        <a href="index.html" style="position: absolute; top: 10px; left: 10px; z-index: 10; display: inline-block;">
             <img class="logo"
                 src="https://d22dvihj4pfop3.cloudfront.net/wp-content/uploads/sites/114/2019/02/25135155/Logos-AFS-01-e1551124361258.png"
                 alt="Logos-AFS" style="width: 120px !important; height: auto !important;">
@@ -301,7 +324,7 @@
                             <figure class="fig">
                                 <img src="images/work-6.jpg" alt="">
                                 <figcaption>
-                                    <h3>ORIENTACIONES</h3>
+                                    <h3>ORIENTACIONES LOCALES</h3>
                                 </figcaption>
                             </figure>
                         </a>
@@ -337,7 +360,7 @@
                             <figure class="fig">
                                 <img src="images/work-9.jpg" alt="">
                                 <figcaption>
-                                    <h3>RELACIONES</h3>
+                                    <h3>RELACIONES INSTITUCIONALES</h3>
                                 </figcaption>
                             </figure>
                         </a>
