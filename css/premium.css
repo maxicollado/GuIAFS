@@ -19,7 +19,7 @@
 /* Aura azul al hoverear la tarjeta - Confinada para no tapar modales */
 .cbp-item:hover .fig {
     box-shadow: 0 0 20px rgba(0, 122, 194, 0.6) !important;
-    border-color: rgba(0, 122, 194, 0.4) !important;
+    /*border-color: rgba(0, 122, 194, 0.4) !important;
     z-index: 5 !important;
     /* Por encima de otras tarjetas pero por debajo de modales */
 }
@@ -93,7 +93,7 @@
     transform: translateX(8px) !important;
 }
 
-/* Título estilo Premium - Montserrat Extra Bold */
+/* Título - Montserrat Extra Bold */
 .cbp-item .fig figcaption h3 {
     color: #ffffff !important;
     font-family: 'Montserrat', sans-serif !important;
@@ -117,7 +117,7 @@
 }
 
 /* =========================================
- * Ajustes de Modales (Estilo Premium)
+ * Ajustes de Modales
  * ========================================= */
 .mi-modal-contenido {
     background-color: #0c0c0c !important;
