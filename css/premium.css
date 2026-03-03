@@ -78,8 +78,12 @@
     margin: 0 !important;
     padding: 0 !important;
     text-shadow: none !important;
+    opacity: 1 !important;
+    /* Forzar visibilidad */
+    transform: none !important;
+    /* Resetear transform de style.css */
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    -moz-osx-content-smoothing: grayscale;
     transition: transform 0.3s ease !important;
 }
 
