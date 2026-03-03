@@ -286,7 +286,7 @@ header {
     background: #fff;
     overflow: hidden;
     box-shadow: 0px 0px 32px 0px rgba(0, 0, 0, 0.10);
-    padding-bottom: 0px;
+    padding-bottom: 0px !important;
 }
 
 .cont {
@@ -2002,7 +2002,7 @@ textarea.form-message {
     }
 
     .wrapper {
-        padding-bottom: 0px;
+        padding-bottom: 0px !important;
     }
 
     .home-content {
