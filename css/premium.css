@@ -17,6 +17,10 @@
     /* Asegura recorte perfecto en navegadores Webkit y estándar */
     -webkit-mask-image: -webkit-radial-gradient(white, black);
     mask-image: radial-gradient(white, black);
+    /* CRÍTICO: Altura mínima para que no colapse con imágenes en position:absolute */
+    min-height: 140px !important;
+    aspect-ratio: 4/3 !important;
+    display: block !important;
 }
 
 /* Aura azul al hoverear la tarjeta - Confinada para no tapar modales */
