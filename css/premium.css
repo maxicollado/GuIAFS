@@ -26,6 +26,7 @@
 /* ---- SLIDESHOW: img 1 en flujo (da alto al card), imgs 2-3 en absolute encima ---- */
 
 /* Img 1: establece la altura del recuadro (en flujo normal, formas variadas por imagen) */
+/* Img 1: establece la altura del recuadro (en flujo normal, formas variadas por imagen) */
 .cbp-item .fig img:nth-child(1) {
     display: block !important;
     position: relative !important;
@@ -34,11 +35,12 @@
     object-fit: cover !important;
     transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
     transform: scale(1) !important;
-    opacity: 0 !important;
+    /* Sin opacity inicial para evitar parpadeo y sin !important para que la animación funcione */
     animation: cardSlide 9s infinite !important;
     animation-delay: 0s !important;
 }
 
+/* Imgs 2 y 3: apiladas encima, llenan el espacio definido por img 1 */
 /* Imgs 2 y 3: apiladas encima, llenan el espacio definido por img 1 */
 .cbp-item .fig img:nth-child(2),
 .cbp-item .fig img:nth-child(3) {
@@ -50,7 +52,8 @@
     object-fit: cover !important;
     transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
     transform: scale(1) !important;
-    opacity: 0 !important;
+    opacity: 0;
+    /* Sin !important */
     animation: cardSlide 9s infinite !important;
 }
 
