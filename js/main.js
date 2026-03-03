@@ -97,24 +97,18 @@ $(document).ready(function () {
         gapHorizontal: 30,
         // Sin singlePageCallback para evitar apertura de páginas secundarias
         mediaQueries: [{
-            width: 1100,
-            cols: 4, // Ajustado a 4 para mejor espaciado
+            width: 1000,
+            cols: 4,
         }, {
-            width: 800,
+            width: 768,
             cols: 3,
         }, {
             width: 480,
-            cols: 2, // 2 columnas en móviles medianos
-            options: {
-                caption: '',
-                gapHorizontal: 15,
-                gapVertical: 15,
-            }
+            cols: 2,
         }, {
-            width: 320,
-            cols: 1, // 1 SOLA COLUMNA en móviles pequeños (320px)
+            width: 0,
+            cols: 1,
             options: {
-                caption: '',
                 gapHorizontal: 10,
                 gapVertical: 10,
             }
