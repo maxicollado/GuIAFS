@@ -13,16 +13,17 @@
     cursor: pointer;
     margin: 0 !important;
     transition: all 0.4s ease;
-    border: 2px solid transparent !important;
+    border: none !important;
+    /* Borde eliminado por solicitud del usuario */
     z-index: 1 !important;
     -webkit-mask-image: -webkit-radial-gradient(white, black);
     mask-image: radial-gradient(white, black);
     /* SIN aspect-ratio fijo: cada img define su propia altura (formas variadas) */
 }
 
-/* Aura azul al hoverear la tarjeta - Confinada para no tapar modales */
+/* Aura eliminada por solicitud del usuario (sin borde ni sombra celeste) */
 .cbp-item:hover .fig {
-    box-shadow: 0 0 20px rgba(0, 122, 194, 0.6) !important;
+    box-shadow: none !important;
 }
 
 /* ---- SLIDESHOW: img 1 en flujo (da alto al card), imgs 2-3 en absolute encima ---- */
@@ -208,4 +209,33 @@
 .mi-modal-afs {
     z-index: 999998 !important;
     /* Capa inmediatamente debajo del contenido */
+}
+/* =========================================
+ * Ajustes de Botón Ver Más y Limpieza Final
+ * ========================================= */
+
+#verMasBtn {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    border: none !important; 
+    background: rgba(255, 255, 255, 0.08) !important; 
+    color: #fff !important;
+    border-radius: 50px !important;
+    font-weight: 600 !important;
+    padding: 12px 50px !important;
+    outline: none !important;
+}
+
+#verMasBtn:hover {
+    transform: translateY(-4px) scale(1.06) !important;
+    background: #007ac2 !important; 
+    box-shadow: 0 10px 25px rgba(0, 122, 194, 0.5) !important;
+}
+
+.cbp-item .fig, 
+.cbp-item figure, 
+.cbp-item .fig:hover, 
+.cbp-item:hover .fig {
+    border: none !important;
+    box-shadow: none !important;
+    background: #000 !important;
 }
