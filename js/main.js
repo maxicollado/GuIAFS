@@ -97,8 +97,11 @@ $(document).ready(function () {
         gapHorizontal: 20,
         // Sin singlePageCallback para evitar apertura de páginas secundarias
         mediaQueries: [{
+            width: 1200,
+            cols: 5, // 5 columnas en desktop amplio
+        }, {
             width: 1000,
-            cols: 4,
+            cols: 4, // 4 columnas en desktop estándar
         }, {
             width: 768,
             cols: 3,

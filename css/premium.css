@@ -79,8 +79,8 @@
     left: 0 !important;
     right: auto !important;
     width: 100% !important;
-    padding: 12px 14px !important;
-    /* Reducido para 3 columnas en mobile */
+    padding: 20px 24px !important;
+    /* Padding normal escritorio */
     background: transparent !important;
     opacity: 1 !important;
     z-index: 4 !important;
@@ -89,22 +89,28 @@
     transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
 
-/* Animación de desplazamiento lateral sutil del texto al hover */
-.cbp-item:hover .fig figcaption {
-    transform: translateX(5px) !important;
-    /* Reducido para evitar salirse */
+@media (max-width: 480px) {
+    .cbp-item .fig figcaption {
+        padding: 8px 6px !important;
+        /* Padding mínimo para 3 columnas */
+    }
 }
 
-/* Título - Montserrat Extra Bold con Responsividad Dinámica */
+/* Animación de desplazamiento lateral sutil del texto al hover */
+.cbp-item:hover .fig figcaption {
+    transform: translateX(4px) !important;
+}
+
+/* Título - Montserrat Extra Bold con Responsividad Extrema */
 .cbp-item .fig figcaption h3 {
     color: #ffffff !important;
     font-family: 'Montserrat', sans-serif !important;
-    /* Fuente optimizada: reducido el mínimo para que quepan palabras largas sin romperse */
-    font-size: clamp(0.48rem, 2vw + 0.2rem, 1.1rem) !important;
+    /* Fuente fluida optimizada: reducida para que quepan palabras de hasta 12 letras sin romperse */
+    font-size: clamp(0.38rem, 1.6vw + 0.1rem, 1.25rem) !important;
     font-weight: 800 !important;
     text-transform: uppercase !important;
-    letter-spacing: -0.03em !important;
-    /* Espaciado más apretado para ganar espacio */
+    letter-spacing: -0.04em !important;
+    /* Más apretado aún */
     line-height: 1.0 !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -113,10 +119,11 @@
     transform: none !important;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* Permitir saltos de línea solo entre palabras, no por la mitad */
+    /* NO permitir cortes de palabra en medio */
     white-space: normal !important;
     overflow-wrap: normal !important;
     word-break: normal !important;
+    hyphens: none !important;
 }
 
 /* Ocultar cualquier texto secundario */
