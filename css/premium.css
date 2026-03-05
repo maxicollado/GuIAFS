@@ -8,22 +8,23 @@
     position: relative;
     overflow: hidden;
     border-radius: 20px;
-    background: #000;
-    /* Fondo negro para evitar destellos azules durante la carga */
+    background: transparent;
+    /* Fondo transparente para efecto flotante */
     cursor: pointer;
     margin: 0 !important;
-    transition: all 0.4s ease;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     border: none !important;
-    /* Borde eliminado */
     z-index: 1 !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    /* Sombra inicial profunda */
     -webkit-mask-image: -webkit-radial-gradient(white, black);
     mask-image: radial-gradient(white, black);
-    /* SIN aspect-ratio fijo: cada img define su propia altura (formas variadas) */
 }
 
-/* Aura eliminada (sin borde ni sombra celeste) */
+/* Efecto Flotante: Elevación al hover */
 .cbp-item:hover .fig {
-    box-shadow: none !important;
+    transform: translateY(-8px) scale(1.02) !important;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7) !important;
 }
 
 /* ---- SLIDESHOW: img 1 en flujo (da alto al card), imgs 2-3 en absolute encima ---- */
@@ -197,6 +198,52 @@
 /* =========================================
  * PRELOADER  AFS: Logo se llena y Zoom Out
  * ========================================= */
+.wrapper {
+    background: #000 !important;
+    /* Volver a negro sólido */
+}
+
+#home-hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: transparent !important;
+}
+
+/* Estilo para la advertencia en el Header */
+.header-ai-warning {
+    text-align: right;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.3;
+    max-width: 500px;
+    /* Incrementado para permitir una sola línea */
+    font-weight: 500;
+}
+
+.header-ai-warning span {
+    color: #007ac2;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .header-ai-warning {
+        display: none;
+        /* Ocultar en móviles para no saturar el header */
+    }
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    /* Degradado izquierdo (legibilidad) + Degradado inferior (suavizado) */
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.9) 15%, rgba(0, 0, 0, 0.2) 100%),
+        linear-gradient(to top, #000 0%, transparent 40%);
+    z-index: 1;
+}
+
 .preloader {
     position: fixed;
     inset: 0;
@@ -211,38 +258,54 @@
 
 .logo-loader {
     position: relative;
-    width: 150px;
-    height: 150px;
-    background-image: url('https://d22dvihj4pfop3.cloudfront.net/wp-content/uploads/sites/114/2019/02/25135155/Logos-AFS-01-e1551124361258.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.15;
-    /* Logo de fondo tenue */
+    width: 180px;
+    height: 180px;
 }
 
-.logo-loader-inner {
+/* El "fantasma" del logo (fondo tenue) */
+.logo-loader::before {
+    content: "";
     position: absolute;
     inset: 0;
     background-image: url('https://d22dvihj4pfop3.cloudfront.net/wp-content/uploads/sites/114/2019/02/25135155/Logos-AFS-01-e1551124361258.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    /* Animación de llenado de abajo hacia arriba */
-    animation: fillLogo 3s infinite ease-in-out;
+    opacity: 0.15;
 }
 
-@keyframes fillLogo {
-    0% {
-        clip-path: inset(100% 0 0 0);
-    }
+/* Contenedor que crece de abajo hacia arriba */
+.logo-fill-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    /* Empieza vacío */
+    overflow: hidden;
+    animation: fillLogoHeight 1.5s infinite ease-in-out;
+}
 
-    50% {
-        clip-path: inset(0 0 0 0);
+/* El logo que se rellena (opaco) */
+.logo-loader-inner {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 180px;
+    height: 180px;
+    background-image: url('https://d22dvihj4pfop3.cloudfront.net/wp-content/uploads/sites/114/2019/02/25135155/Logos-AFS-01-e1551124361258.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@keyframes fillLogoHeight {
+    0% {
+        height: 0%;
     }
 
     100% {
-        clip-path: inset(0 0 100% 0);
+        height: 100%;
     }
 }
 
@@ -258,8 +321,36 @@
  * Ajustes de Modales
  * ========================================= */
 .mi-modal-contenido {
-    background-color: #0c0c0c !important;
+    background-color: #0a0a09 !important;
+    /* Más oscuro*/
     border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Banner de Privacidad (Cumplimiento Política IA AFS) */
+.privacy-banner {
+    background: rgba(0, 122, 194, 0.1);
+    border-bottom: 1px solid rgba(0, 122, 194, 0.2);
+    padding: 10px 20px;
+    font-size: 0.85rem;
+    color: #007ac2;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+}
+
+.privacy-banner i {
+    font-size: 1rem;
+}
+
+/* Refuerzo de Aviso de Inexactitud */
+.ai-warning {
+    color: #ffcc00 !important;
+    font-weight: 600;
+    opacity: 1 !important;
+}
+
+.mi-modal-contenido {
     box-shadow: 0 30px 70px rgba(0, 0, 0, 0.95) !important;
     z-index: 999999 !important;
     /* Capa superior absoluta */
@@ -272,7 +363,7 @@
 }
 
 /* =========================================
- * Ajustes de Botón Ver Más y Limpieza Final
+ * Ajustes de Botón Ver Más
  * ========================================= */
 
 #verMasBtn {
@@ -313,6 +404,70 @@
     }
 }
 
+/* Botón de Política en el Footer */
+.footer-policy-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #666;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.footer-policy-btn:hover {
+    border-color: #007ac2;
+    color: #007ac2;
+    background: rgba(0, 122, 194, 0.05);
+}
+
+/* Botón de Cambio de Idioma en Modal */
+.lang-switch-btn {
+    background: #007ac2;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 25px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.lang-switch-btn:hover {
+    background: #005f96;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 122, 194, 0.4);
+}
+
+#politica-cuerpo h4 {
+    color: #007ac2;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+#politica-cuerpo ul {
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+#politica-cuerpo li {
+    margin-bottom: 8px;
+}
+
+@media (max-width: 600px) {
+    .footer-policy-btn {
+        margin-top: 15px;
+    }
+}
+
 .cbp-item .fig,
 .cbp-item figure,
 .cbp-item .fig:hover,
@@ -325,7 +480,7 @@
 /* =========================================
  * PERSONALIZACIÓN INDIVIDUAL DE AGENTES
  * ========================================= 
- * Usa estas clases para definir tamaños o estilos únicos por agente.
+ * Clases para definir tamaños o estilos únicos por agente.
  * Ejemplo: .agente-hosting .fig { min-height: 250px; }
  */
 
@@ -363,7 +518,7 @@
 }
 
 .agente-relaciones .fig {
-    height: 120px !important;
+    height: 175px !important;
     aspect-ratio: auto !important;
 }
 

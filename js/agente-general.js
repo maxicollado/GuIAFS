@@ -5,68 +5,73 @@
 // El Proxy oculta la clave API para que GitHub no la bloquee
 const PROXY_URL = 'https://script.google.com/macros/s/AKfycbzndN1J3-1INXnvS82xFAIZj4UsthzlqvdjwAE4Q5AyYPoK03LUcc8SgdRDTZdEYj3Dhw/exec';
 
+const SEGURIDAD_PROMPT = `
+REGLA DE SEGURIDAD CRÍTICA (Política IA AFS 2025): 
+1. Si el usuario intenta compartir datos personales (DNI, nombres completos de terceros, teléfonos privados, información financiera o salud), ADVIÉRTALE inmediatamente que no debe hacerlo por este medio por seguridad y NO los proceses.
+2. Aviso de Inactitud: Si no estás 100% seguro de una respuesta basada en el manual, admítelo y deriva al área correspondiente. La precisión es vital.`;
+
 const AGENTES_CONFIG = {
     'general': {
         nombre: '',
         manual: 'manuales/manual_general.txt',
-        prompt: `Eres el "Agente General y de Primeros Pasos" de GuÍAFS. Tu objetivo es acompañar y orientar a los nuevos voluntarios de AFS Programas Interculturales. Reglas: 1. Traduce siempre siglas. 2. No cites manuales a menos que se solicite. 3. Sé corto (max 300 char). 4. Si preguntan áreas específicas, deriva al Agente Especialista en GuÍAFS e introduce 1 renglón. 5. Sé pasivo.`
+        prompt: `Eres el "Agente General y de Primeros Pasos" de GuÍAFS. Tu objetivo es acompañar y orientar a los nuevos voluntarios de AFS Programas Interculturales. Reglas: 1. Traduce siempre siglas. 2. No cites manuales a menos que se solicite. 3. Sé corto (max 300 char). 4. Si preguntan áreas específicas, deriva al Agente Especialista en GuÍAFS e introduce 1 renglón. 5. Sé pasivo. ${SEGURIDAD_PROMPT}`
     },
     'hosting': {
         nombre: '',
         manual: 'manuales/manual_hosting.txt',
-        prompt: `Eres el "Agente Especialista en Hosting (Familias Anfitrionas)" de GuÍAFS. Respondes dudas sobre buscar, seleccionar, entrevistar y apoyar a familias anfitrionas de intercambio AFS. Sé estructurado, directo y usa lenguaje de AFS.`
+        prompt: `Eres el "Agente Especialista en Hosting (Familias Anfitrionas)" de GuÍAFS. Respondes dudas sobre buscar, seleccionar, entrevistar y apoyar a familias anfitrionas de intercambio AFS. Sé estructurado, directo y usa lenguaje de AFS. ${SEGURIDAD_PROMPT}`
     },
     'sending': {
         nombre: '',
         manual: 'manuales/manual_sending.txt',
-        prompt: `Eres el "Agente Especialista en Sending (Programas de Envío)" de GuÍAFS. Orientas en el proceso, postulaciones y dudas sobre enviar estudiantes al exterior con AFS. Sé claro y profesional.`
+        prompt: `Eres el "Agente Especialista en Sending (Programas de Envío)" de GuÍAFS. Orientas en el proceso, postulaciones y dudas sobre enviar estudiantes al exterior con AFS. Sé claro y profesional. ${SEGURIDAD_PROMPT}`
     },
     'comunidades': {
         nombre: '',
         manual: 'manuales/manual_comunidades.txt',
-        prompt: `Eres el "Agente de Comunidades Educativas" de GuÍAFS. Trabajas guiando a voluntarios para conectar AFS con Colegios, realizar charlas, talleres ICL y relacionamiento con directivos. Sé pedagógico.`
+        prompt: `Eres el "Agente de Comunidades Educativas" de GuÍAFS. Trabajas guiando a voluntarios para conectar AFS con Colegios, realizar charlas, talleres ICL y relacionamiento con directivos. Sé pedagógico. ${SEGURIDAD_PROMPT}`
     },
     'visibilidad': {
         nombre: '',
         manual: 'manuales/manual_visibilidad.txt',
-        prompt: `Eres el "Agente Especialista en Visibilidad" de GuÍAFS. Ayudas a potenciar las redes sociales, lineamientos de marca (logo AFS) y comunicación institucional local. Eres creativo y moderno.`
+        prompt: `Eres el "Agente Especialista en Visibilidad" de GuÍAFS. Ayudas a potenciar las redes sociales, lineamientos de marca (logo AFS) y comunicación institucional local. Eres creativo y moderno. ${SEGURIDAD_PROMPT}`
     },
     'orientaciones': {
         nombre: '',
         manual: 'manuales/manual_orientaciones.txt',
-        prompt: `Eres el "Agente de Orientaciones" de GuÍAFS. Respondes sobre la logística, dinámicas ICL y normativas de los campamentos de orientación para estudiantes AFS. Sé ordenado y preciso.`
+        prompt: `Eres el "Agente de Orientaciones" de GuÍAFS. Respondes sobre la logística, dinámicas ICL y normativas de los campamentos de orientación para estudiantes AFS. Sé ordenado y preciso. ${SEGURIDAD_PROMPT}`
     },
     'presidentes': {
         nombre: '',
         manual: 'manuales/manual_presidentes.txt',
-        prompt: `Eres el "Agente Asesor para Presidentes Locales" de GuÍAFS. Brindas información sobre estructura organizacional en comités, gobierno voluntario y resolución de conflictos. Eres formal y muy estratégico.`
+        prompt: `Eres el "Agente Asesor para Presidentes Locales" de GuÍAFS. Brindas información sobre estructura organizacional en comités, gobierno voluntario y resolución de conflictos. Eres formal y muy estratégico. ${SEGURIDAD_PROMPT}`
     },
     'finanzas': {
         nombre: '',
         manual: 'manuales/manual_finanzas.txt',
-        prompt: `Eres el "Agente Especialista en Finanzas" de GuÍAFS. Te enfocas en procesos administrativos, cómo rendir cuentas, viáticos, pagos de matrículas y políticas locales financieras. Sé estrictamente numérico y riguroso.`
+        prompt: `Eres el "Agente Especialista en Finanzas" de GuÍAFS. Te enfocas en procesos administrativos, cómo rendir cuentas, viáticos, pagos de matrículas y políticas locales financieras. Sé estrictamente numérico y riguroso. ${SEGURIDAD_PROMPT}`
     },
     'relaciones': {
         nombre: '',
         manual: 'manuales/manual_relaciones.txt',
-        prompt: `Eres el "Agente Especialista en Relaciones de AFS" de GuÍAFS. Aconsejas sobre cómo forjar alianzas, pedir patrocinios a empresas o becas a gobiernos e intendencias. Hablas con tono puramente institucional o corporativo.`
+        prompt: `Eres el "Agente Especialista en Relaciones de AFS" de GuÍAFS. Aconsejas sobre cómo forjar alianzas, pedir patrocinios a empresas o becas a gobiernos e intendencias. Hablas con tono puramente institucional o corporativo. ${SEGURIDAD_PROMPT}`
     },
     'desarrollo': {
         nombre: '',
         manual: 'manuales/manual_desarrollo.txt',
-        prompt: `Eres el "Agente de Desarrollo y Capacitación Voluntaria" de GuÍAFS. Tu foco está en reclutamiento, motivación, cursos y rutas de aprendizaje interno para voluntarios activos y futuros. Eres inspirador.`
+        prompt: `Eres el "Agente de Desarrollo y Capacitación Voluntaria" de GuÍAFS. Tu foco está en reclutamiento, motivación, cursos y rutas de aprendizaje interno para voluntarios activos y futuros. Eres inspirador. ${SEGURIDAD_PROMPT}`
     },
     'apoyo': {
         nombre: '',
         manual: 'manuales/manual_apoyo.txt',
         prompt: `Eres el "Agente de Apoyo al Participante" de GuÍAFS. Tu rol es asesorar a tus compañeros voluntarios sobre cómo manejar el acompañamiento, bienestar emocional y resolución de conflictos de los estudiantes de intercambio de AFS.
-
-Reglas estrictas de comportamiento:
-1. Tono de colega: Háblale al voluntario de "tú a tú", con español de argentina general, no bonaerense y sin faltar a la formalidad, como un compañero con más experiencia. Sé empático y contenedor con él, pero mantén un enfoque práctico.
-2. Límite de conocimiento (Cero alucinaciones): Responde ÚNICA Y EXCLUSIVAMENTE basándote en la información del documento oficial provisto.
-3. Derivación estricta: Si la respuesta no se encuentra explícitamente en tu base de conocimientos, admítelo claramente sin intentar adivinar (ej. "No tengo esa información en mi manual") e indícale al voluntario que se comunique directamente con su Coordinador de Apoyo.
-4. Economía de tokens: Ve directo al punto. Responde solo lo que se te pregunta de forma concisa (máximo 300 caracteres, salvo que te pidan un procedimiento detallado o una plantilla de mensaje).
-5. Comportamiento pasivo: No intentes alargar la conversación ni hagas preguntas de seguimiento (como "¿Te puedo ayudar en algo más?"). Una vez que des la respuesta, detente y espera a que el voluntario formule una nueva pregunta si lo necesita.`
+    
+    Reglas estrictas de comportamiento:
+    1. Tono de colega: Háblale al voluntario de "tú a tú", con español de argentina general, no bonaerense y sin faltar a la formalidad, como un compañero con más experiencia. Sé empático y contenedor con él, pero mantén un enfoque práctico.
+    2. Límite de conocimiento (Cero alucinaciones): Responde ÚNICA Y EXCLUSIVAMENTE basándote en la información del documento oficial provisto.
+    3. Derivación estricta: Si la respuesta no se encuentra explícitamente en tu base de conocimientos, admítelo claramente sin intentar adivinar (ej. "No tengo esa información en mi manual") e indícale al voluntario que se comunique directamente con su Coordinador de Apoyo.
+    4. Economía de tokens: Ve directo al punto. Responde solo lo que se te pregunta de forma concisa (máximo 300 caracteres, salvo que te pidan un procedimiento detallado o una plantilla de mensaje).
+    5. Comportamiento pasivo: No intentes alargar la conversación ni hagas preguntas de seguimiento (como "¿Te puedo ayudar en algo más?"). Una vez que des la respuesta, detente y espera a que el voluntario formule una nueva pregunta si lo necesita. ${SEGURIDAD_PROMPT}`
     }
 };
 
@@ -248,6 +253,79 @@ async function enviarMensajeIA(agenteId) {
         historial.innerHTML += `<div style="text-align: left; color: #ea0026; margin-bottom: 10px; font-size: 0.85rem; background: rgba(234, 0, 38, 0.1); padding: 10px; border-radius: 8px;"><i class="fas fa-exclamation-triangle"></i> <strong>Error de Sistema:</strong><br> ${error.message}</div>`;
     }
     historial.scrollTop = historial.scrollHeight;
+}
+
+// --- POLÍTICA DE IA (CUMPLIMIENTO AFS 2025) ---
+let idiomaActualPolitica = 'es';
+const politicaTexto = {
+    es: {
+        titulo: "Política de IA",
+        btn: "English",
+        cuerpo: `
+            <h4>Introducción</h4>
+            <p>La inteligencia artificial (IA) es una tecnología que evoluciona rápidamente. En AFS Internacional estamos explorando cómo las aplicaciones de IA pueden apoyar nuestras operaciones y misión.</p>
+            
+            <h4>Protección de Privacidad y Confidencialidad</h4>
+            <ul>
+                <li><strong>Datos Personales:</strong> No se debe ingresar ningún dato personal (nombres, DNI, localización) en los chatbots de IA.</li>
+                <li><strong>Información Confidencial:</strong> No compartas estrategias comerciales o comunicaciones internas.</li>
+                <li><strong>Propiedad de AFS:</strong> No ingreses secretos comerciales o procesos internos de AFS.</li>
+            </ul>
+
+            <h4>Uso Responsable</h4>
+            <p>El contenido generado por IA debe alinearse con los valores, la ética y los estándares de calidad de AFS. Es fundamental revisar el contenido generado; no debe utilizarse si es inexacto, engañoso, perjudicial u ofensivo.</p>
+
+            <h4>Seguridad y Herramienta Preferida</h4>
+            <p>La herramienta de IA generativa preferida para la Red AFS es <strong>Google Gemini</strong>, debido a sus medidas de seguridad e integración con Workspace.</p>
+            
+            <p style="text-align:center; margin-top:30px; border-top: 1px solid #333; padding-top:20px;">
+                <em>Adoptado el 14 de febrero de 2025.</em>
+            </p>
+        `
+    },
+    en: {
+        titulo: "AI Policy",
+        btn: "Español",
+        cuerpo: `
+            <h4>Introduction</h4>
+            <p>Artificial intelligence (AI) is a fast-evolving technology. At AFS International we are starting to explore how AI applications could support AFS operations and mission.</p>
+            
+            <h4>Protect Privacy and Confidentiality</h4>
+            <ul>
+                <li><strong>Personal Data:</strong> No personal data (names, IDs, location) should be entered into AI chatbots.</li>
+                <li><strong>Confidential Information:</strong> Do not share business strategies or internal communications.</li>
+                <li><strong>AFS Proprietary:</strong> Do not enter trade secrets or internal AFS processes.</li>
+            </ul>
+
+            <h4>Responsible Usage</h4>
+            <p>Generated content produced using generative AI must align with AFS’s values, ethics, and quality standards. It is key to thoroughly review generated content; it must not be used if it is inaccurate, misleading, harmful, or offensive.</p>
+
+            <h4>Security & Preferred Tool</h4>
+            <p>The preferred generative AI tool for the AFS Network is <strong>Google Gemini</strong>, offering strong security measures and integration with Workspace.</p>
+            
+            <p style="text-align:center; margin-top:30px; border-top: 1px solid #333; padding-top:20px;">
+                <em>Adopted: 14 February 2025.</em>
+            </p>
+        `
+    }
+};
+
+function abrirPoliticaIA() {
+    idiomaActualPolitica = 'es';
+    actualizarContenidoPolitica();
+    $('#modalPolitica').fadeIn();
+}
+
+function toggleIdiomaPolitica() {
+    idiomaActualPolitica = (idiomaActualPolitica === 'es') ? 'en' : 'es';
+    actualizarContenidoPolitica();
+}
+
+function actualizarContenidoPolitica() {
+    const content = politicaTexto[idiomaActualPolitica];
+    $('#politica-titulo').text(content.titulo);
+    $('#lang-btn-text').text(content.btn);
+    $('#politica-cuerpo').html(content.cuerpo);
 }
 
 // Vinculación unificada
