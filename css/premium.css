@@ -1,6 +1,6 @@
 /* =========================================
- * Tarjetas de agentes - Estilo Premium AFS
- * Texto inferior izquierdo, aura contenida y zoom
+ * DISEÑO DE INTERFAZ GuIAFS - AGENTES
+ * Configuración visual de tarjetas y animaciones
  * ========================================= */
 
 /* Contenedor de la figura */
@@ -196,7 +196,7 @@
 }
 
 /* =========================================
- * PRELOADER  AFS: Logo se llena y Zoom Out
+ * SISTEMA DE PRECARGA (PRELOADER) GuIAFS
  * ========================================= */
 .wrapper {
     background: #000 !important;
@@ -350,16 +350,16 @@
     opacity: 1 !important;
 }
 
-.mi-modal-contenido {
-    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.95) !important;
-    z-index: 999999 !important;
-    /* Capa superior absoluta */
-}
-
 /* Ajuste del z-index para el contenedor del modal */
 .mi-modal-afs {
-    z-index: 999998 !important;
-    /* Capa inmediatamente debajo del contenido */
+    z-index: 9999998 !important;
+    /* Incrementado significativamente */
+}
+
+.mi-modal-contenido {
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.95) !important;
+    z-index: 9999999 !important;
+    /* Capa más alta */
 }
 
 /* =========================================
@@ -478,10 +478,9 @@
 }
 
 /* =========================================
- * PERSONALIZACIÓN INDIVIDUAL DE AGENTES
+ * CONFIGURACIÓN ESPECÍFICA POR AGENTE
  * ========================================= 
- * Clases para definir tamaños o estilos únicos por agente.
- * Ejemplo: .agente-hosting .fig { min-height: 250px; }
+ * Ajustes individuales de altura y proporción.
  */
 
 .agente-general .fig {
@@ -536,3 +535,17 @@
     height: 150px !important;
     aspect-ratio: auto !important;
 }
+
+/* =========================================
+ * REGLAS DE CONSOLIDACIÓN OSCURA (DARK MODE)
+ * ========================================= */
+#particles-js { opacity: .6; }
+.cbp-l-loadMore-link { color: #fff !important; }
+.site-btn { color: #fff; }
+.home .home-content .hero-title { color: #fff; }
+.home .home-content p span { color: #fff; }
+.portfolio .portfolio-filter .cbp-filter-item-active { color: #fff !important; }
+hr { background: #454545; height: 1px; }
+p { color: #e0e0e0; }
+.preloader .loader { border: 4px solid #fff; }
+.preloader .loader .loader-inner { background-color: #fff; }

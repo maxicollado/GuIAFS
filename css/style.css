@@ -5,19 +5,19 @@
 /**
 	GuÍAFS - Tu asistente personal 
 	Author : Maximiliano Collado
-	Copyright 2024
+	Copyright 2026
+*/
 
 /* Table of Content
 ==================================================
 	
-	1. Body and Core Css
-	2. Home Page
-     2.1 Portfolio Section
-     2.2 Twitter Section
+	1. Estructura Base y Core
+	2. Sección Principal (Hero)
+    3. Grilla de Agentes
 
 
 
-/*------------------------ 1 Body and Core Css ------------------------*/
+/*------------------------ 1. ESTRUCTUBA BASE ------------------------*/
 
 html {
     height: auto !important;
@@ -278,7 +278,7 @@ header {
 }
 
 
-/*------------------------ 2 Home Page ------------------------*/
+/*------------------------ 2. SECCIÓN PRINCIPAL (HERO) ------------------------*/
 
 .wrapper {
     position: relative;
@@ -298,15 +298,6 @@ header {
     display: table;
     width: 100%;
     padding: 3%;
-}
-
-#particles-js {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 6;
 }
 
 .home .home-content {
@@ -331,19 +322,6 @@ header {
 .home .home-content p span {
     color: #000;
     font-weight: 900;
-}
-
-.home .home-content .social {
-    right: 0;
-    top: 0;
-    position: absolute;
-    top: 45%;
-    -webkit-transform: translateY(-60%);
-    transform: translateY(-60%);
-    -webkit-transform: rotate(90deg);
-    transform: rotate(90deg);
-    margin-right: -155px;
-    z-index: 6;
 }
 
 .home .home-content .social a {
@@ -693,51 +671,4 @@ textarea.form-message {
     color: #ffffff !important;
 }
 
-/* 4. Estilos del Modal */
-.mi-modal-afs {
-    display: none;
-    position: fixed;
-    z-index: 99999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-}
-
-.mi-modal-contenido {
-    background-color: #1a1a1a;
-    margin: 5% auto;
-    width: 85%;
-    max-width: 900px;
-    border: 2px solid #007ac2;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 5px 30px rgba(0, 122, 194, 0.3);
-}
-
-.mi-modal-cerrar {
-    color: #fff;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.mi-modal-cerrar:hover {
-    color: #007ac2;
-}
-
-/* 5. Consolidación Footer */
-footer {
-    position: relative !important;
-    z-index: 10 !important;
-    padding: 15px 0 5px 0 !important;
-    margin-bottom: 0 !important;
-    background: #111;
-    border-top: 1px solid #333;
-}
-
-body {
-    padding-bottom: 0 !important;
-}
+/* --- Fin de Estilos --- */

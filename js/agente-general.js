@@ -1,6 +1,7 @@
-/* ==============================================================
-   AGENTES DE INTELIGENCIA ARTIFICIAL (API GEMINI + MANUALES)
-   ============================================================== */
+/**
+ * GuIAFS - AGENTES DE INTELIGENCIA ARTIFICIAL
+ * Integración con Google Gemini API y Documentación Operativa (Manuales)
+ */
 
 // El Proxy oculta la clave API para que GitHub no la bloquee
 const PROXY_URL = 'https://script.google.com/macros/s/AKfycbzndN1J3-1INXnvS82xFAIZj4UsthzlqvdjwAE4Q5AyYPoK03LUcc8SgdRDTZdEYj3Dhw/exec';
@@ -170,7 +171,9 @@ async function enviarMensajeIA(agenteId) {
 
     // 2. Animación de escritura
     const idEscribiendo = "escribiendo-" + agenteId + "-" + Date.now();
-    historial.innerHTML += `<div id="${idEscribiendo}" style="margin-bottom: 10px; text-align: left;"><div class="typing-indicator"><span></span><span></span><span></span></div></div>`;
+    historial.innerHTML += `<div id="${idEscribiendo}" style="margin-bottom: 20px; text-align: left;">
+        <div class="typing-indicator"><span></span><span></span><span></span></div>
+    </div>`;
     historial.scrollTop = historial.scrollHeight;
 
     try {

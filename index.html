@@ -10,9 +10,8 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="cubeportfolio/css/cubeportfolio.min.css" />
     <link rel="stylesheet" href="css/colors/red.css" id="color" />
-    <link rel="stylesheet" href="css/style.css?v=2" />
-    <link rel="stylesheet" href="css/dark.css?v=2" />
-    <link rel="stylesheet" href="css/premium.css?v=2" />
+    <link rel="stylesheet" href="css/style.css?v=3" />
+    <link rel="stylesheet" href="css/premium.css?v=3" />
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800" rel="stylesheet">
     <link rel="stylesheet" href="icon-fonts/fontawesome-5.0.6/css/fontawesome-all.min.css" />
@@ -99,6 +98,27 @@
             box-shadow: 0 8px 20px rgba(0, 122, 194, 0.5) !important;
         }
 
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            background-color: #000 !important;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: #000 !important;
+        }
+
+        #home-hero {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
         /* Greeting bubbles animation (Asistente-style) */
         @keyframes bubbleEnter {
             from {
@@ -116,23 +136,33 @@
             animation: bubbleEnter 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
         }
 
-        /* Typing indicator (3 bouncing dots) */
+        /* Typing indicator (WhatsApp style: "escribiendo..." + dots) */
         .typing-indicator {
             display: inline-flex;
             align-items: center;
-            gap: 5px;
-            padding: 12px 18px;
-            background: rgba(255, 255, 255, 0.07);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            gap: 4px;
+            padding: 10px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+            color: #a0a0a0;
+            font-family: inherit;
+        }
+
+        .typing-indicator::before {
+            content: "escribiendo";
+            margin-right: 2px;
         }
 
         .typing-indicator span {
-            width: 7px;
-            height: 7px;
+            width: 4px;
+            height: 4px;
             background: #a0a0a0;
             border-radius: 50%;
-            animation: typingDot 1.2s infinite ease-in-out;
+            display: inline-block;
+            opacity: 0;
+            animation: whatsappDot 1.4s infinite;
         }
 
         .typing-indicator span:nth-child(2) {
@@ -143,19 +173,45 @@
             animation-delay: 0.4s;
         }
 
-        @keyframes typingDot {
+        @keyframes whatsappDot {
 
             0%,
-            60%,
-            100% {
-                transform: translateY(0);
-                opacity: 0.4;
+            20% {
+                opacity: 0;
+                transform: scale(0.8);
             }
 
-            30% {
-                transform: translateY(-6px);
+            50% {
                 opacity: 1;
+                transform: scale(1.1);
             }
+
+            80%,
+            100% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+        }
+
+        /* Input Visibility Fix */
+        #chat-input-dinamico {
+            flex-grow: 1;
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: 1px solid #333;
+            background: #1a1a1a;
+            color: white;
+            outline: none;
+            font-size: 1rem;
+            line-height: 1.4;
+            transition: border-color 0.3s;
+            height: auto;
+            min-height: 48px;
+            box-sizing: border-box;
+        }
+
+        #chat-input-dinamico:focus {
+            border-color: #007ac2;
         }
 
         /* Ajustes responsivos para textos y modales */
@@ -230,7 +286,7 @@
                 <div class="hero-main-text">
                     <h1 class="hero-title"
                         style="font-size: 4.5rem; margin-top: 0px !important; line-height: 1;letter-spacing: -2px;">
-                        GuÍAFS <br>
+                        <span style="color: #fff !important;"></span>GuÍAFS</span> <br>
                         <span
                             style="font-size: 0.7em !important; display: block; margin-top: 1px; color: #007ac2 !important;">
                             Tu asistente personal
@@ -254,7 +310,7 @@
                 <div id="grid-container">
 
                     <!-- 1. GENERAL (Main featured agent) -->
-                    <div class="cbp-item main-item branding cbp-item-tall agente-general">
+                    <div class="cbp-item main-item cbp-item-tall agente-general">
                         <a href="#" onclick="abrirModalAgente('general'); return false;">
                             <figure class="fig">
                                 <img src="images/agents/general/1.webp" alt="General 1" loading="eager">
@@ -268,7 +324,7 @@
                     </div>
 
                     <!-- 2. HOSTING -->
-                    <div class="cbp-item main-item digital agente-hosting">
+                    <div class="cbp-item agente-hosting">
                         <a href="#" onclick="abrirModalAgente('hosting'); return false;">
                             <figure class="fig">
                                 <img src="images/agents/hosting/1.webp" alt="Hosting 1" loading="eager">
@@ -282,7 +338,7 @@
                     </div>
 
                     <!-- 3. SENDING -->
-                    <div class="cbp-item main-item digital agente-sending">
+                    <div class="cbp-item main-item agente-sending">
                         <a href="#" onclick="abrirModalAgente('sending'); return false;">
                             <figure class="fig">
                                 <img src="images/agents/sending/1.webp" alt="Sending 1" loading="eager">
@@ -296,7 +352,7 @@
                     </div>
 
                     <!-- 4. COMUNIDADES EDUCATIVAS -->
-                    <div class="cbp-item main-item digital agente-comunidades">
+                    <div class="cbp-item main-item agente-comunidades">
                         <a href="#" onclick="abrirModalAgente('comunidades'); return false;">
                             <figure class="fig">
                                 <img src="images/agents/comunidades/1.webp" alt="Comunidades 1" loading="eager">
@@ -310,7 +366,7 @@
                     </div>
 
                     <!-- 5. APOYO AL PARTICIPANTE -->
-                    <div class="cbp-item main-item digital agente-apoyo">
+                    <div class="cbp-item main-item agente-apoyo">
                         <a href="#" onclick="abrirModalAgente('apoyo'); return false;">
                             <figure class="fig">
                                 <img src="images/agents/apoyo/1.webp" alt="Apoyo 1" loading="eager">
@@ -324,7 +380,7 @@
                     </div>
 
                     <!-- 6. DESARROLLO -->
-                    <div class="cbp-item main-item digital agente-desarrollo">
+                    <div class="cbp-item main-item agente-desarrollo">
                         <a href="#" onclick="abrirModalAgente('desarrollo'); return false;">
                             <figure class="fig">
                                 <img src="images/agents/desarrollo/1.webp" alt="Desarrollo 1" loading="lazy">
@@ -338,7 +394,7 @@
                     </div>
 
                     <!-- 7. ORIENTACIONES LOCALES -->
-                    <div class="cbp-item digital agente-orientaciones">
+                    <div class="cbp-item agente-orientaciones">
                         <a href="#" onclick="abrirModalAgente('orientaciones'); return false;">
                             <figure class="fig">
                                 <img src="images/agents/orientaciones/1.webp" alt="Orientaciones Locales 1"
@@ -355,7 +411,7 @@
                     </div>
 
                     <!-- 8. RELACIONES INSTITUCIONALES -->
-                    <div class="cbp-item digital agente-relaciones">
+                    <div class="cbp-item agente-relaciones">
                         <a href="#" onclick="abrirModalAgente('relaciones'); return false;">
                             <figure class="fig">
                                 <img src="images/agents/relaciones/1.webp" alt="Relaciones 1" loading="lazy">
@@ -369,7 +425,7 @@
                     </div>
 
                     <!-- 9. VISIBILIDAD -->
-                    <div class="cbp-item digital agente-visibilidad">
+                    <div class="cbp-item agente-visibilidad">
                         <a href="#" onclick="abrirModalAgente('visibilidad'); return false;">
                             <figure class="fig">
                                 <img src="images/agents/visibilidad/1.webp" alt="Visibilidad 1" loading="lazy">
@@ -383,7 +439,7 @@
                     </div>
 
                     <!-- 10. FINANZAS -->
-                    <div class="cbp-item digital agente-finanzas">
+                    <div class="cbp-item agente-finanzas">
                         <a href="#" onclick="abrirModalAgente('finanzas'); return false;">
                             <figure class="fig">
                                 <img src="images/agents/finanzas/1.webp" alt="Finanzas 1" loading="lazy">
@@ -397,7 +453,7 @@
                     </div>
 
                     <!-- 11. PRESIDENTES -->
-                    <div class="cbp-item digital agente-presidentes">
+                    <div class="cbp-item agente-presidentes">
                         <a href="#" onclick="abrirModalAgente('presidentes'); return false;">
                             <figure class="fig">
                                 <img src="images/agents/presidentes/1.webp" alt="Presidentes 1" loading="lazy">
@@ -419,44 +475,15 @@
             </section>
         </div>
 
-        <!-- MODAL ÚNICO DINÁMICO (Optimización de Rendimiento) -->
-        <div id="modalDinamico" class="mi-modal-afs">
-            <div class="mi-modal-contenido"
-                style="width: 92%; max-width: 1100px; margin: 3% auto; border-radius: 20px;">
-                <span class="mi-modal-cerrar" onclick="$('#modalDinamico').fadeOut();">&times;</span>
-                <h3 id="modal-titulo"
-                    style="color: white; margin-top: 0; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; font-weight: 800; letter-spacing: -0.02em;">
-                    <i class="fas fa-robot" style="color:#007ac2;"></i> Cargando...
-                </h3>
-                <div
-                    style="height: 70vh; background: #0c0c0c; border-radius: 12px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
-                    <!-- BANNER DE PRIVACIDAD (Cumplimiento Política IA AFS) -->
-                    <div class="privacy-banner">
-                        <i class="fas fa-user-shield"></i> No ingreses datos personales, financieros o información
-                        confidencial. Las consultas son anónimas.
-                    </div>
-                    <div id="chat-historial-dinamico"
-                        style="flex-grow: 1; overflow-y: auto; padding: 25px; font-size: 1rem; line-height: 1.6; scroll-behavior: smooth;">
-                        <!-- El contenido se genera dinámicamente según el agente -->
-                    </div>
-                    <div
-                        style="display: flex; padding: 20px; background: #141414; border-top: 1px solid rgba(255,255,255,0.08);">
-                        <input type="text" id="chat-input-dinamico" placeholder="Escribe tu consulta aquí..."
-                            style="flex-grow: 1; padding: 14px 24px; border-radius: 30px; border: 1px solid #333; background: #1a1a1a; color: white; outline: none; font-size: 1rem; transition: border-color 0.3s;">
-                        <button onclick="enviarMensajeIA()"
-                            style="margin-left: 15px; padding: 10px 30px; background: #007ac2; color: white; border: none; border-radius: 30px; cursor: pointer; font-weight: bold; transition: all 0.3s; display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-paper-plane" style="margin-right: 8px;"></i> </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
         <footer style="background: #111; padding: 20px 0 10px 0; border-top: 1px solid #333;">
             <div class="cont" style="margin-top: 0 !important;">
                 <div class="row"
                     style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; padding: 0 15px;">
                     <div class="copyright" style="text-align: left;">
-                        <p style="color: #666; font-size: 14px; margin: 0;">© Maximiliano Collado - GuÍAFS</p>
+                        <p style="color: #666; font-size: 14px; margin: 0;">© Maximiliano Collado - <span
+                                style="color: #fff !important;">GuÍAFS</span></p>
                     </div>
                     <div class="policy-link-container">
                         <button onclick="abrirPoliticaIA()" class="footer-policy-btn">
@@ -467,33 +494,13 @@
             </div>
         </footer>
 
-        <!-- MODAL POLÍTICA DE IA (Bilingüe) -->
-        <div id="modalPolitica" class="mi-modal-afs" style="display:none;">
-            <div class="mi-modal-contenido" style="width: 90%; max-width: 900px; margin: 2% auto; border-radius: 20px;">
-                <span class="mi-modal-cerrar" onclick="$('#modalPolitica').fadeOut();">&times;</span>
-                <div
-                    style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 20px;">
-                    <h3 style="color: white; margin: 0; font-weight: 800; letter-spacing: -0.02em;">
-                        <i class="fas fa-shield-alt" style="color:#007ac2; margin-right: 10px;"></i>
-                        <span id="politica-titulo">Política de IA</span>
-                    </h3>
-                    <button onclick="toggleIdiomaPolitica()" class="lang-switch-btn">
-                        <i class="fas fa-language"></i> <span id="lang-btn-text">English</span>
-                    </button>
-                </div>
-                <div id="politica-cuerpo"
-                    style="height: 65vh; overflow-y: auto; padding-right: 10px; color: #ccc; font-size: 0.95rem; line-height: 1.6;">
-                    <!-- El contenido se carga dinámicamente -->
-                </div>
-            </div>
-        </div>
+
 
         <script src="js/jquery-2.1.4.min.js"></script>
         <script src="cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
         <script src="js/typed.js"></script>
         <script src="js/jquery.hover3d.js"></script>
         <script src="js/main.js"></script>
-        <script src="js/jquery.cookie-1.4.1.min.js"></script>
         <script src="js/agente-general.js"></script>
         <script>
             // ============================================
@@ -656,6 +663,54 @@
                 }
             });
         </script>
+        <!-- MODAL ÚNICO DINÁMICO -->
+        <div id="modalDinamico" class="mi-modal-afs">
+            <div class="mi-modal-contenido"
+                style="width: 92%; max-width: 1100px; margin: 3% auto; border-radius: 20px;">
+                <span class="mi-modal-cerrar" onclick="$('#modalDinamico').fadeOut();">&times;</span>
+                <h3 id="modal-titulo"
+                    style="color: white; margin-top: 0; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; font-weight: 800; letter-spacing: -0.02em;">
+                    <i class="fas fa-robot" style="color:#007ac2;"></i> Cargando...
+                </h3>
+                <div
+                    style="height: 70vh; background: #0c0c0c; border-radius: 12px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+                    <div class="privacy-banner">
+                        <i class="fas fa-user-shield"></i> No ingreses datos personales, financieros o información
+                        confidencial. Las consultas son anónimas.
+                    </div>
+                    <div id="chat-historial-dinamico"
+                        style="flex-grow: 1; overflow-y: auto; padding: 25px; font-size: 1rem; line-height: 1.6; scroll-behavior: smooth;">
+                    </div>
+                    <div
+                        style="display: flex; padding: 20px; background: #141414; border-top: 1px solid rgba(255,255,255,0.08);">
+                        <input type="text" id="chat-input-dinamico" placeholder="Escribe tu consulta aquí...">
+                        <button onclick="enviarMensajeIA()"
+                            style="margin-left: 15px; padding: 10px 30px; background: #007ac2; color: white; border: none; border-radius: 30px; cursor: pointer; font-weight: bold; transition: all 0.3s; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-paper-plane" style="margin-right: 8px;"></i> </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL POLÍTICA DE IA -->
+        <div id="modalPolitica" class="mi-modal-afs" style="display:none;">
+            <div class="mi-modal-contenido" style="width: 90%; max-width: 900px; margin: 2% auto; border-radius: 20px;">
+                <span class="mi-modal-cerrar" onclick="$('#modalPolitica').fadeOut();">&times;</span>
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 20px;">
+                    <h3 style="color: white; margin: 0; font-weight: 800; letter-spacing: -0.02em;">
+                        <i class="fas fa-shield-alt" style="color:#007ac2; margin-right: 10px;"></i>
+                        <span id="politica-titulo">Política de IA</span>
+                    </h3>
+                    <button onclick="toggleIdiomaPolitica()" class="lang-switch-btn">
+                        <i class="fas fa-language"></i> <span id="lang-btn-text">English</span>
+                    </button>
+                </div>
+                <div id="politica-cuerpo"
+                    style="height: 65vh; overflow-y: auto; padding-right: 10px; color: #ccc; font-size: 0.95rem; line-height: 1.6;">
+                </div>
+            </div>
+        </div>
 </body>
 
 </html>
