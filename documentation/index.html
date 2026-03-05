@@ -1,192 +1,125 @@
-<!doctype html>
+<!doctype html>  
 <!--[if IE 6 ]><html lang="en-us" class="ie6"> <![endif]-->
 <!--[if IE 7 ]><html lang="en-us" class="ie7"> <![endif]-->
 <!--[if IE 8 ]><html lang="en-us" class="ie8"> <![endif]-->
 <!--[if (gt IE 7)|!(IE)]><!-->
 <html lang="en-us"><!--<![endif]-->
-
 <head>
 	<meta charset="utf-8">
-
-	<title>Plantilla de Portafolio GuIAFS</title>
-
+	
+	<title>GuIAFS Porfolio Template</title>
+	
 	<meta name="description" content="">
 	<meta name="author" content="tavonline">
 	<meta name="copyright" content="tavonline">
 	<meta name="generator" content="Documenter v2.0 http://rxa.li/documenter">
 	<meta name="date" content="2016-02-18T00:00:00+01:00">
-
+	
 	<link rel="stylesheet" href="assets/css/documenter_style.css" media="all">
 	<link rel="stylesheet" href="assets/js/google-code-prettify/prettify.css" media="screen">
 	<script src="assets/js/google-code-prettify/prettify.js"></script>
 
-
-
+	
+	
 	<script src="assets/js/jquery.js"></script>
-
+	
 	<script src="assets/js/jquery.scrollTo.js"></script>
 	<script src="assets/js/jquery.easing.js"></script>
-
-	<script>document.createElement('section'); var duration = '500', easing = 'swing';</script>
+	
+	<script>document.createElement('section');var duration='500',easing='swing';</script>
 	<script src="assets/js/script.js"></script>
-
+	
 	<style>
-		html {
-			background-color: #FFFFFF;
-			color: #383838;
-		}
-
-		::-moz-selection {
-			background: #444444;
-			color: #DDDDDD;
-		}
-
-		::selection {
-			background: #444444;
-			color: #DDDDDD;
-		}
-
-		#documenter_sidebar #documenter_logo {
-			background-image: url();
-		}
-
-		a {
-			color: #0000FF;
-		}
-
+		html{background-color:#FFFFFF;color:#383838;}
+		::-moz-selection{background:#444444;color:#DDDDDD;}
+		::selection{background:#444444;color:#DDDDDD;}
+		#documenter_sidebar #documenter_logo{background-image:url();}
+		a{color:#0000FF;}
 		.btn {
-			border-radius: 3px;
+			border-radius:3px;
 		}
-
 		.btn-primary {
-			background-image: -moz-linear-gradient(top, #0088CC, #0044CC);
-			background-image: -ms-linear-gradient(top, #0088CC, #0044CC);
-			background-image: -webkit-gradient(linear, 0 0, 0 0088CC%, from(#DDDDDD), to(#0044CC));
-			background-image: -webkit-linear-gradient(top, #0088CC, #0044CC);
-			background-image: -o-linear-gradient(top, #0088CC, #0044CC);
-			background-image: linear-gradient(top, #0088CC, #0044CC);
-			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0088CC', endColorstr='#0044CC', GradientType=0);
-			border-color: #0044CC #0044CC #bfbfbf;
-			color: #FFFFFF;
+			  background-image: -moz-linear-gradient(top, #0088CC, #0044CC);
+			  background-image: -ms-linear-gradient(top, #0088CC, #0044CC);
+			  background-image: -webkit-gradient(linear, 0 0, 0 0088CC%, from(#DDDDDD), to(#0044CC));
+			  background-image: -webkit-linear-gradient(top, #0088CC, #0044CC);
+			  background-image: -o-linear-gradient(top, #0088CC, #0044CC);
+			  background-image: linear-gradient(top, #0088CC, #0044CC);
+			  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0088CC', endColorstr='#0044CC', GradientType=0);
+			  border-color: #0044CC #0044CC #bfbfbf;
+			  color:#FFFFFF;
 		}
-
 		.btn-primary:hover,
 		.btn-primary:active,
 		.btn-primary.active,
 		.btn-primary.disabled,
 		.btn-primary[disabled] {
-			border-color: #0088CC #0088CC #bfbfbf;
-			background-color: #0044CC;
+		  border-color: #0088CC #0088CC #bfbfbf;
+		  background-color: #0044CC;
 		}
-
-		hr {
-			border-top: 1px solid #EBEBEB;
-			border-bottom: 1px solid #FFFFFF;
-		}
-
-		#documenter_sidebar,
-		#documenter_sidebar ul a {
-			background-color: #DDDDDD;
-			color: #222222;
-		}
-
-		#documenter_sidebar ul a {
-			-webkit-text-shadow: 1px 1px 0px #EEEEEE;
-			-moz-text-shadow: 1px 1px 0px #EEEEEE;
-			text-shadow: 1px 1px 0px #EEEEEE;
-		}
-
-		#documenter_sidebar ul {
-			border-top: 1px solid #AAAAAA;
-		}
-
-		#documenter_sidebar ul a {
-			border-top: 1px solid #EEEEEE;
-			border-bottom: 1px solid #AAAAAA;
-			color: #444444;
-		}
-
-		#documenter_sidebar ul a:hover {
-			background: #444444;
-			color: #DDDDDD;
-			border-top: 1px solid #444444;
-		}
-
-		#documenter_sidebar ul a.current {
-			background: #444444;
-			color: #DDDDDD;
-			border-top: 1px solid #444444;
-		}
-
-		#documenter_copyright {
-			display: block !important;
-			visibility: visible !important;
-		}
+		hr{border-top:1px solid #EBEBEB;border-bottom:1px solid #FFFFFF;}
+		#documenter_sidebar, #documenter_sidebar ul a{background-color:#DDDDDD;color:#222222;}
+		#documenter_sidebar ul a{-webkit-text-shadow:1px 1px 0px #EEEEEE;-moz-text-shadow:1px 1px 0px #EEEEEE;text-shadow:1px 1px 0px #EEEEEE;}
+		#documenter_sidebar ul{border-top:1px solid #AAAAAA;}
+		#documenter_sidebar ul a{border-top:1px solid #EEEEEE;border-bottom:1px solid #AAAAAA;color:#444444;}
+		#documenter_sidebar ul a:hover{background:#444444;color:#DDDDDD;border-top:1px solid #444444;}
+		#documenter_sidebar ul a.current{background:#444444;color:#DDDDDD;border-top:1px solid #444444;}
+		#documenter_copyright{display:block !important;visibility:visible !important;}
 	</style>
-
+	
 </head>
-
 <body class="documenter-project-picard-personal-resume">
 	<div id="documenter_sidebar">
 		<a href="#documenter_cover" id="documenter_logo"></a>
 		<ul id="documenter_nav">
-			<li><a class="current" href="#documenter_cover">Inicio</a></li>
-
-			<li><a href="#html_structure" title="Estructura HTML">Estructura HTML</a></li>
-			<li><a href="#css_structure" title="Estructura CSS">Estructura CSS</a></li>
+			<li><a class="current" href="#documenter_cover">Start</a></li>
+				
+			<li><a href="#html_structure" title="Html Structure">Html Structure</a></li>
+			<li><a href="#css_structure" title="Css Structure">Css Structure</a></li>
 			<li><a href="#javascripts" title="JavaScripts">JavaScripts</a></li>
-			<li><a href="#credits" title="Créditos">Créditos</a></li>
+			<li><a href="#credits" title="Credits">Credits</a></li>
 
 		</ul>
 		<div id="documenter_copyright">Copyright tavonline 2018<br>
-			hecho con el <a href="http://rxa.li/documenter">Documenter v2.0</a>
+		made with the <a href="http://rxa.li/documenter">Documenter v2.0</a> 
 		</div>
 	</div>
 	<div id="documenter_content">
-		<section id="documenter_cover">
-			<h1>Plantilla de Portafolio GuIAFS</h1>
+	<section id="documenter_cover">
+	<h1>GuIAFS Porfolio Template</h1>
+	
+	<div id="documenter_buttons">
+		
+	</div>
+	<hr>
+	<ul>
+	<li>created: 02/03/2018</li>
+	<li>latest update: 02/03/2018</li>
+	<li>by: tavonline</li>
+	
+	<li>email: <a href="mailto:hi@tavonline.net">hi@tavonline.net</a></li>
+	</ul>
+	<p>First of all, thank you for purchasing the GuIAFS portfolio. You can find the detailed information about the template in this document. If there is anything you cannot find in this document, you can send an e-mail via the profile page.</p>
+	</section>
+	
+	<section id="html_structure">
+	<div class="page-header"><h3>Html Structure</h3><hr class="notop"></div>
+<div>
+	We are used Bootstrap3 framework in this template.</div>
+<div>
+	The general template structure is the same throughout the template. Here is the general structure.</div>
+<div>
+	&nbsp;</div>
+<h5>
+	12 Page Design</h5>
+<img style="width:100%; max-width:1000px" src="assets/css/img/html.png">
 
-			<div id="documenter_buttons">
-
-			</div>
-			<hr>
-			<ul>
-				<li>creado: 02/03/2018</li>
-				<li>última actualización: 02/03/2018</li>
-				<li>por: tavonline</li>
-
-				<li>email: <a href="mailto:hi@tavonline.net">hi@tavonline.net</a></li>
-			</ul>
-			<p>Antes que nada, gracias por adquirir el portafolio GuIAFS. Puedes encontrar información detallada sobre la
-				plantilla en este documento. Si hay algo que no puedas encontrar aquí, puedes enviar un correo a través
-				de la página de perfil.</p>
-		</section>
-
-		<section id="html_structure">
-			<div class="page-header">
-				<h3>Estructura HTML</h3>
-				<hr class="notop">
-			</div>
-			<div>
-				Se ha utilizado el framework Bootstrap 3 en esta plantilla.</div>
-			<div>
-				La estructura general es la misma en toda la plantilla. Aquí está la estructura general.</div>
-			<div>
-				&nbsp;</div>
-			<h5>
-				Diseño de 12 Páginas</h5>
-			<img style="width:100%; max-width:1000px" src="assets/css/img/html.png">
-
-		</section>
-		<section id="css_structure">
-			<div class="page-header">
-				<h3>Estructura CSS</h3>
-				<hr class="notop">
-			</div>
-			<div>
-				El archivo style.css contiene todos los estilos específicos para la página. El archivo está separado en
-				secciones utilizando:</div>
-			<pre class="prettyprint lang-css linenums">
+</section>
+<section id="css_structure">
+	<div class="page-header"><h3>Css Structure</h3><hr class="notop"></div>
+<div>
+	The style.css file contains all of the specific stylings for the page. The file is separated into sections using:</div>
+<pre class="prettyprint lang-css linenums">
 /* Table of Content
 ==================================================
 	
@@ -204,154 +137,128 @@
 	12. Responsive
 
 </pre>
-			<br>
-			<ul>
-				<!--Bootstrap.css -->
-				<li>
-					<h4 id="css_structure_strongbootstrapcss_strong"><strong>bootstrap.css</strong></h4>
-					<p>
-						Este archivo incluye los estilos principales de Bootstrap</p>
-					<a href="http://getbootstrap.com/">Fuente </a>
-				</li>
-				<!--fontawesome.css -->
-				<li>
-					<h4 id="css_structure_font_awesomecss"><strong>font-awesome.css</strong></h4>
-					<p>
-						Este archivo contiene estilos sobre la librería de iconos Fontawesome</p>
-					<a href="http://fontawesome.io">Fuente </a>
-				</li>
-				<!--essential.css-->
-				<li>
-					<h4 id="css_structure_essential"><strong>essential-icons.css</strong></h4>
-					<p>
-						Este archivo contiene estilos sobre la librería de iconos Essential</p>
-					<a href="http://www.essential-icons.com/">Fuente </a>
-				</li>
-				<!--reset.css-->
-				<li>
-					<h4 id="css_structure_resetcss"><strong>reset.css</strong></h4>
-					<p>
-						Restablece todos los estilos&nbsp;</p>
-					<a href="http://html5doctor.com/html-5-reset-stylesheet/">Fuente </a>
-				</li>
-
-				<!--magnific.css-->
-				<li>
-					<h4 id="css_structure_magnific_popupcss"><strong>magnific-popup.css</strong></h4>
-					<p>
-						Estilos del lightbox del portafolio</p>
-					<a href="http://dimsemenov.com/plugins/magnific-popup/">Fuente </a>
-				</li>
-				<!--scrollbar.css-->
-				<li>
-					<h4><strong>jquery.mCustomScrollbar.css</strong></h4>
-					<p>
-						Estilos del plugin jQuery de barra de desplazamiento personalizada</p>
-					<a href="http://manos.malihu.gr/jquery-custom-content-scroller/">Fuente </a>
-				</li>
-				<!--owl.css-->
-				<li>
-					<h4><strong>owl.theme.css & owl.carousel.css</strong></h4>
-					<p>
-						Archivos CSS del plugin deslizador Owl</p>
-					<a href="http://owlgraphic.com/owlcarousel/">Fuente </a>
-				</li>
-				<!--style.css-->
-				<li>
-					<h4 id="css_structure_stylecss"><strong>style.css</strong></h4>
-					<p>
-						Todos los estilos sobre la plantilla</p>
-				</li>
-			</ul>
-		</section>
-		<section id="javascripts">
-			<div class="page-header">
-				<h3>JavaScripts</h3>
-				<hr class="notop">
-			</div>
-			<ul>
-				<li>
-					<h4 id="javascripts_jquery_214minjs">jquery-2.1.4.min.js</h4>
-					<p>
-						jQuery es una librería de JavaScript rápida, pequeña y rica en funciones.</p>
-					<a href="http://jquery.com/">Fuente </a>
-				</li>
-				<li>
-					<h4 id="javascripts_isotopepkgdminjs">isotope.pkgd.min.js</h4>
-					<p>
-						Plugin de portafolio para jQuery</p>
-					<a href="http://isotope.metafizzy.co/">Fuente </a>
-				</li>
-				<li>
-					<h4>Ascensor.js</h4>
-					<p>Ascensor es un plugin de jQuery que tiene como objetivo entrenar y adaptar el contenido de
-						acuerdo con un sistema de ascensor.</p>
-					<a href="http://kirkas.ch/ascensor/#Home">Fuente </a>
-				</li>
-				<li>
-					<h4 id="javascripts_jqueryeasytabsminjs">isotope.pkgd.min.js</h4>
-					<p>
-						Plugin para filtro de portafolio y otras características</p>
-					<a href="http://isotope.metafizzy.co/">Fuente </a>
-				</li>
-				<li>
-					<h4>magnific-popup.min.js</h4>
-					<p>
-						Plugin lightbox para jQuery</p>
-					<a href="http://dimsemenov.com/plugins/magnific-popup/">Fuente </a>
-				</li>
-				</li>
-				<li>
-					<h4 id="javascripts_maincss">mCustomScrollbar.concat.min.js</h4>
-					<p>
-						Plugin de barra de desplazamiento personalizada para páginas</p>
-					<a href="http://manos.malihu.gr/jquery-custom-content-scroller/">Fuente </a>
-				</li>
-				</li>
-				<li>
-					<h4>owl.carousel.min.js</h4>
-					<p>
-						Plugin de deslizador carrusel Owl</p>
-					<a href="http://owlgraphic.com/owlcarousel/">Fuente </a>
-				</li>
-				<li>
-					<h4>bootstrap.min.js</h4>
-					<p>
-						Plugin JS de Bootstrap para características </p>
-					<a href="http://getbootstrap.com/">Fuente </a>
-				</li>
-				<li>
-					<h4>main.js</h4>
-					<p>
-						Este archivo contiene todos los scripts sobre el sitio.</p>
-				</li>
-			</ul>
-		</section>
-		<section id="credits">
-			<div class="page-header">
-				<h3>Créditos</h3>
-				<hr class="notop">
-			</div>
-			<ul>
-				<li>
-					<a href="http://getbootstrap.com/">Bootstrap</a>
-				</li>
-				<li>
-					<a href="https://www.google.com/fonts">Google Fonts</a>
-				</li>
-				<li>
-					<a href="http://www.shutterstock.com/">Shutterstock</a>
-				</li>
-				<li>
-					<a href="http://fontawesome.io/">Fontawesome</a>
-				</li>
-				<li>
-					<a href="http://www.essential-icons.com/">Essential Icons</a>
-				</li>
-			</ul>
-		</section>
+<br>
+<ul>
+	<!--Bootstrap.css -->
+	<li>
+		<h4 id="css_structure_strongbootstrapcss_strong"><strong>bootstrap.css</strong></h4>
+		<p>
+			This file includes core bootstrap styles</p>
+		<a href="http://getbootstrap.com/">Source </a></li>
+    <!--fontawesome.css -->
+	<li>
+		<h4 id="css_structure_font_awesomecss"><strong>font-awesome.css</strong></h4>
+		<p>
+			This file contains styles about Fontawesome icon library</p>
+		<a href="http://fontawesome.io">Source </a></li>
+     <!--essential.css-->
+     <li>
+		<h4 id="css_structure_essential"><strong>essential-icons.css</strong></h4>
+		<p>
+			This file contains styles about Essential icon library</p>
+		<a href="http://www.essential-icons.com/">Source </a></li>   
+    <!--reset.css--> 
+	<li>
+		<h4 id="css_structure_resetcss"><strong>reset.css</strong></h4>
+		<p>
+			Reset all styles&nbsp;</p>
+		<a href="http://html5doctor.com/html-5-reset-stylesheet/">Source </a></li>
+	
+    <!--magnific.css--> 
+    <li>
+		<h4 id="css_structure_magnific_popupcss"><strong>magnific-popup.css</strong></h4>
+		<p>
+			Portfolio lightbox styles</p>
+		<a href="http://dimsemenov.com/plugins/magnific-popup/">Source </a></li>
+   <!--scrollbar.css--> 
+    <li>
+		<h4><strong>jquery.mCustomScrollbar.css</strong></h4>
+		<p>
+			Page custom scrollbar jquery plugin styles</p>
+		<a href="http://manos.malihu.gr/jquery-custom-content-scroller/">Source </a></li>
+    <!--owl.css--> 
+    <li>
+		<h4><strong>owl.theme.css & owl.carousel.css</strong></h4>
+		<p>
+			Owl slider plugin css files	</p>
+		<a href="http://owlgraphic.com/owlcarousel/">Source </a></li>
+	<!--style.css--> 
+    <li>
+		<h4 id="css_structure_stylecss"><strong>style.css</strong></h4>
+		<p>
+			All styles about template</p>
+	</li>
+</ul>
+</section>
+<section id="javascripts">
+	<div class="page-header"><h3>JavaScripts</h3><hr class="notop"></div>
+<ul>
+	<li>
+		<h4 id="javascripts_jquery_214minjs">jquery-2.1.4.min.js</h4>
+		<p>
+			jQuery is a fast, small, and feature-rich JavaScript library.</p>
+		<a href="http://jquery.com/">Source </a></li>
+	<li>
+		<h4 id="javascripts_isotopepkgdminjs">isotope.pkgd.min.js</h4>
+		<p>
+			jQuery portfolio plugin</p>
+		<a href="http://isotope.metafizzy.co/">Source </a></li>
+	<li>
+		<h4>Ascensor.js</h4>
+		<p>Ascensor is a jquery plugin which aims to train and adapt content according to an elevator system.</p>
+		<a href="http://kirkas.ch/ascensor/#Home">Source </a></li>
+	<li>
+		<h4 id="javascripts_jqueryeasytabsminjs">isotope.pkgd.min.js</h4>
+		<p>
+			Porfolio filter and other features plugin</p>
+		<a href="http://isotope.metafizzy.co/">Source </a></li>
+    <li>
+		<h4>magnific-popup.min.js</h4>
+		<p>
+			Jquery lightbox plugin</p>
+            <a href="http://dimsemenov.com/plugins/magnific-popup/">Source </a></li>
+	</li>
+    <li>
+		<h4 id="javascripts_maincss">mCustomScrollbar.concat.min.js</h4>
+		<p>
+			Pages custom scrollbar plugin</p>
+            <a href="http://manos.malihu.gr/jquery-custom-content-scroller/">Source </a></li>
+	</li>
+    <li>
+		<h4>owl.carousel.min.js</h4>
+		<p>
+			Owl carousel slider plugin</p>
+            <a href="http://owlgraphic.com/owlcarousel/">Source </a>
+	</li>
+     <li>
+		<h4>bootstrap.min.js</h4>
+		<p>
+			Bootstrap js plugin for features </p>
+            <a href="http://getbootstrap.com/">Source </a>
+	</li>
+	<li>
+		<h4>main.js</h4>
+		<p>
+			This file contains all script about site.</p>
+	</li>
+</ul>
+</section>
+<section id="credits">
+	<div class="page-header"><h3>Credits</h3><hr class="notop"></div>
+<ul>
+	<li>
+		<a href="http://getbootstrap.com/">Bootstrap</a></li>
+	<li>
+		<a href="https://www.google.com/fonts">Google Fonts</a></li>
+	<li>
+		<a href="http://www.shutterstock.com/">Shutterstock</a></li>
+	<li>
+		<a href="http://fontawesome.io/">Fontawesome</a></li>
+   <li>
+		<a href="http://www.essential-icons.com/">Essential Icons</a></li>
+</ul>
+</section>
 
 	</div>
 </body>
-
 </html>

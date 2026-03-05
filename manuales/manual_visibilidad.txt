@@ -1,2 +1,0 @@
-Este es el manual oficial del Agente de Visibilidad de AFS.
-Aquí debes pegar el contenido del manual correspondiente a esta área.
