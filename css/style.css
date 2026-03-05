@@ -1,0 +1,743 @@
+/* --------------------------------- */
+/* Css Styles                        */
+/*---------------------------------- */
+
+/**
+	GuÍAFS - Tu asistente personal 
+	Author : Maximiliano Collado
+	Copyright 2024
+
+/* Table of Content
+==================================================
+	
+	1. Body and Core Css
+	2. Home Page
+     2.1 Portfolio Section
+     2.2 Twitter Section
+
+
+
+/*------------------------ 1 Body and Core Css ------------------------*/
+
+html {
+    height: auto !important;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    height: auto !important;
+    font-weight: 500;
+}
+
+.full-open header {
+    position: fixed;
+}
+
+header {
+    padding: 30px;
+    width: 100%;
+    position: absolute;
+    z-index: 5;
+
+}
+
+/* Preloader */
+
+
+.preloader {
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    z-index: 99999;
+}
+
+.preloader .loader {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 4px solid #000;
+    -o-animation: loader 2s infinite ease;
+    -ms-animation: loader 2s infinite ease;
+    -moz-animation: loader 2s infinite ease;
+    -webkit-animation: loader 2s infinite ease;
+    animation: loader 2s infinite ease;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.preloader .loader .loader-inner {
+    display: inline-block;
+    width: 100%;
+    vertical-align: top;
+    background-color: #000;
+    -o-animation: loader-inner 2s infinite ease-in;
+    -ms-animation: loader-inner 2s infinite ease-in;
+    -moz-animation: loader-inner 2s infinite ease-in;
+    -webkit-animation: loader-inner 2s infinite ease-in;
+    animation: loader-inner 2s infinite ease-in;
+}
+
+@keyframes loader {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(180deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    75% {
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loader-inner {
+    0% {
+        height: 0%;
+    }
+
+    25% {
+        height: 0%;
+    }
+
+    50% {
+        height: 100%;
+    }
+
+    75% {
+        height: 100%;
+    }
+
+    100% {
+        height: 0%;
+    }
+}
+
+/* Margins */
+
+.top_15 {
+    margin-top: 15px;
+}
+
+.top_30 {
+    margin-top: 30px;
+}
+
+.top_45 {
+    margin-top: 45px;
+}
+
+.top_60 {
+    margin-top: 60px;
+}
+
+.top_90 {
+    margin-top: 90px;
+}
+
+.top_120 {
+    margin-top: 120px;
+}
+
+.padding_30 {
+    padding: 30px 0;
+}
+
+.padding_45 {
+    padding: 45px 0;
+}
+
+.padding_60 {
+    padding: 60px 0;
+}
+
+.padding_90 {
+    padding: 90px 0;
+}
+
+.padding_120 {
+    padding: 120px 0;
+}
+
+.bottom_15 {
+    margin-bottom: 15px;
+}
+
+.bottom_30 {
+    margin-bottom: 30px;
+}
+
+.bottom_45 {
+    margin-bottom: 45px;
+}
+
+.bottom_60 {
+    margin-bottom: 60px;
+}
+
+.bottom_90 {
+    margin-bottom: 90px;
+}
+
+.bottom_120 {
+    margin-bottom: 120px;
+}
+
+.padbot_15 {
+    padding-bottom: 15px;
+}
+
+.padbot_30 {
+    padding-bottom: 30px;
+}
+
+.padbot_45 {
+    padding-bottom: 45px;
+}
+
+.padbot_60 {
+    padding-bottom: 60px;
+}
+
+
+
+.subtitle {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.site-btn {
+    font-size: 15px;
+    font-weight: 600;
+    color: #000;
+    border: solid 2px #007ac2;
+    border-radius: 50px;
+    padding: 11px 45px;
+    text-decoration: none;
+    /* Old browsers */
+    background-size: 202% 100%;
+    background-position: right bottom;
+    margin-left: 10px;
+    transition: all 1s ease;
+    display: inline-block;
+}
+
+.site-btn:hover {
+    background-position: left bottom;
+    text-decoration: none;
+    color: #fff !important;
+}
+
+.site-btn.arrow {
+    font-size: 14px;
+    padding: 11px 22px;
+}
+
+.site-btn.arrow:after {
+    font-family: 'Font Awesome 5 Free';
+    content: "\f30b";
+    font-weight: 900;
+    float: right;
+    margin-left: 32px;
+}
+
+.site-btn2 {
+    background: #212121;
+    font-size: 15px;
+    font-weight: 500;
+    border: 0;
+    border-radius: 50px;
+    padding: 12px 60px;
+    color: #fff;
+    cursor: pointer;
+    line-height: 25px;
+    transition: all ease 0.3s;
+    -webkit-transition: all ease 0.3s;
+}
+
+.site-btn2:hover {
+    transition: all ease 0.3s;
+    -webkit-transition: all ease 0.3s;
+}
+
+
+/*------------------------ 2 Home Page ------------------------*/
+
+.wrapper {
+    position: relative;
+    z-index: 1;
+    background: #fff;
+    overflow: hidden;
+    box-shadow: 0px 0px 32px 0px rgba(0, 0, 0, 0.10);
+    padding-bottom: 0px !important;
+}
+
+.cont {
+    width: 70%;
+    margin-left: 15%;
+}
+
+.home {
+    display: table;
+    width: 100%;
+    padding: 3%;
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 6;
+}
+
+.home .home-content {
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.home .home-content .hero-title {
+    font-size: 140px;
+    font-weight: 900;
+    letter-spacing: -4px;
+    line-height: 125px;
+}
+
+.home .home-content p {
+    font-size: 28px;
+    color: #b7b7b7;
+    font-weight: 500;
+}
+
+.home .home-content p span {
+    color: #000;
+    font-weight: 900;
+}
+
+.home .home-content .social {
+    right: 0;
+    top: 0;
+    position: absolute;
+    top: 45%;
+    -webkit-transform: translateY(-60%);
+    transform: translateY(-60%);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    margin-right: -155px;
+    z-index: 6;
+}
+
+.home .home-content .social a {
+    display: block;
+    color: #000;
+    font-size: 13px;
+    margin-top: 10px;
+    float: left;
+    margin-right: 15px;
+    -webkit-transition: all ease 0.3s;
+    transition: all ease 0.3s;
+    font-weight: 600;
+}
+
+
+.home .home-content .social a.text {
+    margin-right: 0;
+}
+
+.home .home-content .social a i {
+    -webkit-transition: all ease 0.3s;
+    transition: all ease 0.3s;
+}
+
+.home .home-content .social a:hover i {
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    -webkit-transition: all ease 0.3s;
+    transition: all ease 0.3s;
+}
+
+.home .home-content .line {
+    float: left;
+    width: 72px;
+    background: #bfbfbf;
+    height: 1px;
+    margin: 20px 17px;
+}
+
+
+
+/*------------------------ 2.1 Portfolio Section ------------------------*/
+
+
+#portfolio {
+    position: relative;
+}
+
+.portfolio .portfolio-filter {
+    margin-bottom: 15px;
+    float: left;
+    transform: rotate(-90deg);
+    margin-top: 193px;
+    margin-left: -250px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.portfolio .portfolio-filter div {
+    cursor: pointer;
+}
+
+.portfolio .portfolio-filter div {
+    list-style: none;
+    float: left;
+    color: #a8a8a8;
+    font-size: 15px;
+    margin-right: 20px;
+}
+
+.portfolio .portfolio-filter .cbp-filter-item-active {
+    color: #000 !important;
+}
+
+.portfolio .grid-container .cbp-item img {
+    width: 100%;
+}
+
+.cbp-item figure {
+    margin: 0;
+    position: relative;
+    float: left;
+    overflow: hidden;
+    width: 100%;
+    color: #000;
+    text-align: left;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+.cbp-item figure:hover img {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+    zoom: 1;
+    filter: alpha(opacity=40);
+    -webkit-opacity: .4;
+    opacity: .4;
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+
+.cbp-item figure figcaption,
+.cbp-item figure:after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.cbp-item figure:after {
+    content: '';
+    background-color: rgba(255, 255, 255, 0.65);
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+    opacity: 0;
+}
+
+.cbp-item figure figcaption h3 {
+    line-height: 1.1em;
+    font-size: 22px;
+    opacity: 0;
+    width: 100%;
+    padding: 0;
+    color: #fff;
+    -webkit-transform: translateY(-40px);
+    transform: translateY(-40px);
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+}
+
+.cbp-item figure p {
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    opacity: 0;
+    top: 50%;
+    color: #ffffffbd;
+    -webkit-transform: translateY(40px);
+    transform: translateY(40px);
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+}
+
+.cbp-item figure figcaption:hover h3,
+.cbp-item figure figcaption:hover p {
+    -webkit-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+    opacity: 1;
+}
+
+.cbp-item .shine {
+    opacity: 0.3;
+}
+
+.portfolio .site-btn {
+    margin: 0 auto;
+}
+
+.cbp-item figure img,
+.work figure {
+    width: 100%;
+}
+
+.cbp-l-loadMore-link {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #000 !important;
+    font-family: 'Montserrat', sans-serif !important;
+    border-radius: 50px;
+    background-size: 202% 100%;
+    background-position: right bottom;
+    margin-left: 10px;
+    transition: all 1s ease !important;
+}
+
+.cbp-l-loadMore:hover {
+    background-position: left bottom;
+    text-decoration: none;
+    color: #fff !important;
+}
+
+.classic-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #121212;
+}
+
+
+
+/*------------------------ 2.2 Footer Section ------------------------*/
+
+footer {
+    width: 100%;
+    position: relative !important;
+    z-index: 10 !important;
+    padding: 20px 0 10px 0 !important;
+    margin-bottom: 0 !important;
+    background: #111;
+    border-top: 1px solid #333;
+}
+
+footer .copyright p {
+    color: #666;
+    font-size: 14px;
+    margin: 0;
+    font-weight: 400;
+}
+
+
+
+input.inp {
+    width: 100%;
+    margin-bottom: 30px;
+    border: solid 3px #212121;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    height: 54px;
+    font-size: 13px;
+    padding-left: 15px;
+    outline: 0;
+}
+
+textarea.form-message {
+    width: 100%;
+    margin-bottom: 30px;
+    border: solid 3px #212121;
+    border-radius: 23px;
+    -webkit-border-radius: 23px;
+    font-size: 13px;
+    padding: 15px;
+    outline: 0;
+}
+
+.contact .contact-info a {
+    color: #5f5e5f;
+    font-weight: 500;
+    margin-bottom: 15px;
+    display: block;
+    text-decoration: none;
+}
+
+
+
+
+
+/*------------------------ Responsive ------------------------*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    header {
+        padding: 22px;
+    }
+
+    .home .home-content .hero-title {
+        font-size: 80px !important;
+        line-height: 1.1;
+    }
+
+    .cont {
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    .hero-inner .cont {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    header {
+        padding: 18px;
+    }
+
+    .home .home-content .hero-title {
+        font-size: 60px !important;
+        line-height: 1.1;
+    }
+
+    .cont {
+        width: 90%;
+        margin-left: 5%;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 16px;
+    }
+
+    .home .home-content .hero-title {
+        font-size: 40px !important;
+        line-height: 1.1;
+    }
+
+    .cont {
+        width: 95%;
+        margin-left: 2.5%;
+        margin-top: 40px !important;
+    }
+
+    .cbp-item figure figcaption h3 {
+        font-size: 0.9rem !important;
+    }
+}
+
+/* ==========================================================================
+   AJUSTES FINALES GUÍAFS
+   ========================================================================== */
+
+/* 1. Ajuste de distancias */
+.home-content {
+    padding-bottom: 0px !important;
+}
+
+.portfolio {
+    padding-top: 0px !important;
+}
+
+@media (min-width: 481px) {
+    .cont {
+        margin-top: -20px !important;
+        position: relative;
+        z-index: 10;
+    }
+}
+
+/* 2. Color Azul AFS effect */
+.cbp-item figure:after {
+    background-color: rgba(0, 122, 194, 0.9) !important;
+}
+
+/* 3. Estilo de los nombres de los Agentes */
+.cbp-item figure figcaption h3 {
+    font-size: 1.1rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    color: #ffffff !important;
+}
+
+/* 4. Estilos del Modal */
+.mi-modal-afs {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.mi-modal-contenido {
+    background-color: #1a1a1a;
+    margin: 5% auto;
+    width: 85%;
+    max-width: 900px;
+    border: 2px solid #007ac2;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 5px 30px rgba(0, 122, 194, 0.3);
+}
+
+.mi-modal-cerrar {
+    color: #fff;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.mi-modal-cerrar:hover {
+    color: #007ac2;
+}
+
+/* 5. Consolidación Footer */
+footer {
+    position: relative !important;
+    z-index: 10 !important;
+    padding: 15px 0 5px 0 !important;
+    margin-bottom: 0 !important;
+    background: #111;
+    border-top: 1px solid #333;
+}
+
+body {
+    padding-bottom: 0 !important;
+}

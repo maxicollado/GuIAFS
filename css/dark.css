@@ -1,0 +1,58 @@
+.home {
+    background-size: 100%;
+    position: relative;
+}
+
+.wrapper {
+    background: transparent !important;
+}
+
+#particles-js {
+    opacity: .6;
+}
+
+.cbp-l-loadMore-link {
+    color: #fff !important;
+}
+
+.site-btn {
+    color: #fff;
+}
+
+.home .home-content .hero-title {
+    color: #fff;
+}
+
+.home .home-content p span {
+    color: #fff;
+}
+
+.portfolio .portfolio-filter .cbp-filter-item-active {
+    color: #fff !important;
+}
+
+footer {
+    background: #111;
+    border-top: 1px solid #333;
+}
+
+hr {
+    background: #454545;
+    height: 1px;
+}
+
+p {
+    color: #e0e0e0;
+}
+
+.preloader .loader {
+    border: 4px solid #fff;
+}
+
+.preloader .loader .loader-inner {
+    background-color: #fff;
+}
+
+.preloader {
+    background-color: #000;
+}

@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>GuÍAFS - Tu asistente personal</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="GuÍAFS - Asistente IA para voluntarios AFS">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="cubeportfolio/css/cubeportfolio.min.css" />
+    <link rel="stylesheet" href="css/colors/red.css" id="color" />
+    <link rel="stylesheet" href="css/style.css?v=2" />
+    <link rel="stylesheet" href="css/dark.css?v=2" />
+    <link rel="stylesheet" href="css/premium.css?v=2" />
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="icon-fonts/fontawesome-5.0.6/css/fontawesome-all.min.css" />
+
+    <style>
+        .mi-modal-afs {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        /* Asistente-inspired Modal Designs Only */
+        .mi-modal-contenido {
+            background-color: #111111;
+            margin: 5% auto;
+            width: 85%;
+            max-width: 900px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+            color: #ffffff;
+        }
+
+        .mi-modal-contenido h3 {
+            color: #ffffff !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+            font-weight: 700;
+        }
+
+        .mi-modal-cerrar {
+            color: #a0a0a0;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .mi-modal-cerrar:hover {
+            color: #ffffff;
+        }
+
+        /* Chat History Background */
+        div[id^="chat-historial"] {
+            background: #0a0a0a !important;
+        }
+
+        /* Chat Input Area */
+        .mi-modal-contenido div[style*="background: #1a1a1a"] {
+            background: #0a0a0a !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .mi-modal-contenido input[type="text"] {
+            background: #1a1a1a !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            color: #ffffff !important;
+        }
+
+        .mi-modal-contenido input[type="text"]:focus {
+            border-color: #007ac2 !important;
+            box-shadow: 0 0 0 2px rgba(0, 122, 194, 0.2) !important;
+        }
+
+        /* Send Button */
+        .mi-modal-contenido button {
+            background: #007ac2 !important;
+            color: white !important;
+            border-radius: 50% !important;
+            /* Circular send button */
+            padding: 12px 15px !important;
+            box-shadow: 0 5px 15px rgba(0, 122, 194, 0.3) !important;
+            transition: all 0.3s ease;
+        }
+
+        .mi-modal-contenido button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 122, 194, 0.5) !important;
+        }
+
+        /* Greeting bubbles animation (Asistente-style) */
+        @keyframes bubbleEnter {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .greeting-bubble {
+            animation: bubbleEnter 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        }
+
+        /* Typing indicator (3 bouncing dots) */
+        .typing-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 12px 18px;
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .typing-indicator span {
+            width: 7px;
+            height: 7px;
+            background: #a0a0a0;
+            border-radius: 50%;
+            animation: typingDot 1.2s infinite ease-in-out;
+        }
+
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typingDot {
+
+            0%,
+            60%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.4;
+            }
+
+            30% {
+                transform: translateY(-6px);
+                opacity: 1;
+            }
+        }
+
+        /* Ajustes responsivos para textos y modales */
+        @media (max-width: 600px) {
+            .hero-title {
+                font-size: 2.8rem !important;
+            }
+
+            .home-content p {
+                font-size: 1rem !important;
+            }
+
+            .mi-modal-contenido {
+                width: 100% !important;
+                height: 95dvh !important;
+                /* ocupa casi toda la pantalla */
+                max-width: 100% !important;
+                margin: 0 !important;
+                border-radius: 0 !important;
+                padding: 15px !important;
+                display: flex !important;
+                flex-direction: column !important;
+                /* Posiciona el panel al fondo como una bottom-sheet */
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+            }
+
+            /* El área de chat crece para llenar el espacio restante */
+            .mi-modal-contenido>div[style*="height: 60vh"] {
+                flex: 1 !important;
+                height: auto !important;
+            }
+
+            .mi-modal-contenido h3 {
+                font-size: 1.1rem !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- PRELOADER PREMIUM AFS -->
+    <div class="preloader">
+        <div class="logo-loader">
+            <div class="logo-fill-wrapper">
+                <div class="logo-loader-inner"></div>
+            </div>
+        </div>
+    </div>
+
+    <header
+        style="display: flex; justify-content: space-between; align-items: center; padding: 20px 30px; position: absolute; width: 100%; top: 0; z-index: 100;">
+        <a href="index.html" style="display: inline-block;">
+            <img class="logo"
+                src="https://d22dvihj4pfop3.cloudfront.net/wp-content/uploads/sites/114/2019/02/25135155/Logos-AFS-01-e1551124361258.png"
+                alt="Logos-AFS" style="width: 120px !important; height: auto !important;">
+        </a>
+        <div class="header-ai-warning">
+            <i class="fas fa-exclamation-triangle" style="color: #007ac2; margin-right: 5px;"></i>
+            La información generada por IA puede contener errores. <br>
+            <span>Consultar a la OC (Oficina Central) ante cualquier duda.</span>
+        </div>
+    </header>
+
+    <div class="wrapper">
+        <section class="home" id="home-hero" style="padding-top: 50px; padding-bottom: 25px;">
+            <div class="hero-overlay"></div>
+            <div class="home-content"
+                style="vertical-align: top; padding-top: 110px; position: relative; z-index: 2; width: 100%;">
+                <div class="hero-main-text">
+                    <h1 class="hero-title"
+                        style="font-size: 4.5rem; margin-top: 0px !important; line-height: 1;letter-spacing: -2px;">
+                        GuÍAFS <br>
+                        <span
+                            style="font-size: 0.7em !important; display: block; margin-top: 1px; color: #007ac2 !important;">
+                            Tu asistente personal
+                        </span>
+                    </h1>
+
+                    <p style="font-size: 1.2rem !important; line-height: 1.6; max-width: auto;">
+                        Potenciamos tu acción voluntaria con inteligencia y experiencia AFS. <br> Todo el
+                        conocimiento de
+                        nuestros manuales oficiales, a un mensaje de distancia.
+                        <br> Acá podes: <span class="element" data-text1="Hacer consultas generales"
+                            data-text2="Consultar segun tu rol" data-text3="Conocer otros roles" data-loop="true"
+                            data-backdelay="1500"></span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="cont">
+            <section id="portfolio" class="portfolio">
+                <div id="grid-container">
+
+                    <!-- 1. GENERAL (Main featured agent) -->
+                    <div class="cbp-item main-item branding cbp-item-tall agente-general">
+                        <a href="#" onclick="abrirModalAgente('general'); return false;">
+                            <figure class="fig">
+                                <img src="images/agents/general/1.webp" alt="General 1" loading="eager">
+                                <img src="images/agents/general/2.jpg" alt="General 2" loading="lazy">
+                                <img src="images/agents/general/3.jpg" alt="General 3" loading="lazy">
+                                <figcaption>
+                                    <h3>PRIMEROS PASOS</h3>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </div>
+
+                    <!-- 2. HOSTING -->
+                    <div class="cbp-item main-item digital agente-hosting">
+                        <a href="#" onclick="abrirModalAgente('hosting'); return false;">
+                            <figure class="fig">
+                                <img src="images/agents/hosting/1.webp" alt="Hosting 1" loading="eager">
+                                <img src="images/agents/hosting/2.jpg" alt="Hosting 2" loading="lazy">
+                                <img src="images/agents/hosting/3.jpg" alt="Hosting 3" loading="lazy">
+                                <figcaption>
+                                    <h3>HOSTING</h3>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </div>
+
+                    <!-- 3. SENDING -->
+                    <div class="cbp-item main-item digital agente-sending">
+                        <a href="#" onclick="abrirModalAgente('sending'); return false;">
+                            <figure class="fig">
+                                <img src="images/agents/sending/1.webp" alt="Sending 1" loading="eager">
+                                <img src="images/agents/sending/2.jpg" alt="Sending 2" loading="lazy">
+                                <img src="images/agents/sending/3.jpg" alt="Sending 3" loading="lazy">
+                                <figcaption>
+                                    <h3>SENDING</h3>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </div>
+
+                    <!-- 4. COMUNIDADES EDUCATIVAS -->
+                    <div class="cbp-item main-item digital agente-comunidades">
+                        <a href="#" onclick="abrirModalAgente('comunidades'); return false;">
+                            <figure class="fig">
+                                <img src="images/agents/comunidades/1.webp" alt="Comunidades 1" loading="eager">
+                                <img src="images/agents/comunidades/2.jpg" alt="Comunidades 2" loading="lazy">
+                                <img src="images/agents/comunidades/3.jpg" alt="Comunidades 3" loading="lazy">
+                                <figcaption>
+                                    <h3>COMUNIDADES EDUCATIVAS</h3>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </div>
+
+                    <!-- 5. APOYO AL PARTICIPANTE -->
+                    <div class="cbp-item main-item digital agente-apoyo">
+                        <a href="#" onclick="abrirModalAgente('apoyo'); return false;">
+                            <figure class="fig">
+                                <img src="images/agents/apoyo/1.webp" alt="Apoyo 1" loading="eager">
+                                <img src="images/agents/apoyo/2.jpg" alt="Apoyo 2" loading="lazy">
+                                <img src="images/agents/apoyo/3.jpg" alt="Apoyo 3" loading="lazy">
+                                <figcaption>
+                                    <h3>APOYO AL PARTICIPANTE</h3>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </div>
+
+                    <!-- 6. DESARROLLO -->
+                    <div class="cbp-item main-item digital agente-desarrollo">
+                        <a href="#" onclick="abrirModalAgente('desarrollo'); return false;">
+                            <figure class="fig">
+                                <img src="images/agents/desarrollo/1.webp" alt="Desarrollo 1" loading="lazy">
+                                <img src="images/agents/desarrollo/2.jpg" alt="Desarrollo 2" loading="lazy">
+                                <img src="images/agents/desarrollo/3.jpg" alt="Desarrollo 3" loading="lazy">
+                                <figcaption>
+                                    <h3>DESARROLLO VOLUNTARIO</h3>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </div>
+
+                    <!-- 7. ORIENTACIONES LOCALES -->
+                    <div class="cbp-item digital agente-orientaciones">
+                        <a href="#" onclick="abrirModalAgente('orientaciones'); return false;">
+                            <figure class="fig">
+                                <img src="images/agents/orientaciones/1.webp" alt="Orientaciones Locales 1"
+                                    loading="lazy">
+                                <img src="images/agents/orientaciones/2.jpg" alt="Orientaciones Locales 2"
+                                    loading="lazy">
+                                <img src="images/agents/orientaciones/3.jpg" alt="Orientaciones Locales 3"
+                                    loading="lazy">
+                                <figcaption>
+                                    <h3>ORIENTACIONES LOCALES</h3>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </div>
+
+                    <!-- 8. RELACIONES INSTITUCIONALES -->
+                    <div class="cbp-item digital agente-relaciones">
+                        <a href="#" onclick="abrirModalAgente('relaciones'); return false;">
+                            <figure class="fig">
+                                <img src="images/agents/relaciones/1.webp" alt="Relaciones 1" loading="lazy">
+                                <img src="images/agents/relaciones/2.jpg" alt="Relaciones 2" loading="lazy">
+                                <img src="images/agents/relaciones/3.jpg" alt="Relaciones 3" loading="lazy">
+                                <figcaption>
+                                    <h3>RELACIONES INSTITUCIONALES</h3>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </div>
+
+                    <!-- 9. VISIBILIDAD -->
+                    <div class="cbp-item digital agente-visibilidad">
+                        <a href="#" onclick="abrirModalAgente('visibilidad'); return false;">
+                            <figure class="fig">
+                                <img src="images/agents/visibilidad/1.webp" alt="Visibilidad 1" loading="lazy">
+                                <img src="images/agents/visibilidad/2.jpg" alt="Visibilidad 2" loading="lazy">
+                                <img src="images/agents/visibilidad/3.jpg" alt="Visibilidad 3" loading="lazy">
+                                <figcaption>
+                                    <h3>VISIBILIDAD</h3>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </div>
+
+                    <!-- 10. FINANZAS -->
+                    <div class="cbp-item digital agente-finanzas">
+                        <a href="#" onclick="abrirModalAgente('finanzas'); return false;">
+                            <figure class="fig">
+                                <img src="images/agents/finanzas/1.webp" alt="Finanzas 1" loading="lazy">
+                                <img src="images/agents/finanzas/2.jpg" alt="Finanzas 2" loading="lazy">
+                                <img src="images/agents/finanzas/3.jpg" alt="Finanzas 3" loading="lazy">
+                                <figcaption>
+                                    <h3>FINANZAS</h3>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </div>
+
+                    <!-- 11. PRESIDENTES -->
+                    <div class="cbp-item digital agente-presidentes">
+                        <a href="#" onclick="abrirModalAgente('presidentes'); return false;">
+                            <figure class="fig">
+                                <img src="images/agents/presidentes/1.webp" alt="Presidentes 1" loading="lazy">
+                                <img src="images/agents/presidentes/2.jpg" alt="Presidentes 2" loading="lazy">
+                                <img src="images/agents/presidentes/3.jpg" alt="Presidentes 3" loading="lazy">
+                                <figcaption>
+                                    <h3>PRESIDENTES</h3>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="text-center" style="margin-top: 40px; margin-bottom: 20px;">
+                    <button id="verMasBtn" class="site-btn"
+                        style="cursor: pointer; background: transparent; color: #ffffff;">Ver más</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- MODAL ÚNICO DINÁMICO (Optimización de Rendimiento) -->
+        <div id="modalDinamico" class="mi-modal-afs">
+            <div class="mi-modal-contenido"
+                style="width: 92%; max-width: 1100px; margin: 3% auto; border-radius: 20px;">
+                <span class="mi-modal-cerrar" onclick="$('#modalDinamico').fadeOut();">&times;</span>
+                <h3 id="modal-titulo"
+                    style="color: white; margin-top: 0; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; font-weight: 800; letter-spacing: -0.02em;">
+                    <i class="fas fa-robot" style="color:#007ac2;"></i> Cargando...
+                </h3>
+                <div
+                    style="height: 70vh; background: #0c0c0c; border-radius: 12px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+                    <!-- BANNER DE PRIVACIDAD (Cumplimiento Política IA AFS) -->
+                    <div class="privacy-banner">
+                        <i class="fas fa-user-shield"></i> No ingreses datos personales, financieros o información
+                        confidencial. Las consultas son anónimas.
+                    </div>
+                    <div id="chat-historial-dinamico"
+                        style="flex-grow: 1; overflow-y: auto; padding: 25px; font-size: 1rem; line-height: 1.6; scroll-behavior: smooth;">
+                        <!-- El contenido se genera dinámicamente según el agente -->
+                    </div>
+                    <div
+                        style="display: flex; padding: 20px; background: #141414; border-top: 1px solid rgba(255,255,255,0.08);">
+                        <input type="text" id="chat-input-dinamico" placeholder="Escribe tu consulta aquí..."
+                            style="flex-grow: 1; padding: 14px 24px; border-radius: 30px; border: 1px solid #333; background: #1a1a1a; color: white; outline: none; font-size: 1rem; transition: border-color 0.3s;">
+                        <button onclick="enviarMensajeIA()"
+                            style="margin-left: 15px; padding: 10px 30px; background: #007ac2; color: white; border: none; border-radius: 30px; cursor: pointer; font-weight: bold; transition: all 0.3s; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-paper-plane" style="margin-right: 8px;"></i> </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer style="background: #111; padding: 20px 0 10px 0; border-top: 1px solid #333;">
+            <div class="cont" style="margin-top: 0 !important;">
+                <div class="row"
+                    style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; padding: 0 15px;">
+                    <div class="copyright" style="text-align: left;">
+                        <p style="color: #666; font-size: 14px; margin: 0;">© Maximiliano Collado - GuÍAFS</p>
+                    </div>
+                    <div class="policy-link-container">
+                        <button onclick="abrirPoliticaIA()" class="footer-policy-btn">
+                            Política de IA / AI Policy
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MODAL POLÍTICA DE IA (Bilingüe) -->
+        <div id="modalPolitica" class="mi-modal-afs" style="display:none;">
+            <div class="mi-modal-contenido" style="width: 90%; max-width: 900px; margin: 2% auto; border-radius: 20px;">
+                <span class="mi-modal-cerrar" onclick="$('#modalPolitica').fadeOut();">&times;</span>
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 20px;">
+                    <h3 style="color: white; margin: 0; font-weight: 800; letter-spacing: -0.02em;">
+                        <i class="fas fa-shield-alt" style="color:#007ac2; margin-right: 10px;"></i>
+                        <span id="politica-titulo">Política de IA</span>
+                    </h3>
+                    <button onclick="toggleIdiomaPolitica()" class="lang-switch-btn">
+                        <i class="fas fa-language"></i> <span id="lang-btn-text">English</span>
+                    </button>
+                </div>
+                <div id="politica-cuerpo"
+                    style="height: 65vh; overflow-y: auto; padding-right: 10px; color: #ccc; font-size: 0.95rem; line-height: 1.6;">
+                    <!-- El contenido se carga dinámicamente -->
+                </div>
+            </div>
+        </div>
+
+        <script src="js/jquery-2.1.4.min.js"></script>
+        <script src="cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
+        <script src="js/typed.js"></script>
+        <script src="js/jquery.hover3d.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/jquery.cookie-1.4.1.min.js"></script>
+        <script src="js/agente-general.js"></script>
+        <script>
+            // ============================================
+            // ANIMACIÓN DE SALUDO (Estilo Conversación)
+            // Burbujas secuenciales: indicador de escritura -> mensaje
+            // ============================================
+            var greetingMessages = {
+                'general': [
+                    '👋 ¡Hola! Soy GuÍAFS, podes consultarme lo que quieras sobre AFS.',
+                    '📖 Puedo ayudarte con:\n🔹 Términos y glosario AFS\n🔹 Dudas generales sobre la organización, etc.',
+                    '¿Con qué te gustaría empezar?'
+                ],
+                'hosting': [
+                    '👋 ¡Hola! Soy el Agente de Hosting.',
+                    '🏠 Puedo ayudarte con:\n🔹 Entrevistas a familias\n🔹 Estrategias para llegar al deadline',
+                    '¿Qué te gustaría saber sobre el proceso de Hosting?'
+                ],
+                'sending': [
+                    '👋 ¡Hola! Soy el Agente de Sending.',
+                    '✈️ Puedo ayudarte con:\n🔹 Portfolios de postulantes\n🔹 Requisitos y procesos\n🔹',
+                    '¿Con qué arrancamos?'
+                ],
+                'comunidades': [
+                    '👋 ¡Hola! Soy el Agente de Comunidades Educativas.',
+                    '🎓 Puedo ayudarte con:\n🔹 Relación AFS y comunidades educativas\n🔹 Talleres para docentes y estudiantes',
+                    '¿Cómo puedo ayudarte hoy?'
+                ],
+                'visibilidad': [
+                    '👋 ¡Hola! Soy el Agente de Visibilidad y Comunicación.',
+                    '📢 Puedo ayudarte con:\n🔹 Estrategias de comunicación\n🔹 Manuales de marca o ajustes en la redacción',
+                    '¿Qué necesitas saber sobre visibilidad?'
+                ],
+                'orientaciones': [
+                    '👋 ¡Hola! Soy el Agente de Orientaciones Locales.',
+                    '🗺️ Puedo ayudarte con:\n🔹 Organización de orientaciones\n🔹 Actividades para participantes',
+                    '¿Con qué orientación puedo ayudarte?'
+                ],
+                'presidentes': [
+                    '👋 ¡Hola! Soy el Agente para presidentes.',
+                    '🏛️ Puedo ayudarte con:\n🔹 Estrategias de trabajo en equipo\n🔹 Roles y Responsabilidades, como apoyar a tu equipo de coordinadores',
+                    '¿Con qué te gustaría empezar?'
+                ],
+                'finanzas': [
+                    '👋 ¡Hola! Soy el Agente de Finanzas de GuÍAFS.',
+                    '💰 Puedo ayudarte con:\n🔹 Procesos de rendición\n🔹 Procedimientos y estrategias para optimizar los recursos de tu EV',
+                    '¿Con qué puedo ayudarte?'
+                ],
+                'relaciones': [
+                    '👋 ¡Hola! Soy el Agente de Relaciones Institucionales.',
+                    '🤝 Puedo ayudarte con:\n🔹 Alianzas estratégicas\n🔹 Relaciones con instituciones',
+                    '¿Con qué te gustaría que te ayude?'
+                ],
+                'apoyo': [
+                    '👋 ¡Hola! Soy el Agente de Apoyo al Participante.',
+                    '💙 Puedo ayudarte con:\n🔹 Acompañamiento y bienestar\n🔹 Situaciones de los participantes AFS',
+                    '¿Cómo puedo ayudarte hoy?'
+                ],
+                'desarrollo': [
+                    '👋 ¡Hola! Soy el Agente de Desarrollo Voluntario.',
+                    '🌟 Puedo ayudarte con:\n🔹 Capacitaciones y desarrollo de habilidades\n🔹 Estrategias para el desarrollo del equipo de voluntarios',
+                    '¿Con qué te gustaría que te ayude?'
+                ]
+            };
+
+            // Registro de modales que ya mostraron el saludo (para no repetirlo)
+            var greetingShown = {};
+
+            function playGreeting(agentId) {
+                if (greetingShown[agentId]) return;
+                greetingShown[agentId] = true;
+
+                var historial = document.getElementById('chat-historial-dinamico');
+                if (!historial) return;
+
+                // Se limpia el historial estático y se reemplaza por las burbujas animadas
+                historial.innerHTML = '';
+
+                var messages = greetingMessages[agentId] || ['¡Hola! ¿En qué puedo ayudarte?'];
+                var delays = [1200, 2400, 3800]; // tiempo en ms para que aparezca cada burbuja
+
+                messages.forEach(function (text, i) {
+                    var typingDelay = delays[i] - 400;
+                    var msgDelay = delays[i];
+
+                    // Primero se muestra el indicador de escritura (puntitos)
+                    setTimeout(function () {
+                        var typingRow = document.createElement('div');
+                        typingRow.id = 'typing-' + agentId + '-' + i;
+                        typingRow.style.cssText = 'margin-bottom: 10px; text-align: left;';
+                        typingRow.innerHTML = '<div class="typing-indicator"><span></span><span></span><span></span></div>';
+                        historial.appendChild(typingRow);
+                        historial.scrollTop = historial.scrollHeight;
+                    }, typingDelay < 0 ? 0 : typingDelay);
+
+                    // Luego se reemplaza el indicador por la burbuja con el mensaje
+                    setTimeout(function () {
+                        var typingEl = document.getElementById('typing-' + agentId + '-' + i);
+                        if (typingEl) typingEl.remove();
+
+                        var row = document.createElement('div');
+                        row.style.cssText = 'margin-bottom: 12px; text-align: left;';
+
+                        // Se convierten los saltos de línea en etiquetas <br>
+                        var formattedText = text.replace(/\n/g, '<br>');
+
+                        row.innerHTML = '<span class="greeting-bubble" style="background: rgba(0,122,194,0.18); padding: 12px 18px; border-radius: 15px 15px 15px 4px; display: inline-block; border: 1px solid rgba(0,122,194,0.4); color: white; line-height: 1.7;">' + formattedText + '</span>';
+                        historial.appendChild(row);
+                        historial.scrollTop = historial.scrollHeight;
+                    }, msgDelay);
+                });
+            }
+
+            $(document).ready(function () {
+                // Cerrar al hacer clic en el fondo oscuro (fuera del contenido)
+                $('.mi-modal-afs').click(function (event) {
+                    if ($(event.target).hasClass('mi-modal-afs')) {
+                        $(this).fadeOut();
+                    }
+                });
+
+                // Cerrar al presionar la tecla Escape
+                $(document).keydown(function (event) {
+                    if (event.key === "Escape") {
+                        $('.mi-modal-afs').fadeOut();
+                    }
+                });
+            });
+        </script>
+        <script>
+            let ventanAgente = null;
+
+            function abrirAgenteNotebook(url) {
+                const width = 600;
+                const height = 800;
+                const left = (window.screen.width / 2) - (width / 2);
+                const top = (window.screen.height / 2) - (height / 2);
+                const params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=${width},height=${height},left=${left},top=${top}`;
+
+                // Si ya hay una ventana abierta, la cerramos antes de abrir otra
+                if (ventanAgente && !ventanAgente.closed) {
+                    ventanAgente.close();
+                }
+
+                ventanAgente = window.open(url, 'AgenteAFS', params);
+            }
+
+            // Cuando el usuario "vuelve" a la pestaña principal (gana foco),
+            // cerramos la ventana emergente automáticamente.
+            window.addEventListener('focus', function () {
+                if (ventanAgente && !ventanAgente.closed) {
+                    ventanAgente.close();
+                    ventanAgente = null;
+                }
+            });
+
+            // Limpieza de seguridad al cerrar la pestaña principal
+            window.addEventListener('beforeunload', function () {
+                if (ventanAgente && !ventanAgente.closed) {
+                    ventanAgente.close();
+                }
+            });
+        </script>
+</body>
+
+</html>
