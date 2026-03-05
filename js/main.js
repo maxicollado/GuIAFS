@@ -3,10 +3,13 @@ $(document).ready(function () {
 
     // ALTURA DE LA SECCIÓN PRINCIPAL (HOME)
     jQuery(window).load(function () {
-        // Primero se oculta la animación de carga
-        jQuery(".loader").fadeOut();
-        // Luego se oculta el div que cubre toda la pantalla
-        jQuery(".preloader").delay(1000).fadeOut("slow");
+        // Añadimos la clase que dispara el Zoom IN + Wipe
+        jQuery(".preloader").addClass("preloader-finished");
+
+        // Eliminamos el preloader del DOM después de que termine la transición (1s)
+        setTimeout(function () {
+            jQuery(".preloader").remove();
+        }, 1100);
     });
 
 
@@ -84,7 +87,7 @@ $(document).ready(function () {
     // CANTIDAD DE TARJETAS EN MOBILE
     if ($(window).width() <= 480) {
         $('.cbp-item').removeClass('main-item');
-        $('.cbp-item').slice(0, 5).addClass('main-item'); // Cambiado a 5 agentes
+        $('.cbp-item').slice(0, 7).addClass('main-item'); // Cambiado a 7 agentes
     }
 
     $('#grid-container').cubeportfolio({
