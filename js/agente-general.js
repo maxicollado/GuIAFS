@@ -230,7 +230,10 @@ async function enviarMensajeIA(agenteId) {
                 });
                 data = await respuesta.json();
                 if (data && data.candidates) break;
-                if (data && data.error) break;
+                if (data && data.error) {
+                    console.warn(`[GuIAFS] Sistema Saturado. El modelo ${modelo} falló: ${data.error.message}. Intentando con alternativa...`);
+                    continue; // Pasa automáticamente al siguiente modelo del array modelosAIntentar
+                }
             } catch (e) {
                 console.error("Error en fetch de modelo:", e);
             }
