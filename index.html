@@ -72,13 +72,16 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
         }
 
-        .mi-modal-contenido input[type="text"] {
+        .mi-modal-contenido textarea {
             background: #1a1a1a !important;
             border: 1px solid rgba(255, 255, 255, 0.1) !important;
             color: #ffffff !important;
+            resize: none;
+            overflow-y: auto;
+            max-height: 120px;
         }
 
-        .mi-modal-contenido input[type="text"]:focus {
+        .mi-modal-contenido textarea:focus {
             border-color: #007ac2 !important;
             box-shadow: 0 0 0 2px rgba(0, 122, 194, 0.2) !important;
         }
@@ -441,8 +444,8 @@
                     </div>
                     <div
                         style="display: flex; padding: 20px; background: #141414; border-top: 1px solid rgba(255,255,255,0.08);">
-                        <input type="text" id="chat-input-dinamico" placeholder="Escribe tu consulta aquí..."
-                            style="flex-grow: 1; padding: 14px 24px; border-radius: 30px; border: 1px solid #333; background: #1a1a1a; color: white; outline: none; font-size: 1rem; transition: border-color 0.3s;">
+                        <textarea id="chat-input-dinamico" placeholder="Escribe tu consulta aquí..." rows="1"
+                            style="flex-grow: 1; padding: 14px 24px; border-radius: 20px; border: 1px solid #333; background: #1a1a1a; color: white; outline: none; font-size: 1rem; transition: border-color 0.3s; line-height: 1.5; height: 52px; box-sizing: border-box;"></textarea>
                         <button onclick="enviarMensajeIA()"
                             style="margin-left: 15px; padding: 10px 30px; background: #007ac2; color: white; border: none; border-radius: 30px; cursor: pointer; font-weight: bold; transition: all 0.3s; display: flex; align-items: center; justify-content: center;">
                             <i class="fas fa-paper-plane" style="margin-right: 8px;"></i> </button>

@@ -149,7 +149,9 @@ function abrirModalAgente(agenteId) {
         });
     }
 
-    $('#modalDinamico').fadeIn();
+    $('#modalDinamico').fadeIn(400, function () {
+        $('#chat-input-dinamico').focus();
+    });
     historialContainer.scrollTop(historialContainer[0].scrollHeight);
 }
 
@@ -334,12 +336,21 @@ function actualizarContenidoPolitica() {
 
 // Vinculación unificada
 $(document).ready(function () {
-    // Input dinámico
-    $(document).on('keypress', '#chat-input-dinamico', function (e) {
-        if (e.which == 13) {
+    // Textarea dinámico: Enter para enviar, Shift+Enter para nueva línea
+    $(document).on('keydown', '#chat-input-dinamico', function (e) {
+        if (e.which == 13 && !e.shiftKey) {
+            e.preventDefault();
             enviarMensajeIA();
+            $(this).css('height', '52px'); // Resetear altura al enviar
             return false;
         }
+    });
+
+    // Auto-ajuste de altura del textarea al escribir
+    $(document).on('input', '#chat-input-dinamico', function () {
+        this.style.height = '52px'; // Base height para recalcular
+        const newHeight = Math.min(this.scrollHeight, 120);
+        this.style.height = newHeight + 'px';
     });
 
     // Mantener compatibilidad si quedan inputs antiguos durante la transición
