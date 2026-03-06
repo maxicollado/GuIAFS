@@ -210,7 +210,7 @@ async function enviarMensajeIA(agenteId) {
             historiales[agenteId] = historiales[agenteId].slice(-15);
         }
 
-        const modelosAIntentar = ['gemini-2.0-flash', 'gemini-1.5-flash', 'gemini-2.0-flash-lite', 'gemini-1.5-pro'];
+        const modelosAIntentar = ['gemini-2.0-flash', 'gemini-1.5-flash', 'gemini-1.5-flash-latest', 'gemini-pro'];
         let respuesta;
         let data;
         let errorFinal = "Error desconocido.";
