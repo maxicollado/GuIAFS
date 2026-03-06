@@ -210,9 +210,10 @@ async function enviarMensajeIA(agenteId) {
             historiales[agenteId] = historiales[agenteId].slice(-15);
         }
 
-        const modelosAIntentar = ['gemini-flash-latest', 'gemini-2.0-flash', 'gemini-2.0-flash-lite', 'gemini-pro-latest'];
+        const modelosAIntentar = ['gemini-2.0-flash', 'gemini-1.5-flash', 'gemini-2.0-flash-lite', 'gemini-1.5-flash-8b'];
         let respuesta;
         let data;
+        let errorFinal = "Error desconocido.";
 
         for (const modelo of modelosAIntentar) {
             try {
@@ -229,20 +230,27 @@ async function enviarMensajeIA(agenteId) {
                     })
                 });
                 data = await respuesta.json();
-                if (data && data.candidates) break;
+
+                if (data && data.candidates) {
+                    errorFinal = null;
+                    break;
+                }
+
                 if (data && data.error) {
-                    console.warn(`[GuIAFS] Sistema Saturado. El modelo ${modelo} falló: ${data.error.message}. Intentando con alternativa...`);
+                    console.warn(`[GuIAFS] El modelo ${modelo} devolvió error: ${data.error.message}. Intentando alternativa...`);
+                    errorFinal = data.error.message;
                     continue; // Pasa automáticamente al siguiente modelo del array modelosAIntentar
                 }
             } catch (e) {
                 console.error("Error en fetch de modelo:", e);
+                errorFinal = "Aviso: Error de conexión intermitente con los servidores.";
             }
         }
 
         const docEscribiendo = document.getElementById(idEscribiendo);
         if (docEscribiendo) docEscribiendo.remove();
 
-        if (respuesta && respuesta.ok && data.candidates && data.candidates[0].content.parts[0].text) {
+        if (respuesta && respuesta.ok && data && data.candidates && data.candidates[0].content.parts[0].text) {
             let textoIA = data.candidates[0].content.parts[0].text;
             historiales[agenteId].push({ role: "model", parts: [{ text: textoIA }] });
             textoIA = textoIA
@@ -252,8 +260,13 @@ async function enviarMensajeIA(agenteId) {
             const headerIA = config.nombre ? `<strong><i class="fas fa-robot"></i> ${config.nombre}:</strong><br> ` : '';
             historial.innerHTML += `<div style="margin-bottom: 15px; text-align: left;"><span style="background: rgba(0, 122, 194, 0.2); padding: 12px 18px; border-radius: 15px; display: inline-block; border: 1px solid #007ac2; color: white;">${headerIA}${textoIA}</span></div>`;
         } else {
-            let msgError = (data && data.error) ? data.error.message : "Error desconocido.";
-            historial.innerHTML += `<div style="text-align: left; color: #ea0026; margin-bottom: 10px; font-size: 0.85rem; background: rgba(234, 0, 38, 0.1); padding: 10px; border-radius: 8px;"><i class="fas fa-exclamation-triangle"></i> <strong>Aviso del Servidor:</strong><br> ${msgError}</div>`;
+            let msgFormat = errorFinal;
+            if (msgFormat.includes("Quota exceeded") || msgFormat.includes("429")) {
+                msgFormat = "<strong>Límite de Consultas:</strong> He recibido muchísimas preguntas seguidas y mi protección Anti-Spam (Capa Gratuita) se activó momentáneamente.<br><br>Por favor, <strong>espera 1 minuto</strong> y vuelve a intentarlo.";
+            } else if (msgFormat.includes("503") || msgFormat.includes("overloaded")) {
+                msgFormat = "Los servidores globales de inteligencia artificial están saturados por el momento. Inténtalo de nuevo en unos instantes.";
+            }
+            historial.innerHTML += `<div style="text-align: left; color: #ea0026; margin-bottom: 15px; background: rgba(234, 0, 38, 0.1); padding: 15px 20px; border-radius: 12px; border: 1px solid rgba(234, 0, 38, 0.3); font-size: 0.95rem; line-height: 1.5;"><i class="fas fa-exclamation-triangle" style="margin-right: 5px;"></i> ${msgFormat}</div>`;
             historiales[agenteId].pop();
         }
     } catch (error) {
