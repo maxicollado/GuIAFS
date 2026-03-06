@@ -79,6 +79,25 @@
             resize: none;
             overflow-y: auto;
             max-height: 120px;
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        .mi-modal-contenido textarea::-webkit-scrollbar {
+            display: none;
+            /* Chrome, Safari y Edge */
+        }
+
+        .send-btn-chat {
+            width: 52px !important;
+            height: 52px !important;
+            padding: 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            border-radius: 50% !important;
+            flex-shrink: 0 !important;
+            align-self: flex-end !important;
         }
 
         .mi-modal-contenido textarea:focus {
@@ -212,7 +231,7 @@
     </div>
 
     <header
-        style="display: flex; justify-content: space-between; align-items: center; padding: 20px 30px; position: absolute; width: 100%; top: 0; z-index: 100;">
+        style="display: flex; justify-content: space-between; align-items: center; padding: 20px 30px; position: absolute; width: 100%; top: 0; z-index: 10;">
         <a href="index.html" style="display: inline-block;">
             <img class="logo"
                 src="https://d22dvihj4pfop3.cloudfront.net/wp-content/uploads/sites/114/2019/02/25135155/Logos-AFS-01-e1551124361258.png"
@@ -443,12 +462,12 @@
                         <!-- El contenido se genera dinámicamente según el agente -->
                     </div>
                     <div
-                        style="display: flex; padding: 20px; background: #141414; border-top: 1px solid rgba(255,255,255,0.08);">
+                        style="display: flex; padding: 20px; background: #141414; border-top: 1px solid rgba(255,255,255,0.08); align-items: flex-end;">
                         <textarea id="chat-input-dinamico" placeholder="Escribe tu consulta aquí..." rows="1"
                             style="flex-grow: 1; padding: 14px 24px; border-radius: 20px; border: 1px solid #333; background: #1a1a1a; color: white; outline: none; font-size: 1rem; transition: border-color 0.3s; line-height: 1.5; height: 52px; box-sizing: border-box;"></textarea>
-                        <button onclick="enviarMensajeIA()"
-                            style="margin-left: 15px; padding: 10px 30px; background: #007ac2; color: white; border: none; border-radius: 30px; cursor: pointer; font-weight: bold; transition: all 0.3s; display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-paper-plane" style="margin-right: 8px;"></i> </button>
+                        <button onclick="enviarMensajeIA()" class="send-btn-chat"
+                            style="margin-left: 15px; background: #007ac2; color: white; border: none; cursor: pointer; transition: all 0.3s;">
+                            <i class="fas fa-paper-plane" style="margin-left: -2px;"></i> </button>
                     </div>
                 </div>
             </div>
