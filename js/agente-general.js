@@ -137,8 +137,10 @@ function abrirModalAgente(agenteId) {
             const align = msg.role === 'user' ? 'right' : 'left';
             const bg = msg.role === 'user' ? '#333' : 'rgba(0, 122, 194, 0.2)';
             const border = msg.role === 'user' ? 'none' : '1px solid #007ac2';
-            const texto = msg.parts[0].text.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-
+            const texto = msg.parts[0].text
+                .replace(/\n/g, '<br>')
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g, '<a href="$2" target="_blank" style="color: #4da6ff; text-decoration: underline;">$1</a>');
             historialContainer.append(`<div style="margin-bottom: 15px; text-align: ${align};">
                 <span style="background: ${bg}; padding: 12px 18px; border-radius: 15px; display: inline-block; border: ${border}; color: white;">
                     ${texto}
@@ -238,8 +240,10 @@ async function enviarMensajeIA(agenteId) {
         if (respuesta && respuesta.ok && data.candidates && data.candidates[0].content.parts[0].text) {
             let textoIA = data.candidates[0].content.parts[0].text;
             historiales[agenteId].push({ role: "model", parts: [{ text: textoIA }] });
-            textoIA = textoIA.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-
+            textoIA = textoIA
+                .replace(/\n/g, '<br>')
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g, '<a href="$2" target="_blank" style="color: #4da6ff; text-decoration: underline;">$1</a>');
             const headerIA = config.nombre ? `<strong><i class="fas fa-robot"></i> ${config.nombre}:</strong><br> ` : '';
             historial.innerHTML += `<div style="margin-bottom: 15px; text-align: left;"><span style="background: rgba(0, 122, 194, 0.2); padding: 12px 18px; border-radius: 15px; display: inline-block; border: 1px solid #007ac2; color: white;">${headerIA}${textoIA}</span></div>`;
         } else {
