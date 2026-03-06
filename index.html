@@ -440,244 +440,244 @@
                 </div>
             </section>
         </div>
+    </div><!-- // Fin wrapper -->
 
-        <!-- MODAL ÚNICO DINÁMICO (Optimización de Rendimiento) -->
-        <div id="modalDinamico" class="mi-modal-afs">
-            <div class="mi-modal-contenido"
-                style="width: 92%; max-width: 1100px; margin: 3% auto; border-radius: 20px;">
-                <span class="mi-modal-cerrar" onclick="$('#modalDinamico').fadeOut();">&times;</span>
-                <h3 id="modal-titulo"
-                    style="color: white; margin-top: 0; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; font-weight: 800; letter-spacing: -0.02em;">
-                    <i class="fas fa-robot" style="color:#007ac2;"></i> Cargando...
-                </h3>
+    <!-- MODAL ÚNICO DINÁMICO (Optimización de Rendimiento) -->
+    <div id="modalDinamico" class="mi-modal-afs">
+        <div class="mi-modal-contenido" style="width: 92%; max-width: 1100px; margin: 3% auto; border-radius: 20px;">
+            <span class="mi-modal-cerrar" onclick="$('#modalDinamico').fadeOut();">&times;</span>
+            <h3 id="modal-titulo"
+                style="color: white; margin-top: 0; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; font-weight: 800; letter-spacing: -0.02em;">
+                <i class="fas fa-robot" style="color:#007ac2;"></i> Cargando...
+            </h3>
+            <div
+                style="height: 70vh; background: #0c0c0c; border-radius: 12px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+                <!-- BANNER DE PRIVACIDAD (Cumplimiento Política IA AFS) -->
+                <div class="privacy-banner">
+                    <i class="fas fa-user-shield"></i> No ingreses datos personales, financieros o información
+                    confidencial. Las consultas son anónimas.
+                </div>
+                <div id="chat-historial-dinamico"
+                    style="flex-grow: 1; overflow-y: auto; padding: 25px; font-size: 1rem; line-height: 1.6; scroll-behavior: smooth;">
+                    <!-- El contenido se genera dinámicamente según el agente -->
+                </div>
                 <div
-                    style="height: 70vh; background: #0c0c0c; border-radius: 12px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
-                    <!-- BANNER DE PRIVACIDAD (Cumplimiento Política IA AFS) -->
-                    <div class="privacy-banner">
-                        <i class="fas fa-user-shield"></i> No ingreses datos personales, financieros o información
-                        confidencial. Las consultas son anónimas.
-                    </div>
-                    <div id="chat-historial-dinamico"
-                        style="flex-grow: 1; overflow-y: auto; padding: 25px; font-size: 1rem; line-height: 1.6; scroll-behavior: smooth;">
-                        <!-- El contenido se genera dinámicamente según el agente -->
-                    </div>
-                    <div
-                        style="display: flex; padding: 20px; background: #141414; border-top: 1px solid rgba(255,255,255,0.08); align-items: flex-end;">
-                        <textarea id="chat-input-dinamico" placeholder="Escribe tu consulta aquí..." rows="1"
-                            style="flex-grow: 1; padding: 14px 24px; border-radius: 20px; border: 1px solid #333; background: #1a1a1a; color: white; outline: none; font-size: 1rem; transition: border-color 0.3s; line-height: 1.5; height: 52px; box-sizing: border-box;"></textarea>
-                        <button onclick="enviarMensajeIA()" class="send-btn-chat"
-                            style="margin-left: 15px; background: #007ac2; color: white; border: none; cursor: pointer; transition: all 0.3s;">
-                            <i class="fas fa-paper-plane" style="margin-left: -2px;"></i> </button>
-                    </div>
+                    style="display: flex; padding: 20px; background: #141414; border-top: 1px solid rgba(255,255,255,0.08); align-items: flex-end;">
+                    <textarea id="chat-input-dinamico" placeholder="Escribe tu consulta aquí..." rows="1"
+                        style="flex-grow: 1; padding: 14px 24px; border-radius: 20px; border: 1px solid #333; background: #1a1a1a; color: white; outline: none; font-size: 1rem; transition: border-color 0.3s; line-height: 1.5; height: 52px; box-sizing: border-box;"></textarea>
+                    <button onclick="enviarMensajeIA()" class="send-btn-chat"
+                        style="margin-left: 15px; background: #007ac2; color: white; border: none; cursor: pointer; transition: all 0.3s;">
+                        <i class="fas fa-paper-plane" style="margin-left: -2px;"></i> </button>
                 </div>
             </div>
         </div>
+    </div>
 
-        <footer style="background: #111; padding: 20px 0 10px 0; border-top: 1px solid #333;">
-            <div class="cont" style="margin-top: 0 !important;">
-                <div class="row"
-                    style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; padding: 0 15px;">
-                    <div class="copyright" style="text-align: left;">
-                        <p style="color: #666; font-size: 14px; margin: 0;">© Maximiliano Collado - GuÍAFS</p>
-                    </div>
-                    <div class="policy-link-container">
-                        <button onclick="abrirPoliticaIA()" class="footer-policy-btn">
-                            Política de IA / AI Policy
-                        </button>
-                    </div>
+    <footer style="background: #111; padding: 20px 0 10px 0; border-top: 1px solid #333;">
+        <div class="cont" style="margin-top: 0 !important;">
+            <div class="row"
+                style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; padding: 0 15px;">
+                <div class="copyright" style="text-align: left;">
+                    <p style="color: #666; font-size: 14px; margin: 0;">© Maximiliano Collado - GuÍAFS</p>
                 </div>
-            </div>
-        </footer>
-
-        <!-- MODAL POLÍTICA DE IA (Bilingüe) -->
-        <div id="modalPolitica" class="mi-modal-afs" style="display:none;">
-            <div class="mi-modal-contenido" style="width: 90%; max-width: 900px; margin: 2% auto; border-radius: 20px;">
-                <span class="mi-modal-cerrar" onclick="$('#modalPolitica').fadeOut();">&times;</span>
-                <div
-                    style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 20px;">
-                    <h3 style="color: white; margin: 0; font-weight: 800; letter-spacing: -0.02em;">
-                        <i class="fas fa-shield-alt" style="color:#007ac2; margin-right: 10px;"></i>
-                        <span id="politica-titulo">Política de IA</span>
-                    </h3>
-                    <button onclick="toggleIdiomaPolitica()" class="lang-switch-btn">
-                        <i class="fas fa-language"></i> <span id="lang-btn-text">English</span>
+                <div class="policy-link-container">
+                    <button onclick="abrirPoliticaIA()" class="footer-policy-btn">
+                        Política de IA / AI Policy
                     </button>
                 </div>
-                <div id="politica-cuerpo"
-                    style="height: 65vh; overflow-y: auto; padding-right: 10px; color: #ccc; font-size: 0.95rem; line-height: 1.6;">
-                    <!-- El contenido se carga dinámicamente -->
-                </div>
             </div>
         </div>
+    </footer>
 
-        <script src="js/jquery-2.1.4.min.js"></script>
-        <script src="cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
-        <script src="js/typed.js"></script>
-        <script src="js/jquery.hover3d.js"></script>
-        <script src="js/main.js"></script>
-        <script src="js/jquery.cookie-1.4.1.min.js"></script>
-        <script src="js/agente-general.js"></script>
-        <script>
-            // ============================================
-            // ANIMACIÓN DE SALUDO (Estilo Conversación)
-            // Burbujas secuenciales: indicador de escritura -> mensaje
-            // ============================================
-            var greetingMessages = {
-                'general': [
-                    '👋 ¡Hola! Soy GuÍAFS, podes consultarme lo que quieras sobre AFS.',
-                    '📖 Puedo ayudarte con:\n🔹 Términos y glosario AFS\n🔹 Dudas generales sobre la organización, etc.',
-                    '¿Con qué te gustaría empezar?'
-                ],
-                'hosting': [
-                    '👋 ¡Hola! Soy el Agente de Hosting.',
-                    '🏠 Puedo ayudarte con:\n🔹 Entrevistas a familias\n🔹 Estrategias para llegar al deadline',
-                    '¿Qué te gustaría saber sobre el proceso de Hosting?'
-                ],
-                'sending': [
-                    '👋 ¡Hola! Soy el Agente de Sending.',
-                    '✈️ Puedo ayudarte con:\n🔹 Portfolios de postulantes\n🔹 Requisitos y procesos\n🔹',
-                    '¿Con qué arrancamos?'
-                ],
-                'comunidades': [
-                    '👋 ¡Hola! Soy el Agente de Comunidades Educativas.',
-                    '🎓 Puedo ayudarte con:\n🔹 Relación AFS y comunidades educativas\n🔹 Talleres para docentes y estudiantes',
-                    '¿Cómo puedo ayudarte hoy?'
-                ],
-                'visibilidad': [
-                    '👋 ¡Hola! Soy el Agente de Visibilidad y Comunicación.',
-                    '📢 Puedo ayudarte con:\n🔹 Estrategias de comunicación\n🔹 Manuales de marca o ajustes en la redacción',
-                    '¿Qué necesitas saber sobre visibilidad?'
-                ],
-                'orientaciones': [
-                    '👋 ¡Hola! Soy el Agente de Orientaciones Locales.',
-                    '🗺️ Puedo ayudarte con:\n🔹 Organización de orientaciones\n🔹 Actividades para participantes',
-                    '¿Con qué orientación puedo ayudarte?'
-                ],
-                'presidentes': [
-                    '👋 ¡Hola! Soy el Agente para presidentes.',
-                    '🏛️ Puedo ayudarte con:\n🔹 Estrategias de trabajo en equipo\n🔹 Roles y Responsabilidades, como apoyar a tu equipo de coordinadores',
-                    '¿Con qué te gustaría empezar?'
-                ],
-                'finanzas': [
-                    '👋 ¡Hola! Soy el Agente de Finanzas de GuÍAFS.',
-                    '💰 Puedo ayudarte con:\n🔹 Procesos de rendición\n🔹 Procedimientos y estrategias para optimizar los recursos de tu EV',
-                    '¿Con qué puedo ayudarte?'
-                ],
-                'relaciones': [
-                    '👋 ¡Hola! Soy el Agente de Relaciones Institucionales.',
-                    '🤝 Puedo ayudarte con:\n🔹 Alianzas estratégicas\n🔹 Relaciones con instituciones',
-                    '¿Con qué te gustaría que te ayude?'
-                ],
-                'apoyo': [
-                    '👋 ¡Hola! Soy el Agente de Apoyo al Participante.',
-                    '💙 Puedo ayudarte con:\n🔹 Acompañamiento y bienestar\n🔹 Situaciones de los participantes AFS',
-                    '¿Cómo puedo ayudarte hoy?'
-                ],
-                'desarrollo': [
-                    '👋 ¡Hola! Soy el Agente de Desarrollo Voluntario.',
-                    '🌟 Puedo ayudarte con:\n🔹 Capacitaciones y desarrollo de habilidades\n🔹 Estrategias para el desarrollo del equipo de voluntarios',
-                    '¿Con qué te gustaría que te ayude?'
-                ]
-            };
+    <!-- MODAL POLÍTICA DE IA (Bilingüe) -->
+    <div id="modalPolitica" class="mi-modal-afs" style="display:none;">
+        <div class="mi-modal-contenido" style="width: 90%; max-width: 900px; margin: 2% auto; border-radius: 20px;">
+            <span class="mi-modal-cerrar" onclick="$('#modalPolitica').fadeOut();">&times;</span>
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 20px;">
+                <h3 style="color: white; margin: 0; font-weight: 800; letter-spacing: -0.02em;">
+                    <i class="fas fa-shield-alt" style="color:#007ac2; margin-right: 10px;"></i>
+                    <span id="politica-titulo">Política de IA</span>
+                </h3>
+                <button onclick="toggleIdiomaPolitica()" class="lang-switch-btn">
+                    <i class="fas fa-language"></i> <span id="lang-btn-text">English</span>
+                </button>
+            </div>
+            <div id="politica-cuerpo"
+                style="height: 65vh; overflow-y: auto; padding-right: 10px; color: #ccc; font-size: 0.95rem; line-height: 1.6;">
+                <!-- El contenido se carga dinámicamente -->
+            </div>
+        </div>
+    </div>
 
-            // Registro de modales que ya mostraron el saludo (para no repetirlo)
-            var greetingShown = {};
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
+    <script src="js/typed.js"></script>
+    <script src="js/jquery.hover3d.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/jquery.cookie-1.4.1.min.js"></script>
+    <script src="js/agente-general.js"></script>
+    <script>
+        // ============================================
+        // ANIMACIÓN DE SALUDO (Estilo Conversación)
+        // Burbujas secuenciales: indicador de escritura -> mensaje
+        // ============================================
+        var greetingMessages = {
+            'general': [
+                '👋 ¡Hola! Soy GuÍAFS, podes consultarme lo que quieras sobre AFS.',
+                '📖 Puedo ayudarte con:\n🔹 Términos y glosario AFS\n🔹 Dudas generales sobre la organización, etc.',
+                '¿Con qué te gustaría empezar?'
+            ],
+            'hosting': [
+                '👋 ¡Hola! Soy el Agente de Hosting.',
+                '🏠 Puedo ayudarte con:\n🔹 Entrevistas a familias\n🔹 Estrategias para llegar al deadline',
+                '¿Qué te gustaría saber sobre el proceso de Hosting?'
+            ],
+            'sending': [
+                '👋 ¡Hola! Soy el Agente de Sending.',
+                '✈️ Puedo ayudarte con:\n🔹 Portfolios de postulantes\n🔹 Requisitos y procesos\n🔹',
+                '¿Con qué arrancamos?'
+            ],
+            'comunidades': [
+                '👋 ¡Hola! Soy el Agente de Comunidades Educativas.',
+                '🎓 Puedo ayudarte con:\n🔹 Relación AFS y comunidades educativas\n🔹 Talleres para docentes y estudiantes',
+                '¿Cómo puedo ayudarte hoy?'
+            ],
+            'visibilidad': [
+                '👋 ¡Hola! Soy el Agente de Visibilidad y Comunicación.',
+                '📢 Puedo ayudarte con:\n🔹 Estrategias de comunicación\n🔹 Manuales de marca o ajustes en la redacción',
+                '¿Qué necesitas saber sobre visibilidad?'
+            ],
+            'orientaciones': [
+                '👋 ¡Hola! Soy el Agente de Orientaciones Locales.',
+                '🗺️ Puedo ayudarte con:\n🔹 Organización de orientaciones\n🔹 Actividades para participantes',
+                '¿Con qué orientación puedo ayudarte?'
+            ],
+            'presidentes': [
+                '👋 ¡Hola! Soy el Agente para presidentes.',
+                '🏛️ Puedo ayudarte con:\n🔹 Estrategias de trabajo en equipo\n🔹 Roles y Responsabilidades, como apoyar a tu equipo de coordinadores',
+                '¿Con qué te gustaría empezar?'
+            ],
+            'finanzas': [
+                '👋 ¡Hola! Soy el Agente de Finanzas de GuÍAFS.',
+                '💰 Puedo ayudarte con:\n🔹 Procesos de rendición\n🔹 Procedimientos y estrategias para optimizar los recursos de tu EV',
+                '¿Con qué puedo ayudarte?'
+            ],
+            'relaciones': [
+                '👋 ¡Hola! Soy el Agente de Relaciones Institucionales.',
+                '🤝 Puedo ayudarte con:\n🔹 Alianzas estratégicas\n🔹 Relaciones con instituciones',
+                '¿Con qué te gustaría que te ayude?'
+            ],
+            'apoyo': [
+                '👋 ¡Hola! Soy el Agente de Apoyo al Participante.',
+                '💙 Puedo ayudarte con:\n🔹 Acompañamiento y bienestar\n🔹 Situaciones de los participantes AFS',
+                '¿Cómo puedo ayudarte hoy?'
+            ],
+            'desarrollo': [
+                '👋 ¡Hola! Soy el Agente de Desarrollo Voluntario.',
+                '🌟 Puedo ayudarte con:\n🔹 Capacitaciones y desarrollo de habilidades\n🔹 Estrategias para el desarrollo del equipo de voluntarios',
+                '¿Con qué te gustaría que te ayude?'
+            ]
+        };
 
-            function playGreeting(agentId) {
-                if (greetingShown[agentId]) return;
-                greetingShown[agentId] = true;
+        // Registro de modales que ya mostraron el saludo (para no repetirlo)
+        var greetingShown = {};
 
-                var historial = document.getElementById('chat-historial-dinamico');
-                if (!historial) return;
+        function playGreeting(agentId) {
+            if (greetingShown[agentId]) return;
+            greetingShown[agentId] = true;
 
-                // Se limpia el historial estático y se reemplaza por las burbujas animadas
-                historial.innerHTML = '';
+            var historial = document.getElementById('chat-historial-dinamico');
+            if (!historial) return;
 
-                var messages = greetingMessages[agentId] || ['¡Hola! ¿En qué puedo ayudarte?'];
-                var delays = [1200, 2400, 3800]; // tiempo en ms para que aparezca cada burbuja
+            // Se limpia el historial estático y se reemplaza por las burbujas animadas
+            historial.innerHTML = '';
 
-                messages.forEach(function (text, i) {
-                    var typingDelay = delays[i] - 400;
-                    var msgDelay = delays[i];
+            var messages = greetingMessages[agentId] || ['¡Hola! ¿En qué puedo ayudarte?'];
+            var delays = [1200, 2400, 3800]; // tiempo en ms para que aparezca cada burbuja
 
-                    // Primero se muestra el indicador de escritura (puntitos)
-                    setTimeout(function () {
-                        var typingRow = document.createElement('div');
-                        typingRow.id = 'typing-' + agentId + '-' + i;
-                        typingRow.style.cssText = 'margin-bottom: 10px; text-align: left;';
-                        typingRow.innerHTML = '<div class="typing-indicator"><span></span><span></span><span></span></div>';
-                        historial.appendChild(typingRow);
-                        historial.scrollTop = historial.scrollHeight;
-                    }, typingDelay < 0 ? 0 : typingDelay);
+            messages.forEach(function (text, i) {
+                var typingDelay = delays[i] - 400;
+                var msgDelay = delays[i];
 
-                    // Luego se reemplaza el indicador por la burbuja con el mensaje
-                    setTimeout(function () {
-                        var typingEl = document.getElementById('typing-' + agentId + '-' + i);
-                        if (typingEl) typingEl.remove();
+                // Primero se muestra el indicador de escritura (puntitos)
+                setTimeout(function () {
+                    var typingRow = document.createElement('div');
+                    typingRow.id = 'typing-' + agentId + '-' + i;
+                    typingRow.style.cssText = 'margin-bottom: 10px; text-align: left;';
+                    typingRow.innerHTML = '<div class="typing-indicator"><span></span><span></span><span></span></div>';
+                    historial.appendChild(typingRow);
+                    historial.scrollTop = historial.scrollHeight;
+                }, typingDelay < 0 ? 0 : typingDelay);
 
-                        var row = document.createElement('div');
-                        row.style.cssText = 'margin-bottom: 12px; text-align: left;';
+                // Luego se reemplaza el indicador por la burbuja con el mensaje
+                setTimeout(function () {
+                    var typingEl = document.getElementById('typing-' + agentId + '-' + i);
+                    if (typingEl) typingEl.remove();
 
-                        // Se convierten los saltos de línea en etiquetas <br>
-                        var formattedText = text.replace(/\n/g, '<br>');
+                    var row = document.createElement('div');
+                    row.style.cssText = 'margin-bottom: 12px; text-align: left;';
 
-                        row.innerHTML = '<span class="greeting-bubble" style="background: rgba(0,122,194,0.18); padding: 12px 18px; border-radius: 15px 15px 15px 4px; display: inline-block; border: 1px solid rgba(0,122,194,0.4); color: white; line-height: 1.7;">' + formattedText + '</span>';
-                        historial.appendChild(row);
-                        historial.scrollTop = historial.scrollHeight;
-                    }, msgDelay);
-                });
+                    // Se convierten los saltos de línea en etiquetas <br>
+                    var formattedText = text.replace(/\n/g, '<br>');
+
+                    row.innerHTML = '<span class="greeting-bubble" style="background: rgba(0,122,194,0.18); padding: 12px 18px; border-radius: 15px 15px 15px 4px; display: inline-block; border: 1px solid rgba(0,122,194,0.4); color: white; line-height: 1.7;">' + formattedText + '</span>';
+                    historial.appendChild(row);
+                    historial.scrollTop = historial.scrollHeight;
+                }, msgDelay);
+            });
+        }
+
+        $(document).ready(function () {
+            // Cerrar al hacer clic en el fondo oscuro (fuera del contenido)
+            $('.mi-modal-afs').click(function (event) {
+                if ($(event.target).hasClass('mi-modal-afs')) {
+                    $(this).fadeOut();
+                }
+            });
+
+            // Cerrar al presionar la tecla Escape
+            $(document).keydown(function (event) {
+                if (event.key === "Escape") {
+                    $('.mi-modal-afs').fadeOut();
+                }
+            });
+        });
+    </script>
+    <script>
+        let ventanAgente = null;
+
+        function abrirAgenteNotebook(url) {
+            const width = 600;
+            const height = 800;
+            const left = (window.screen.width / 2) - (width / 2);
+            const top = (window.screen.height / 2) - (height / 2);
+            const params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=${width},height=${height},left=${left},top=${top}`;
+
+            // Si ya hay una ventana abierta, la cerramos antes de abrir otra
+            if (ventanAgente && !ventanAgente.closed) {
+                ventanAgente.close();
             }
 
-            $(document).ready(function () {
-                // Cerrar al hacer clic en el fondo oscuro (fuera del contenido)
-                $('.mi-modal-afs').click(function (event) {
-                    if ($(event.target).hasClass('mi-modal-afs')) {
-                        $(this).fadeOut();
-                    }
-                });
+            ventanAgente = window.open(url, 'AgenteAFS', params);
+        }
 
-                // Cerrar al presionar la tecla Escape
-                $(document).keydown(function (event) {
-                    if (event.key === "Escape") {
-                        $('.mi-modal-afs').fadeOut();
-                    }
-                });
-            });
-        </script>
-        <script>
-            let ventanAgente = null;
-
-            function abrirAgenteNotebook(url) {
-                const width = 600;
-                const height = 800;
-                const left = (window.screen.width / 2) - (width / 2);
-                const top = (window.screen.height / 2) - (height / 2);
-                const params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=${width},height=${height},left=${left},top=${top}`;
-
-                // Si ya hay una ventana abierta, la cerramos antes de abrir otra
-                if (ventanAgente && !ventanAgente.closed) {
-                    ventanAgente.close();
-                }
-
-                ventanAgente = window.open(url, 'AgenteAFS', params);
+        // Cuando el usuario "vuelve" a la pestaña principal (gana foco),
+        // cerramos la ventana emergente automáticamente.
+        window.addEventListener('focus', function () {
+            if (ventanAgente && !ventanAgente.closed) {
+                ventanAgente.close();
+                ventanAgente = null;
             }
+        });
 
-            // Cuando el usuario "vuelve" a la pestaña principal (gana foco),
-            // cerramos la ventana emergente automáticamente.
-            window.addEventListener('focus', function () {
-                if (ventanAgente && !ventanAgente.closed) {
-                    ventanAgente.close();
-                    ventanAgente = null;
-                }
-            });
-
-            // Limpieza de seguridad al cerrar la pestaña principal
-            window.addEventListener('beforeunload', function () {
-                if (ventanAgente && !ventanAgente.closed) {
-                    ventanAgente.close();
-                }
-            });
-        </script>
+        // Limpieza de seguridad al cerrar la pestaña principal
+        window.addEventListener('beforeunload', function () {
+            if (ventanAgente && !ventanAgente.closed) {
+                ventanAgente.close();
+            }
+        });
+    </script>
 </body>
 
 </html>
