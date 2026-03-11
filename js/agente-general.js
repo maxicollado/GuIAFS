@@ -5,6 +5,9 @@
 // El Proxy oculta la clave API para que GitHub no la bloquee
 const PROXY_URL = 'https://script.google.com/macros/s/AKfycbyoWqh8BKjSbOlqA5TD20ws2fCgaufFd7XyMHe2UBqeJdUtQRsZXrk3pDx19LiW7HlQ2Q/exec';
 
+// Mapa global para almacenar datos de feedback de forma segura (evita inyección HTML)
+const _feedbackData = {};
+
 const AGENTES_CONFIG = {
     'general': {
         nombre: '',
@@ -204,8 +207,8 @@ async function enviarMensajeIA(agenteId) {
                 .replace(/\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g, '<a href="$2" target="_blank" style="color: #4da6ff; text-decoration: underline;">$1</a>');
             const headerIA = config.nombre ? `<strong><i class="fas fa-robot"></i> ${config.nombre}:</strong><br> ` : '';
             const msgId = 'fb-' + agenteId + '-' + Date.now();
-            const msgRaw = mensaje.replace(/"/g, '&quot;').replace(/\n/g, ' ');
-            const respRaw = textoIA.replace(/"/g, '&quot;').replace(/<br>/g, ' ');
+            // Guardamos los datos en el mapa global, nunca los embebemos en el HTML
+            _feedbackData[msgId] = { agenteId, pregunta: mensaje, respuestaIA: textoIA };
             historial.innerHTML += `
 <div style="margin-bottom: 15px; text-align: left;">
   <span style="background: rgba(0, 122, 194, 0.2); padding: 12px 18px; border-radius: 15px; display: inline-block; border: 1px solid #007ac2; color: white; max-width: 85%;">${headerIA}${textoIA}</span>
@@ -216,7 +219,7 @@ async function enviarMensajeIA(agenteId) {
     <textarea id="txt-${msgId}" placeholder="¿Qué podría mejorar esta respuesta?" style="width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(0,122,194,0.5); border-radius: 10px; color: white; padding: 10px 12px; font-size: 0.85rem; resize: none; outline: none; font-family: inherit; min-height: 70px;"></textarea>
     <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 6px;">
       <button onclick="toggleFeedbackPanel('${msgId}')" style="background: transparent; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); cursor: pointer; border-radius: 8px; padding: 5px 14px; font-size: 0.8rem;">Cancelar</button>
-      <button onclick="enviarFeedback('${msgId}', '${agenteId}', \"${msgRaw}\", \"${respRaw}\")" style="background: #007ac2; border: none; color: white; cursor: pointer; border-radius: 8px; padding: 5px 14px; font-size: 0.8rem; font-weight: 600;"><i class="fas fa-paper-plane"></i> Enviar</button>
+      <button onclick="enviarFeedback('${msgId}')" style="background: #007ac2; border: none; color: white; cursor: pointer; border-radius: 8px; padding: 5px 14px; font-size: 0.8rem; font-weight: 600;"><i class="fas fa-paper-plane"></i> Enviar</button>
     </div>
   </div>
 </div>`;
@@ -253,10 +256,12 @@ function toggleFeedbackPanel(msgId) {
 /**
  * Envía el feedback del panel inline al Proxy por correo.
  */
-async function enviarFeedback(msgId, agenteId, pregunta, respuestaIA) {
+async function enviarFeedback(msgId) {
     const txt = document.getElementById('txt-' + msgId);
     if (!txt || txt.value.trim() === '') { txt && txt.focus(); return; }
     const feedback = txt.value.trim();
+    // Recuperar datos del mapa global (nunca del HTML)
+    const d = _feedbackData[msgId] || {};
     txt.value = '';
     toggleFeedbackPanel(msgId);
     try {
@@ -266,16 +271,18 @@ async function enviarFeedback(msgId, agenteId, pregunta, respuestaIA) {
             headers: { 'Content-Type': 'text/plain;charset=utf-8' },
             body: JSON.stringify({
                 type: 'feedback',
-                agente: agenteId,
-                preguntaOriginal: pregunta,
-                respuestaObtenida: respuestaIA,
+                agente: d.agenteId || 'desconocido',
+                preguntaOriginal: d.pregunta || '',
+                respuestaObtenida: d.respuestaIA || '',
                 comentarioUsuario: feedback
             })
         });
         await respuesta.json();
-        // Pequeña confirmación visual no intrusiva
-        const btn = document.querySelector(`[onclick="toggleFeedbackPanel('${msgId}')"]`);
-        if (btn) { btn.innerHTML = '<i class="fas fa-check"></i>'; btn.style.color = '#4caf50'; }
+        // Confirmación visual discreta: el 🚩 pasa a ✅
+        const flagBtn = document.querySelector(`button[onclick="toggleFeedbackPanel('${msgId}')"]`);
+        if (flagBtn) { flagBtn.innerHTML = '<i class="fas fa-check"></i>'; flagBtn.style.color = '#4caf50'; }
+        // Limpiar datos del mapa para no acumular memoria
+        delete _feedbackData[msgId];
     } catch (e) {
         console.error('Error al enviar feedback:', e);
     }
