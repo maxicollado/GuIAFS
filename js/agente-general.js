@@ -104,15 +104,16 @@ function abrirModalAgente(agenteId) {
     const historialContainer = $('#chat-historial-dinamico');
     historialContainer.html(''); // Limpiar vista actual
 
-    // Si hay historial previo, lo cargamos (opcional según requerimiento estético)
-    // Para GuIAFS, vamos a cargar el mensaje de bienvenida inicial si está vacío
+    // PRIMERO cargamos el historial guardado (antes de decidir si saludar)
+    cargarHistorialLocal(agenteId);
+
+    // Solo saludamos si NO hay conversación previa guardada
     if (historiales[agenteId].length === 0) {
-        // Ejecutar saludo inicial (se basa en la lógica original de playGreeting)
         if (typeof playGreeting === 'function') {
             playGreeting(agenteId);
         }
     } else {
-        // Re-renderizar historial guardado
+        // Re-renderizar historial guardado en el DOM
         historiales[agenteId].forEach(msg => {
             const align = msg.role === 'user' ? 'right' : 'left';
             const bg = msg.role === 'user' ? '#333' : 'rgba(0, 122, 194, 0.2)';
@@ -131,8 +132,6 @@ function abrirModalAgente(agenteId) {
 
     $('#modalDinamico').fadeIn(400, function () {
         $('#chat-input-dinamico').focus();
-        // --- CARGA DE PERSISTENCIA ---
-        cargarHistorialLocal(agenteId);
     });
     historialContainer.scrollTop(historialContainer[0].scrollHeight);
 }
