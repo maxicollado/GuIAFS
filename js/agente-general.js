@@ -203,8 +203,8 @@ async function enviarMensajeIA(agenteId) {
                 .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
                 .replace(/\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g, '<a href="$2" target="_blank" style="color: #4da6ff; text-decoration: underline;">$1</a>');
             const headerIA = config.nombre ? `<strong><i class="fas fa-robot"></i> ${config.nombre}:</strong><br> ` : '';
-            const feedbackBtn = `<button onclick="abrirFeedbackIA('${agenteId}', \`${mensaje.replace(/`/g, '\\`').replace(/\n/g, ' ')}\`, \`${textoIA.replace(/`/g, '\\`').replace(/\n/g, ' ')}\`)" style="background: transparent; border: none; color: rgba(255,255,255,0.5); cursor: pointer; float: right; margin-top: 5px;" title="Dejar feedback"><i class="fas fa-comment-dots"></i></button>`;
-            historial.innerHTML += `<div style="margin-bottom: 15px; text-align: left;"><span style="background: rgba(0, 122, 194, 0.2); padding: 12px 18px; border-radius: 15px; display: inline-block; border: 1px solid #007ac2; color: white; width: 85%;">${headerIA}${textoIA}${feedbackBtn}</span></div>`;
+            const feedbackBtn = `<button onclick="abrirFeedbackIA('${agenteId}', \`${mensaje.replace(/`/g, '\\`').replace(/\n/g, ' ')}\`, \`${textoIA.replace(/`/g, '\\`').replace(/\n/g, ' ')}\`)" style="background: transparent; border: none; color: rgba(255,255,255,0.25); cursor: pointer; display: block; font-size: 0.7rem; margin-top: 2px; margin-left: 10px;" title="Sugerir mejora"><i class="fas fa-comment-dots"></i> Sugerir mejora</button>`;
+            historial.innerHTML += `<div style="margin-bottom: 15px; text-align: left;"><span style="background: rgba(0, 122, 194, 0.2); padding: 12px 18px; border-radius: 15px; display: inline-block; border: 1px solid #007ac2; color: white; max-width: 85%;">${headerIA}${textoIA}</span>${feedbackBtn}</div>`;
 
             // Guardar en persistencia tras recibir respuesta
             guardarHistorialLocal(agenteId);
@@ -305,7 +305,8 @@ function renderizarHistorial(agenteId) {
                 .replace(/\n/g, '<br>')
                 .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
                 .replace(/\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g, '<a href="$2" target="_blank" style="color: #4da6ff; text-decoration: underline;">$1</a>');
-            historialDiv.innerHTML += `<div style="margin-bottom: 15px; text-align: left;"><span style="background: rgba(0, 122, 194, 0.2); padding: 12px 18px; border-radius: 15px; display: inline-block; border: 1px solid #007ac2; color: white; width: 85%;">${texto}</span></div>`;
+            // Al recuperar del historial, no mostramos el botón de feedback para no saturar
+            historialDiv.innerHTML += `<div style="margin-bottom: 15px; text-align: left;"><span style="background: rgba(0, 122, 194, 0.2); padding: 12px 18px; border-radius: 15px; display: inline-block; border: 1px solid #007ac2; color: white; max-width: 85%;">${texto}</span></div>`;
         }
     });
     historialDiv.scrollTop = historialDiv.scrollHeight;
