@@ -3,7 +3,7 @@
    ============================================================== */
 
 // El Proxy oculta la clave API para que GitHub no la bloquee
-const PROXY_URL = 'https://script.google.com/macros/s/AKfycbyoWqh8BKjSbOlqA5TD20ws2fCgaufFd7XyMHe2UBqeJdUtQRsZXrk3pDx19LiW7HlQ2Q/exec';
+const PROXY_URL = 'https://script.google.com/macros/s/AKfycbzZbWaRCat4gGQpwN5HE9rmhrGDnaApVLrm3OIDQNI71owEdYtllXTPtYxiU_GVBn196g/exec';
 
 // Mapa global para almacenar datos de feedback de forma segura (evita inyección HTML)
 const _feedbackData = {};
