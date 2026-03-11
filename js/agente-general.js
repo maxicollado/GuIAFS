@@ -203,8 +203,23 @@ async function enviarMensajeIA(agenteId) {
                 .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
                 .replace(/\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g, '<a href="$2" target="_blank" style="color: #4da6ff; text-decoration: underline;">$1</a>');
             const headerIA = config.nombre ? `<strong><i class="fas fa-robot"></i> ${config.nombre}:</strong><br> ` : '';
-            const feedbackBtn = `<button onclick="abrirFeedbackIA('${agenteId}', \`${mensaje.replace(/`/g, '\\`').replace(/\n/g, ' ')}\`, \`${textoIA.replace(/`/g, '\\`').replace(/\n/g, ' ')}\`)" style="background: transparent; border: none; color: rgba(255,255,255,0.25); cursor: pointer; display: block; font-size: 0.7rem; margin-top: 2px; margin-left: 10px;" title="Sugerir mejora"><i class="fas fa-comment-dots"></i> Sugerir mejora</button>`;
-            historial.innerHTML += `<div style="margin-bottom: 15px; text-align: left;"><span style="background: rgba(0, 122, 194, 0.2); padding: 12px 18px; border-radius: 15px; display: inline-block; border: 1px solid #007ac2; color: white; max-width: 85%;">${headerIA}${textoIA}</span>${feedbackBtn}</div>`;
+            const msgId = 'fb-' + agenteId + '-' + Date.now();
+            const msgRaw = mensaje.replace(/"/g, '&quot;').replace(/\n/g, ' ');
+            const respRaw = textoIA.replace(/"/g, '&quot;').replace(/<br>/g, ' ');
+            historial.innerHTML += `
+<div style="margin-bottom: 15px; text-align: left;">
+  <span style="background: rgba(0, 122, 194, 0.2); padding: 12px 18px; border-radius: 15px; display: inline-block; border: 1px solid #007ac2; color: white; max-width: 85%;">${headerIA}${textoIA}</span>
+  <div style="margin-top: 4px; margin-left: 8px; display: flex; align-items: center; gap: 4px;">
+    <button onclick="toggleFeedbackPanel('${msgId}')" style="background: transparent; border: 1px solid transparent; color: rgba(255,255,255,0.3); cursor: pointer; border-radius: 6px; padding: 3px 7px; font-size: 0.75rem; transition: all .2s;" onmouseover="this.style.color='rgba(255,255,255,0.7)'; this.style.borderColor='rgba(255,255,255,0.2)'" onmouseout="this.style.color='rgba(255,255,255,0.3)'; this.style.borderColor='transparent'" title="Sugerir mejora"><i class="fas fa-flag"></i></button>
+  </div>
+  <div id="${msgId}" style="display:none; margin-top: 6px; margin-left: 8px; max-width: 85%;">
+    <textarea id="txt-${msgId}" placeholder="¿Qué podría mejorar esta respuesta?" style="width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(0,122,194,0.5); border-radius: 10px; color: white; padding: 10px 12px; font-size: 0.85rem; resize: none; outline: none; font-family: inherit; min-height: 70px;"></textarea>
+    <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 6px;">
+      <button onclick="toggleFeedbackPanel('${msgId}')" style="background: transparent; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); cursor: pointer; border-radius: 8px; padding: 5px 14px; font-size: 0.8rem;">Cancelar</button>
+      <button onclick="enviarFeedback('${msgId}', '${agenteId}', \"${msgRaw}\", \"${respRaw}\")" style="background: #007ac2; border: none; color: white; cursor: pointer; border-radius: 8px; padding: 5px 14px; font-size: 0.8rem; font-weight: 600;"><i class="fas fa-paper-plane"></i> Enviar</button>
+    </div>
+  </div>
+</div>`;
 
             // Guardar en persistencia tras recibir respuesta
             guardarHistorialLocal(agenteId);
@@ -222,19 +237,28 @@ async function enviarMensajeIA(agenteId) {
 }
 
 /**
- * Abre un prompt para que el usuario deje feedback sobre una respuesta específica.
+ * Muestra u oculta el panel de feedback inline.
  */
-function abrirFeedbackIA(agenteId, pregunta, respuestaIA) {
-    const feedback = prompt("¿En qué podemos mejorar esta respuesta? (Tu sugerencia se enviará por correo al equipo de AFS)");
-    if (feedback && feedback.trim() !== "") {
-        enviarFeedbackAlProxy(agenteId, pregunta, respuestaIA, feedback);
+function toggleFeedbackPanel(msgId) {
+    const panel = document.getElementById(msgId);
+    if (!panel) return;
+    const visible = panel.style.display !== 'none';
+    panel.style.display = visible ? 'none' : 'block';
+    if (!visible) {
+        const txt = document.getElementById('txt-' + msgId);
+        if (txt) txt.focus();
     }
 }
 
 /**
- * Envía el feedback al Proxy de Google Apps Script de forma segura.
+ * Envía el feedback del panel inline al Proxy por correo.
  */
-async function enviarFeedbackAlProxy(agenteId, pregunta, respuestaIA, feedback) {
+async function enviarFeedback(msgId, agenteId, pregunta, respuestaIA) {
+    const txt = document.getElementById('txt-' + msgId);
+    if (!txt || txt.value.trim() === '') { txt && txt.focus(); return; }
+    const feedback = txt.value.trim();
+    txt.value = '';
+    toggleFeedbackPanel(msgId);
     try {
         const respuesta = await fetch(PROXY_URL, {
             method: 'POST',
@@ -248,15 +272,12 @@ async function enviarFeedbackAlProxy(agenteId, pregunta, respuestaIA, feedback) 
                 comentarioUsuario: feedback
             })
         });
-        const data = await respuesta.json();
-        if (data.success) {
-            alert("¡Gracias! Tu feedback ha sido enviado correctamente por correo.");
-        } else {
-            alert("Feedback enviado. Gracias por tu colaboración.");
-        }
+        await respuesta.json();
+        // Pequeña confirmación visual no intrusiva
+        const btn = document.querySelector(`[onclick="toggleFeedbackPanel('${msgId}')"]`);
+        if (btn) { btn.innerHTML = '<i class="fas fa-check"></i>'; btn.style.color = '#4caf50'; }
     } catch (e) {
-        console.error("Error al enviar feedback:", e);
-        alert("Gracias por tu feedback (procesado localmente).");
+        console.error('Error al enviar feedback:', e);
     }
 }
 
