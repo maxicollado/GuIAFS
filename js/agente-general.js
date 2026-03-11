@@ -3,7 +3,7 @@
    ============================================================== */
 
 // El Proxy oculta la clave API para que GitHub no la bloquee
-const PROXY_URL = 'https://script.google.com/macros/s/AKfycbzndN1J3-1INXnvS82xFAIZj4UsthzlqvdjwAE4Q5AyYPoK03LUcc8SgdRDTZdEYj3Dhw/exec';
+const PROXY_URL = 'https://script.google.com/macros/s/AKfycbwelrFL4Zf3qobc9dyzsJr7o-ssi5MWre7Ba273MePG2Ei4_6SmPcFpZ5gUtDt-F964WQ/exec';
 
 const AGENTES_CONFIG = {
     'general': {
