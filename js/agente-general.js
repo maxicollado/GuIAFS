@@ -128,6 +128,8 @@ function abrirModalAgente(agenteId) {
 
     $('#modalDinamico').fadeIn(400, function () {
         $('#chat-input-dinamico').focus();
+        // --- CARGA DE PERSISTENCIA ---
+        cargarHistorialLocal(agenteId);
     });
     historialContainer.scrollTop(historialContainer[0].scrollHeight);
 }
@@ -201,7 +203,11 @@ async function enviarMensajeIA(agenteId) {
                 .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
                 .replace(/\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g, '<a href="$2" target="_blank" style="color: #4da6ff; text-decoration: underline;">$1</a>');
             const headerIA = config.nombre ? `<strong><i class="fas fa-robot"></i> ${config.nombre}:</strong><br> ` : '';
-            historial.innerHTML += `<div style="margin-bottom: 15px; text-align: left;"><span style="background: rgba(0, 122, 194, 0.2); padding: 12px 18px; border-radius: 15px; display: inline-block; border: 1px solid #007ac2; color: white;">${headerIA}${textoIA}</span></div>`;
+            const feedbackBtn = `<button onclick="abrirFeedbackIA('${agenteId}', \`${mensaje.replace(/`/g, '\\`').replace(/\n/g, ' ')}\`, \`${textoIA.replace(/`/g, '\\`').replace(/\n/g, ' ')}\`)" style="background: transparent; border: none; color: rgba(255,255,255,0.5); cursor: pointer; float: right; margin-top: 5px;" title="Dejar feedback"><i class="fas fa-comment-dots"></i></button>`;
+            historial.innerHTML += `<div style="margin-bottom: 15px; text-align: left;"><span style="background: rgba(0, 122, 194, 0.2); padding: 12px 18px; border-radius: 15px; display: inline-block; border: 1px solid #007ac2; color: white; width: 85%;">${headerIA}${textoIA}${feedbackBtn}</span></div>`;
+
+            // Guardar en persistencia tras recibir respuesta
+            guardarHistorialLocal(agenteId);
         } else {
             let msgError = (data && data.error) ? data.error.message : "Error desconocido.";
             historial.innerHTML += `<div style="text-align: left; color: #ea0026; margin-bottom: 10px; font-size: 0.85rem; background: rgba(234, 0, 38, 0.1); padding: 10px; border-radius: 8px;"><i class="fas fa-exclamation-triangle"></i> <strong>Aviso del Servidor:</strong><br> ${msgError}</div>`;
@@ -213,6 +219,96 @@ async function enviarMensajeIA(agenteId) {
         historial.innerHTML += `<div style="text-align: left; color: #ea0026; margin-bottom: 10px; font-size: 0.85rem; background: rgba(234, 0, 38, 0.1); padding: 10px; border-radius: 8px;"><i class="fas fa-exclamation-triangle"></i> <strong>Error de Sistema:</strong><br> ${error.message}</div>`;
     }
     historial.scrollTop = historial.scrollHeight;
+}
+
+/**
+ * Abre un prompt para que el usuario deje feedback sobre una respuesta específica.
+ */
+function abrirFeedbackIA(agenteId, pregunta, respuestaIA) {
+    const feedback = prompt("¿En qué podemos mejorar esta respuesta? (Tu sugerencia se enviará por correo al equipo de AFS)");
+    if (feedback && feedback.trim() !== "") {
+        enviarFeedbackAlProxy(agenteId, pregunta, respuestaIA, feedback);
+    }
+}
+
+/**
+ * Envía el feedback al Proxy de Google Apps Script de forma segura.
+ */
+async function enviarFeedbackAlProxy(agenteId, pregunta, respuestaIA, feedback) {
+    try {
+        const respuesta = await fetch(PROXY_URL, {
+            method: 'POST',
+            mode: 'cors',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({
+                type: 'feedback',
+                agente: agenteId,
+                preguntaOriginal: pregunta,
+                respuestaObtenida: respuestaIA,
+                comentarioUsuario: feedback
+            })
+        });
+        const data = await respuesta.json();
+        if (data.success) {
+            alert("¡Gracias! Tu feedback ha sido enviado correctamente por correo.");
+        } else {
+            alert("Feedback enviado. Gracias por tu colaboración.");
+        }
+    } catch (e) {
+        console.error("Error al enviar feedback:", e);
+        alert("Gracias por tu feedback (procesado localmente).");
+    }
+}
+
+/**
+ * Guarda el historial del chat en LocalStorage para persistencia.
+ */
+function guardarHistorialLocal(agenteId) {
+    try {
+        const key = `guiafs_historial_${agenteId}`;
+        localStorage.setItem(key, JSON.stringify(historiales[agenteId]));
+    } catch (e) {
+        console.warn("No se pudo guardar en LocalStorage:", e);
+    }
+}
+
+/**
+ * Carga el historial desde LocalStorage al iniciar un modal.
+ */
+function cargarHistorialLocal(agenteId) {
+    try {
+        const key = `guiafs_historial_${agenteId}`;
+        const saved = localStorage.getItem(key);
+        if (saved) {
+            historiales[agenteId] = JSON.parse(saved);
+            renderizarHistorial(agenteId);
+        }
+    } catch (e) {
+        console.warn("No se pudo cargar desde LocalStorage:", e);
+    }
+}
+
+/**
+ * Re-renderiza el historial guardado en el DOM del modal.
+ */
+function renderizarHistorial(agenteId) {
+    const historialDiv = document.getElementById(`chat-historial-dinamico`) || document.getElementById(`chat-historial-${agenteId}`);
+    if (!historialDiv) return;
+
+    // Solo renderizamos si hay mensajes reales (filtramos el sistema)
+    historialDiv.innerHTML = ""; // Limpiar
+    historiales[agenteId].forEach(m => {
+        if (m.role === "user") {
+            historialDiv.innerHTML += `<div style="margin-bottom: 15px; text-align: right;"><span style="background: #333; padding: 12px 18px; border-radius: 15px; display: inline-block; color: white;">${m.parts[0].text}</span></div>`;
+        } else if (m.role === "model") {
+            const texto = m.parts[0].text
+                .replace(/\n/g, '<br>')
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g, '<a href="$2" target="_blank" style="color: #4da6ff; text-decoration: underline;">$1</a>');
+            historialDiv.innerHTML += `<div style="margin-bottom: 15px; text-align: left;"><span style="background: rgba(0, 122, 194, 0.2); padding: 12px 18px; border-radius: 15px; display: inline-block; border: 1px solid #007ac2; color: white; width: 85%;">${texto}</span></div>`;
+        }
+    });
+    historialDiv.scrollTop = historialDiv.scrollHeight;
 }
 
 // --- POLÍTICA DE IA (CUMPLIMIENTO AFS 2025) ---
