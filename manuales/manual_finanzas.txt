@@ -1,0 +1,238 @@
+Este es el manual oficial del Agente de Finanzas de AFS.
+ENLACES UTILES
+
+- Formulario informe medico: https://docs.google.com/document/d/1qs1qVgS0GDea9ga6sQMNK6XaOY4O97e2?rtpof=true&usp=drive_fs
+- Rendiciones orientaciones locales: https://docs.google.com/document/d/1iPnRGXJGKWMy1Nh2cHSu1QXglQatDqQn?rtpof=true&usp=drive_fs
+- Modelo rendición de gastos orientaciones: https://docs.google.com/spreadsheets/d/1SELjbddLg_F1IUv433xMKXrGLSNcqQh3?rtpof=true&usp=drive_fs
+- Plantilla TPL: https://docs.google.com/document/d/19ICuk53LTiP0PrJF68hDizLISH3os2v9?rtpof=true&usp=drive_fs
+- Armado de Rendiciones y Tesorería video donde explica el armado de rendiciones y tesorería:(VIDEO) https://youtu.be/GXpE53DkeK0
+- Video armado de rendición TPL:(VIDEO) https://drive.google.com/open?id=1rNPIppNfyLxjRde0LZA8ees1y-S1hRxJ&usp=drive_fs
+- Plantilla rendición TPL ARGENTINA: https://drive.google.com/open?id=1Y2t68j9aw6xKSHrAxP6kLybAfw2mQkbG&usp=drive_fs
+- Declaración jurada de fondos: https://docs.google.com/spreadsheets/d/10oWjBF4_2euVOMmE8nkV6cQx5ObwKFK-?rtpof=true&usp=drive_fs
+- Plantilla rendición TPL URUGUAY: https://docs.google.com/spreadsheets/d/1DdBpebh5qXl5v_VdoWjly_Tn-XbbkHOM?rtpof=true&usp=drive_fs
+- Instructivo planilla de rendiciones: (DOCUMENTO PDF) https://drive.google.com/open?id=1JcDHQwY4GcXkNRYSpbBq0y48O5ufdpgS&usp=drive_fs
+
+Manual Operativo Integral: Asistente de IA para AFS
+
+1. Introducción y Marco Operativo
+
+Su propósito es proporcionar una guía técnica, precisa y obligatoria para voluntarios y staff en la resolución de trámites operativos complejos.
+
+Naturaleza del Seguro de AFS: "Seguro Secundario" Según la Sección II del Folleto Médico, el Plan Médico para Participantes opera bajo el principio de seguro secundario. Esto implica que la cobertura se activa únicamente si los gastos no son cubiertos en primera instancia por una póliza primaria (plan nacional de salud o seguro privado de la familia).
+
+* Recuperación de Gastos: AFS se reserva el derecho de solicitar reintegros a los seguros primarios.
+* Ausencia de Seguro Primario: En casos donde no exista cobertura previa, el plan de AFS asume el rol de fuente primaria de pago.
+
+
+--------------------------------------------------------------------------------
+
+
+2. El Plan Médico para Participantes (Cigna Healthcare)
+
+Este plan cubre gastos médicos por accidentes o enfermedades súbitas e imprevistas ocurridas durante el programa.
+
+Límites de Cobertura por Reclamación
+
+Región / Concepto	Límite de Cobertura (USD)
+Estados Unidos	$1,500,000
+Alemania e Italia	$1,000,000
+Resto del Mundo	$500,000
+Evacuación Médica de Emergencia	$1,000,000
+Repatriación de Restos Mortales	$100,000
+
+Condiciones Preexistentes y Reglas de Control
+
+Se define técnicamente como preexistente cualquier afección tratada en los 18 meses previos al pre-embarque.
+
+* Regla de los 45 días: Si una condición crónica está controlada (sin cambios en la medicación) durante los 45 días previos a la partida, la atención de emergencia relacionada podría estar cubierta.
+* Nota Operativa: Los gastos de mantenimiento regular (ej. insulina diaria) siempre están excluidos.
+
+Exclusiones Críticas
+
+* Tratamientos dentales de rutina, amalgamas y ortodoncia.
+* Chequeos escolares, deportivos, físicos de rutina e inoculaciones.
+* Cirugía electiva o estética.
+* Anteojos, lentes de contacto y audífonos.
+
+Protocolo de Emergencia Dental y Muelas del Juicio
+
+* Límite Dental: Hasta $600 USD para alivio inmediato del dolor/infección (dentro de los 30 días del evento; pago hasta 26 semanas).
+* Distinción Técnica de Muelas del Juicio: La extracción de muelas del juicio impactadas se imputa al límite de $600 USD de Emergencia Dental. Excepción: Si la extracción es necesaria para evitar la propagación de una infección, el procedimiento se eleva técnica y financieramente al Plan Médico (utilizando los límites de 500k/1M/$1.5M).
+
+
+--------------------------------------------------------------------------------
+
+
+3. Beneficios Adicionales (Asegurado por Berkeley)
+
+Estos beneficios operan de forma complementaria al plan de Cigna:
+
+* Muerte y Pérdida de Miembros por Accidente (AD&D): $10,000 USD. Cubre fallecimiento accidental o pérdida de miembros/facultades dentro de los 365 días del accidente.
+* Reunión de Emergencia: Hasta $5,000 USD. Cubre traslado y alojamiento de un familiar si el participante es hospitalizado por más de 24 horas y se recomienda su presencia.
+* Interrupción del Viaje: Hasta $5,000 USD. Reembolso de pasaje por fallecimiento o enfermedad de riesgo vital de un familiar directo.
+* Extensión Médica por Accidentes: Hasta $100,000 USD. Cubre gastos derivados exclusivamente de un accidente o enfermedad endémica hasta un año después del regreso al país de origen.
+* Seguro por Discapacidad Total Permanente: Hasta $100,000 USD. Indemnización por incapacidad total irreversible derivada de un accidente.
+* Asesoramiento por Fallecimiento y Traumas: Hasta **1,500 USD**. Máximo 10 sesiones (150 c/u) tras un accidente cubierto.
+
+
+--------------------------------------------------------------------------------
+
+
+4. Guía de Uso: Cigna Health Benefits App
+
+La aplicación es la interface obligatoria para la gestión autónoma de reclamaciones.
+
+Acceso y Registro
+
+1. Descarga: Disponible en App Store y Google Play.
+2. Login: Utilizar el Número de Referencia Personal (Membership ID) y contraseña.
+3. Pro-Tip: Si no tiene contraseña, debe generarla primero en la web de Cigna (Plan Members) con su fecha de nacimiento.
+
+Funcionalidades Clave
+
+* Provider Search: Herramienta crítica para localizar proveedores "In-Network" y evitar desembolsos directos.
+* Membership Card: ID digital para acreditar cobertura ante instituciones médicas.
+* Multi-Invoice Submission: Un solo reclamo puede contener hasta 25 facturas individuales.
+
+Atención fuera de la red (Proveedores no contratados): En caso de no contar con prestadores médicos de la red CIGNA disponibles en la provincia o localidad, el participante puede recibir atención en la clínica u hospital de su preferencia
+. En estos casos, la familia anfitriona o el participante deberán abonar los costos médicos por adelantado
+ y luego solicitar el reintegro al administrador de reclamos (WTW) reuniendo estrictamente la siguiente documentación:
+Formulario de reclamo (descargable desde el portal ONE AFS o enviado en el paquete de bienvenida)
+.
+Factura del médico, que debe incluir obligatoriamente el diagnóstico
+.
+Informe médico, que también debe detallar el diagnóstico
+.
+Comprobante de pago de la atención médica
+.
+El asistente también recordará que estos documentos pueden enviarse por correo electrónico a staff de Oficina central o cargarse directamente en el formulario de carga de gastos: Registro de gastos:
+https://bit.ly/slfinanzas
+Permiso de viaje:
+https://www.afsglobal.org/AFSGlobal/GlobalLink/TravelPermissionRequest/default.aspx?HostIOC=ARG&language=Spanish
+MOD 1 Consejerias
+https://drive.google.com/file/d/1-Le3zS0jvd5tZ9HRoxUYmmz7r-Jm5wgq/view?usp=sharing
+DOC INTERNO CONSEJERIAS
+https://docs.google.com/document/d/13WE9l57nQNgdAB9jARk2RhIm_DUEi6UKKtWVBlqpD48/edit?usp=sharing
+Form Medico
+https://docs.google.com/document/d/1sSfWP3ZxP8BtXjqR8ojrT_FJ9foEtpjD?rtpof=true&usp=drive_fs
+
+Factura TIPO B
+Razón Social: Asoc. Civil AFS Programas Interculturales
+
+CUIT: 30-66157623-1 
+
+Dirección: Juan D. Perón 328 3º piso, C1038AAH, Buenos Aires, Argentina
+
+Cond. Impositiva: IVA exento
+--------------------------------------------------------------------------------
+
+
+5. Gestión de Reclamaciones (Claims) y Reembolsos a WTW
+
+Flujo de Envío (4 Pasos)
+
+1. Información: Identificar al paciente y declarar si hubo accidente u otro seguro involucrado.
+2. Añadir Facturas: Cargar datos del prestador. (Límite: 25 facturas por envío).
+3. Pago: Confirmar datos bancarios (IBAN/SWIFT).
+4. Confirmación: Revisión y envío definitivo.
+
+Requisitos Técnicos de Archivos
+
+* Formatos: PDF, JPG, PNG, TIF, GIF.
+* Peso: Máximo 10MB por archivo.
+
+Glosario de Estados y Alertas
+
+* Draft: Borrador (máximo 5 simultáneos).
+* Submitted/Received: Envío exitoso.
+* In Progress: En revisión por un analista de WTW/Cigna.
+* Awaiting additional information: (Resaltado en Amarillo) Requiere acción inmediata del usuario para subir documentos faltantes.
+* Processed/Forwarded: Liquidación finalizada o transferida para pago.
+* Closed: Documentos rechazados o duplicados.
+
+¡ADVERTENCIAS CRÍTICAS DE OPERACIONES!
+
+* Plazo de Presentación: Se recomienda enviar reclamos dentro de los 90 días del gasto.
+* Hard Stop (Fecha Límite Absoluta): Las reclamaciones enviadas después de 1 año de ocurrido el evento no serán pagadas bajo ninguna circunstancia.
+* Facturación de Saldos (Balance Billing): En EE. UU., los proveedores pueden enviar facturas por saldos no pagados tras la negociación de Cigna. Acción Obligatoria: No pagar; enviar la factura inmediatamente a afs@wtwco.com para su resolución.
+
+
+--------------------------------------------------------------------------------
+
+
+6. El Rol del Tesorero de la Estructura Voluntaria (EV)
+
+El Tesorero es el responsable de la transparencia financiera y la ejecución presupuestaria local.
+
+Responsabilidades y Acción Directa
+
+* Planificación: Elaborar el presupuesto anual con la Presidencia de la EV.
+* Reporte: Envío de reportes de TPL y gastos médicos semestrales.
+* Liquidación de Gastos: Control de viáticos, librería y traslados escolares.
+* Acción Rule: AFS no efectúa adelantos en efectivo para gastos médicos, salvo en casos de extrema gravedad o estudios de alto costo previamente autorizados.
+
+TPL (Transfer Price Local) y Bonificaciones
+
+El TPL financia la operatividad local y se abona en Abril y Septiembre. Se compone de un factor físico (estudiantes) y uno monetario (presupuesto).
+
+Existen dos bonificaciones del 20% (plus) independientes y acumulables:
+
+1. Bonificación por Asignación Temprana: 20% si el estudiante es asignado a la EV antes del plazo límite.
+2. Bonificación por Ubicación Temprana: 20% adicional si se confirma la Familia Anfitriona Permanente antes del plazo límite.
+
+
+--------------------------------------------------------------------------------
+
+
+7. Desglose de Costos de los Programas
+
+Distribución porcentual de la inversión por participante:
+
+1. Apoyo en destino (40%): Soporte 24/7, red de voluntarios y oficinas.
+2. Transporte y logística (30%): Pasajes y traslados domésticos.
+3. Preparación previa (15%): Orientaciones y administración.
+4. Seguro médico (11%): Cobertura Cigna/Berkeley.
+5. Fondo de becas (4%): Reinversión social.
+
+
+--------------------------------------------------------------------------------
+
+
+8. Parental Authorization and Waiver Form
+
+Documento legal de "Responsabilidad Objetiva" para menores:
+
+* Autorización de Inscripción: Consentimiento para el alta en el plan de Cigna.
+* Gestión de Reembolsos: Autoriza a la Familia Anfitriona y a AFS a gestionar reclamos y percibir reembolsos por gastos pagados de bolsillo en nombre del menor.
+* Confidencialidad: Acceso limitado a información médica bajo normas GDPR de la UE, estrictamente para fines de bienestar y procesamiento de seguros.
+
+
+--------------------------------------------------------------------------------
+
+
+9. Directorio Operativo de Enlaces Útiles
+
+Emergencias Médicas (24/7)
+
+* HEALIX (Asistencia Global): +1.866.428.3935 (Gratuito). Obligatorio informar hospitalizaciones > 72hs.
+* WTW (Soporte Técnico de Póliza): afs@wtwco.com | +49 69 8088 4221.
+
+Formularios Médicos y TPL
+
+* Formulario informe medico
+* Plantilla TPL
+* Declaración jurada de fondos
+
+Plantillas de Rendición (Argentina/Uruguay)
+
+* Rendiciones orientaciones locales
+* Modelo rendición de gastos orientaciones
+* Plantilla rendición TPL ARGENTINA
+* Plantilla rendición TPL URUGUAY
+
+Material de Capacitación
+
+* Video: Armado de Rendiciones y Tesorería
+* Video: Armado de rendición TPL
+* Instructivo planilla de rendiciones (PDF)
+
