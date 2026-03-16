@@ -1,0 +1,11 @@
+# Documentación interna — solo en la computadora local
+docs/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+*.swp
