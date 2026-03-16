@@ -217,6 +217,40 @@
                 font-size: 1.1rem !important;
             }
         }
+        /* ── SLIDESHOW DE IMÁGENES EN HOVER ──────────────────────
+           Las 3 imgs se apilan. Por defecto solo se ve la 1ra (portada).
+           JS cicla entre img 2 y 3 en mouseenter, vuelve a img 1 en mouseleave. */
+        .fig {
+            position: relative;
+            overflow: hidden;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .fig img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.45s ease;
+            pointer-events: none;
+        }
+
+        .fig img:nth-child(1) {
+            opacity: 1; /* Portada visible por defecto */
+        }
+
+        .fig img.slide-active {
+            opacity: 1;
+        }
+
+        .fig img.slide-hidden {
+            opacity: 0;
+        }
     </style>
 </head>
 

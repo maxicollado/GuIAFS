@@ -134,4 +134,50 @@ $(document).ready(function () {
         $('#grid-container').cubeportfolio('filter', '*');
         $(this).fadeOut();
     });
+    // SLIDESHOW DE IMÁGENES EN HOVER DE TARJETAS DEL GRID
+    // Al entrar el cursor: oculta portada y cicla imgs 2 y 3 en loop.
+    // Al salir: detiene el ciclo y restaura la portada (img 1).
+    var hoverIntervals = {};
+
+    $('.cbp-item').on('mouseenter', function () {
+        var itemId = $(this).index();
+        var imgs = $(this).find('figure.fig img');
+        if (imgs.length < 2) return; // Solo 1 imagen, sin slideshow
+
+        // Ocultar portada
+        imgs.eq(0).removeClass('slide-active').addClass('slide-hidden');
+        imgs.eq(0).css('opacity', 0);
+
+        // Índices de las imágenes de hover (2 y 3 → índice 1 y 2)
+        var hoverImgs = imgs.slice(1);
+        var currentIdx = 0;
+
+        // Mostrar primera imagen de hover de inmediato
+        hoverImgs.eq(currentIdx).css('opacity', 1);
+
+        // Si hay más de una imagen de hover, arrancar el ciclo
+        if (hoverImgs.length > 1) {
+            hoverIntervals[itemId] = setInterval(function () {
+                hoverImgs.eq(currentIdx).css('opacity', 0);
+                currentIdx = (currentIdx + 1) % hoverImgs.length;
+                hoverImgs.eq(currentIdx).css('opacity', 1);
+            }, 900); // Cambia imagen cada 900ms
+        }
+    }).on('mouseleave', function () {
+        var itemId = $(this).index();
+        var imgs = $(this).find('figure.fig img');
+
+        // Detener ciclo
+        if (hoverIntervals[itemId]) {
+            clearInterval(hoverIntervals[itemId]);
+            delete hoverIntervals[itemId];
+        }
+
+        // Ocultar todas las imágenes de hover
+        imgs.slice(1).css('opacity', 0);
+
+        // Restaurar portada
+        imgs.eq(0).css('opacity', 1);
+    });
+
 }); // fin del document ready
